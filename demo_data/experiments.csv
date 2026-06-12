@@ -1,0 +1,5 @@
+run_id,model_name,train_acc,val_acc,play_acc,hard_play_acc,win_rate,avg_score,draw_rate,p95_latency_ms,notes
+run_001,baseline_cnn,0.801,0.742,0.681,0.552,0.392,-0.42,0.36,52,baseline model with simple feature encoding
+run_002,cnn_reweight,0.816,0.758,0.704,0.589,0.452,-0.18,0.31,58,class reweighting improves rare action learning
+run_003,cnn_aux_head,0.823,0.765,0.713,0.601,0.461,-0.09,0.29,61,auxiliary head improves hard play action accuracy
+run_004,cnn_feature_v2,0.829,0.771,0.721,0.615,0.474,0.03,0.27,65,feature v2 improves actual score but latency increases

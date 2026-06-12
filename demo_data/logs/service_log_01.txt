@@ -1,0 +1,5 @@
+[2026-05-13 09:11:05] request_id=req_001 route=/ask latency_ms=42 status=200
+[2026-05-13 09:11:18] request_id=req_002 route=/model_infer latency_ms=63 status=200
+[2026-05-13 09:12:01] warning: missing optional field king_cards, fallback to empty list.
+[2026-05-13 09:12:22] request_id=req_003 route=/model_infer latency_ms=118 status=200
+[2026-05-13 09:12:40] issue: latency spike may be caused by feature conversion and large candidate action set.

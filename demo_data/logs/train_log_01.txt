@@ -1,0 +1,5 @@
+[2026-05-10 10:12:01] run_id=run_001 model=baseline_cnn epoch=1 train_acc=0.712 val_acc=0.684 loss=1.235
+[2026-05-10 10:18:22] run_id=run_001 model=baseline_cnn epoch=5 train_acc=0.801 val_acc=0.742 loss=0.842
+[2026-05-10 10:31:18] issue: play action accuracy is lower than overall accuracy; low frequency actions are poorly learned.
+[2026-05-10 10:40:21] change: add class reweighting for rare actions and improve feature encoding.
+[2026-05-10 11:02:45] result: val_acc improved slightly, but actual win_rate did not improve significantly.
