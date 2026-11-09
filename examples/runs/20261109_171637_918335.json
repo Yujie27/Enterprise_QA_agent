@@ -1,0 +1,61 @@
+{
+  "timestamp_utc": "2026-11-09T09:16:37.918335+00:00",
+  "mode": "agentscope_react",
+  "question": "研发部门差旅报销期限是多久？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 4,
+  "events": [
+    {
+      "type": "tool_call",
+      "tool": "search_docs",
+      "arguments": {
+        "query": "研发部门 差旅报销 期限",
+        "limit": 5
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool": "search_docs",
+      "summary": "返回 2 条资料"
+    },
+    {
+      "type": "tool_call",
+      "tool": "search_docs",
+      "arguments": {
+        "query": "差旅费报销 时限 规定",
+        "limit": 5
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool": "search_docs",
+      "summary": "返回 2 条资料"
+    },
+    {
+      "type": "tool_call",
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool": "read_doc",
+      "summary": "已读取文档原文"
+    },
+    {
+      "type": "tool_call",
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool": "read_doc",
+      "summary": "已读取文档原文"
+    }
+  ],
+  "answer": "**研发部门差旅报销期限：返程后 15 日内提交报销申请。**\n\n依据：\n- **文档 ID：D02**｜《研发部门差旅费用细则（合成资料）》｜版本 2025-07｜生效日期 2025-07-01｜适用范围：研发部门；差旅费用报销\n  - 原文（D02-S3）：「研发部门差旅费用应在返程后15日内提交报销申请。该细则仅适用于研发部门差旅费用。」\n\n关于可能出现的“30 日”说法：\n- **文档 ID：D01**｜《员工报销常见问题（合成资料）》｜版本 2025-01｜生效日期 2025-01-01｜适用范围：全体员工；普通费用报销\n  - 原文（D01-S1）：「普通费用报销应在费用发生后30日内提交申请，并附合规票据。」\n\n这两份文档的期限并不冲突，因为它们的适用场景不同：D02 明确仅适用于**研发部门差旅费用**，应优先按 15 日执行；D01 的 30 日针对**普通费用报销**，不适用于研发差旅。\n\n补充提示：资料中只规定了提交时限，未说明“返程日”的计算方式，也未规定逾期处理方式；这部分无法根据现有制度确认。"
+}

@@ -1,5 +1,0 @@
-[2026-05-12 15:00:00] run_id=run_002 games=500 win_rate=0.452 avg_score=-0.18 draw_rate=0.31 p95_latency_ms=58
-[2026-05-12 15:01:03] observation: win_rate improved compared with baseline, but avg_score remains negative.
-[2026-05-12 15:02:20] issue: model tends to choose safe-looking actions in mid game, causing high draw_rate.
-[2026-05-12 15:03:12] issue: seat bias detected; seat 1 and seat 3 perform worse than seat 0 and seat 2.
-[2026-05-12 15:05:33] suggestion: analyze action distribution by seat and compare high confidence mistakes.

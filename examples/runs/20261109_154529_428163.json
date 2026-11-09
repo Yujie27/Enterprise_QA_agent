@@ -1,0 +1,52 @@
+{
+  "timestamp_utc": "2026-11-09T07:45:29.428163+00:00",
+  "mode": "scripted_mock",
+  "question": "研发部门差旅报销期限是多久？",
+  "status": "mock_completed",
+  "tool_call_limit": 4,
+  "tool_calls": 3,
+  "events": [
+    {
+      "type": "notice",
+      "summary": "SCRIPTED MOCK：以下动作预设，仅验证本地工具链，不代表模型决策。"
+    },
+    {
+      "type": "tool_call",
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销 期限",
+        "limit": 5
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool": "search_docs",
+      "summary": "返回 2 条资料"
+    },
+    {
+      "type": "tool_call",
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool": "read_doc",
+      "summary": "已读取文档原文"
+    },
+    {
+      "type": "tool_call",
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool": "read_doc",
+      "summary": "已读取文档原文"
+    }
+  ],
+  "answer": "检索到多份可能相关制度，规则可能因适用范围不同而冲突。请补充所在部门或报销类型，我再判断适用条款。引用：D01, D02"
+}
