@@ -10,6 +10,16 @@ from typing import Any
 
 DEFAULT_CORPUS = Path(__file__).resolve().parents[2] / "data" / "policies.json"
 
+QUERY_ALIASES = {
+    "差旅费": "差旅费用",
+    "出差": "差旅",
+    "回来": "返程",
+    "回程": "返程",
+    "费用申请": "报销申请",
+    "费用报销": "报销",
+    "多久": "期限",
+}
+
 
 class KnowledgeBase:
     def __init__(self, path: str | Path = DEFAULT_CORPUS):
@@ -28,8 +38,14 @@ class KnowledgeBase:
                 terms.add(token)
         return terms
 
+    @staticmethod
+    def expand_query(query: str) -> str:
+        """Append a small, explicit set of business synonyms for lexical retrieval."""
+        aliases = [canonical for phrase, canonical in QUERY_ALIASES.items() if phrase in query]
+        return " ".join([query, *aliases])
+
     def search(self, query: str, limit: int = 5) -> list[dict[str, Any]]:
-        query_terms = self._terms(query)
+        query_terms = self._terms(self.expand_query(query))
         if not query_terms:
             return []
         hits: list[tuple[float, dict[str, Any]]] = []
@@ -40,7 +56,8 @@ class KnowledgeBase:
                 )
                 doc_terms = self._terms(searchable)
                 overlap = query_terms & doc_terms
-                if overlap:
+                minimum_overlap = 1 if len(query_terms) <= 2 else 2
+                if len(overlap) >= minimum_overlap:
                     # Simple lexical score for the demo; no embedding claim is made.
                     score = len(overlap) / max(1, len(query_terms))
                     hits.append(

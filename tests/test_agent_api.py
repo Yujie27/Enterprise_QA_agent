@@ -29,6 +29,29 @@ class AgentApiTests(unittest.TestCase):
             {"search_docs", "read_doc"},
         )
 
+    def test_trace_records_next_action_and_public_decision_basis(self):
+        recorder = RunRecorder(4)
+        start = recorder.start_turn("报销期限是多少？")
+        recorder.begin_tool("search_docs", {"query": "报销期限", "limit": 5})
+        recorder.finish_tool("search_docs", "返回 2 条资料")
+        recorder.begin_tool("read_doc", {"doc_id": "D01"})
+        recorder.finish_tool("read_doc", "已读取文档原文")
+        recorder.finish_turn(start, "请补充费用类型。")
+
+        search_result = recorder.events[2]
+        self.assertEqual(search_result["next_action"]["tool"], "read_doc")
+        self.assertIn("核对原文", search_result["decision_basis"])
+
+    def test_tool_call_limit_is_enforced_per_turn(self):
+        recorder = RunRecorder(1)
+        recorder.start_turn("第一轮")
+        self.assertTrue(recorder.begin_tool("search_docs", {"query": "报销"}))
+        self.assertFalse(recorder.begin_tool("read_doc", {"doc_id": "D01"}))
+        self.assertTrue(recorder.limit_reached)
+
+        recorder.start_turn("第二轮")
+        self.assertTrue(recorder.begin_tool("search_docs", {"query": "差旅"}))
+
 
 if __name__ == "__main__":
     unittest.main()

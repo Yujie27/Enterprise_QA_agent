@@ -18,6 +18,24 @@ Copy-Item .env.example .env
 uv run enterprise-qa "报销期限是几天？"
 ```
 
+多轮上下文追问：
+
+```powershell
+uv run enterprise-qa --interactive
+```
+
+也可用固定后续消息复现多轮验收：
+
+```powershell
+uv run enterprise-qa --interactive "报销期限是多少？" --follow-up "我是研发部门，差旅报销。"
+```
+
+工具失败验收入口（只用于测试）：
+
+```powershell
+uv run enterprise-qa --simulate-failure search_docs "报销期限是多少？"
+```
+
 `.env` 使用 OpenAI 兼容接口参数。支持兼容 OpenAI API 的服务；API 必须支持 tool/function calling。
 
 ```env
@@ -51,5 +69,6 @@ Mock 是预设的流程演示，只验证工具和数据链路，不证明真实
 
 - 资料是为考核编写的合成示例，不包含真实企业制度或隐私信息。
 - 检索使用轻量关键词/字符二元组匹配，不等同于生产级语义检索。
-- 真实模式需要可用的模型密钥和支持工具调用的模型；已有一条正常场景真实运行记录，见 `examples/runs/20261109_171637_918335.json`，其余验收场景仍需补齐。
-- 默认最多执行 4 次工具调用；触顶时 Trace 标记未完成。
+- 真实模式需要可用的模型密钥和支持工具调用的模型；正常、冲突追问、上下文追问、相似改写、资料不足、工具失败和调用上限场景均有实际记录，索引见 `examples/README.md`。
+- 默认每轮最多执行 4 次工具调用；触顶时 Trace 标记 `incomplete`。
+- 轻量检索包含少量显式业务同义词，仅用于合成资料演示。
