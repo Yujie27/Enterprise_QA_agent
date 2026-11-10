@@ -34,6 +34,22 @@ class KnowledgeBaseTests(unittest.TestCase):
     def test_unrelated_application_question_does_not_match_on_one_common_word(self):
         self.assertEqual(self.kb.search("公司育儿补贴如何申请？"), [])
 
+    def test_conflicting_corpus_keeps_both_rules_without_arbitration(self):
+        kb = KnowledgeBase(ROOT / "data" / "policies_conflict.json")
+        hits = kb.search("普通费用报销期限")
+        self.assertEqual({hit["doc_id"] for hit in hits}, {"D01", "D02"})
+        self.assertEqual(len({hit["scope"] for hit in hits}), 1)
+        self.assertEqual(len({hit["effective_from"] for hit in hits}), 1)
+        self.assertIn("30日内", kb.read("D01")["sections"][0]["text"])
+        self.assertIn("15日内", kb.read("D02")["sections"][0]["text"])
+
+    def test_single_rule_corpus_removes_only_the_conflicting_document(self):
+        single = KnowledgeBase(ROOT / "data" / "policies_single.json")
+        conflict = KnowledgeBase(ROOT / "data" / "policies_conflict.json")
+        self.assertEqual(single.read("D01"), conflict.read("D01"))
+        self.assertIsNone(single.read("D02"))
+        self.assertEqual({hit["doc_id"] for hit in single.search("普通费用报销期限")}, {"D01"})
+
 
 if __name__ == "__main__":
     unittest.main()

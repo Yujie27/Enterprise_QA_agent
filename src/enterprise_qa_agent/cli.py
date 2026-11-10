@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import hashlib
 import os
 from datetime import datetime, timezone
 from pathlib import Path
@@ -14,6 +15,7 @@ from dotenv import load_dotenv
 
 from .agent import RunRecorder, build_agent
 from .knowledge import KnowledgeBase
+from . import __version__
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -196,6 +198,12 @@ def main() -> None:
         status, answer = "failed", f"运行失败：{type(exc).__name__}: {exc}"
 
     trace = {
+        "trace_schema_version": 2,
+        "app_version": __version__,
+        "corpus": {
+            "name": Path(args.corpus).name,
+            "sha256": hashlib.sha256(Path(args.corpus).read_bytes()).hexdigest(),
+        },
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "mode": "scripted_mock" if args.mock else "agentscope_react",
         "question": question,

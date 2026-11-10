@@ -13,9 +13,11 @@
 
 ## 验证方式
 
-- 执行 `uv run python -m unittest discover -s tests`，2026-11-10 共 8 个测试通过。
+- 执行 `uv run --locked python -m unittest discover -s tests`，v0.2.0 共 11 个测试通过。
 - 使用真实模型运行正常、冲突追问、多轮上下文、相似问法、资料不足和工具失败场景；实际输出和 Trace 保存在 `examples/runs/`。
 - Mock 记录明确标记为 `scripted_mock`，不作为真实模型决策证据。
+
+v0.2.0 通过 Codex 辅助增加了真实矛盾条款及移除冲突文档的对照资料，修正了 Trace 来源标注。历史 `decision_basis` 实际由程序生成；新的公开理由来自模型工具参数，程序动作摘要单独标记。这些实现和验收仍属于 AI 辅助范围，不应描述为候选人独立编写。
 
 ## 第三方组件
 
