@@ -1,0 +1,710 @@
+{
+  "method": "助手逐条人工语义复核实际可见ToolResponse、最终答案及多轮conversation；不是自动裁判，需候选人复审",
+  "criterion": "沿用先行plan：主结论、必要问题完整性、引用支持、资料缺口及无无依据制度断言；执行状态另计；安全部分回答不算目标完整",
+  "reviews": [
+    {
+      "config": "pilot_C11",
+      "run_id": "C11_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "首次搜索已见D01/D04，后续搜索无新增、再读双方。最终30日与合规票据均有据；不必要搜索仍存在。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r1/traces/20261110_210616_004417.json",
+      "gap_keys": []
+    },
+    {
+      "config": "pilot_C11",
+      "run_id": "C11_r2",
+      "strict_business_pass": true,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "第四步聚焦改写才得到D04；已有充分片段仍请求第五次read(D04)，被拒。答案有据但执行incomplete，不能算正常完成。",
+      "labels": [
+        "首次未召回，但模型通过后续动作恢复",
+        "预算不足"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r2/traces/20261110_210620_462154.json",
+      "gap_keys": []
+    },
+    {
+      "config": "pilot_C11",
+      "run_id": "C11_r3",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "D01可见，材料检索未恢复D04；安全部分回答30日、材料未知，目标未完整完成。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r3/traces/20261110_210628_427064.json",
+      "gap_keys": [
+        "D04/D04-S1"
+      ]
+    },
+    {
+      "config": "B",
+      "run_id": "R01_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "仅依据已见D01答费用发生后30日，列版本日期原文，注明scope未提供；单证据正常。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/R01_r1/traces/20261110_210757_506798.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "R06_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "两次搜索仅见排除育儿补贴的D01，未套用普通报销期限，正确说明办法缺口。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/R06_r1/traces/20261110_210757_809472.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "R07_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "实际见研发D01和销售D02的scope，按研发答返程15日；明确销售20日不适用。没有反事实控制，不能因果证明不依赖顺序。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/R07_r1/traces/20261110_210807_476043.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "C01_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "双方原文可见并读取，列30/15日、未知范围和优先级，请求确认，未追加先按15日建议。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C01_r1/traces/20261110_210807_424965.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "C02_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "唯一D01支持费用发生后30日，限定未注明适用范围，没有假定隐藏冲突而拒答。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C02_r1/traces/20261110_210815_727547.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "C05_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "取得并读取不同版本日期的双方，明确新日期不自动等于替代优先级，列冲突并请求依据。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C05_r1/traces/20261110_210818_056955.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "C11_r1",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "期限D01首搜可见，材料两次改写未恢复D04，最终如实保留材料缺口；安全但不完整。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r1/traces/20261110_210827_090682.json",
+      "gap_keys": [
+        "D04/D04-S1"
+      ]
+    },
+    {
+      "config": "B",
+      "run_id": "C12_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "同文档S1和S2都可见并读到，分别列30/15，不按条款位置裁决。scope相同的措辞应理解为未给出差异，不能视为已核实范围。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [
+        "‘同一/相同范围’应改成‘未给出范围差异’；全文也明确范围缺失，未据此给出通用期限，列措辞风险。"
+      ],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C12_r1/traces/20261110_210827_547234.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "C01_r2",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "双方原文可见并读取，保留冲突与范围缺口，请求确认，未自行选择期限。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C01_r2/traces/20261110_211619_182604.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "C01_r3",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "双方原文可见并读取，列出冲突与缺少适用依据，未追加无来源的执行期限。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C01_r3/traces/20261110_211619_573155.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "C11_r2",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "第二步费用报销表达取得D04，与D01合齐；随后仍读双方，答案30日与合规票据正确，无次日起算扩张。",
+      "labels": [
+        "首次未召回，但模型通过后续动作恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r2/traces/20261110_211632_714407.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "C11_r3",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "首搜D01，读取后材料改写无新增；未恢复D04，未编造材料，完整业务不通过。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r3/traces/20261110_211629_675803.json",
+      "gap_keys": [
+        "D04/D04-S1"
+      ]
+    },
+    {
+      "config": "B",
+      "run_id": "C13_r2",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "首搜副本，read(COPY0)后追溯D02，只有15日原件；未获得D01/30日，因此业务冲突目标失败。没有把全库内容补给模型。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C13_r2/traces/20261110_211641_322228.json",
+      "gap_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "config": "B",
+      "run_id": "C13_r3",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "search副本后read(COPY0)，仅15日可见；没有取得30日，不属于看见冲突仍裁决。来源叙述仅说措辞相同，没有扩张所有副本的copied_from。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C13_r3/traces/20261110_211646_127759.json",
+      "gap_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ]
+    },
+    {
+      "config": "B",
+      "run_id": "C13_r1",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "两次search均COPY0—4的15日，D01从未可见；最终限定资料答15日，未覆盖冲突双方。模型还自行扩展到差旅专项需求，未形成有效冲突补查。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B_launcher_recovery/sessions/C13_r1/traces/20261110_211524_796491.json",
+      "gap_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ]
+    },
+    {
+      "config": "B",
+      "run_id": "M01_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "核对两轮conversation：首轮区分非差旅普通费用与研发差旅，第二轮继承部门/费用类型，用已见D02回答返程15日。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B_launcher_recovery/sessions/M01_r1/traces/20261110_211528_611521.json",
+      "gap_keys": []
+    },
+    {
+      "config": "B",
+      "run_id": "E03_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": true,
+      "reason": "两次实际返回为空，没有看到D01；正确保留日历口径未知、请求业务语境，不建议自然日或工作日。安全业务通过，但必要入口证据覆盖退化。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B_launcher_recovery/sessions/E03_r1/traces/20261110_211533_827101.json",
+      "gap_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "config": "B",
+      "run_id": "F01_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": true,
+      "reason": "两次真实工具错误路径均触发，说明工具失败而非制度不存在；没有引用未见条款或编造发生时间。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B_launcher_recovery/sessions/F01_r1/traces/20261110_211536_392067.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "R01_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "仅依据已见D01答费用发生后30日，列版本日期原文，注明scope未提供；单证据正常。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/R01_r1/traces/20261110_211658_516304.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "R06_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "两次搜索仅见排除育儿补贴的D01，未套用普通报销期限，正确说明办法缺口。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/R06_r1/traces/20261110_211700_090178.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "R07_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "实际见研发D01和销售D02的scope，按研发答返程15日；明确销售20日不适用。没有反事实控制，不能因果证明不依赖顺序。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/R07_r1/traces/20261110_211707_396477.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C01_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "双方原文可见并读取，列30/15日、未知范围和优先级，请求确认，未追加先按15日建议。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [
+        "D02引文省略起算短语中的‘费用’二字，逐字不精确；起算语义与来源一致，记录引用措辞瑕疵，不判成错误期限或错引来源。"
+      ],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C01_r1/traces/20261110_211709_114244.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C02_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "唯一D01支持费用发生后30日，限定未注明适用范围，没有假定隐藏冲突而拒答。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C02_r1/traces/20261110_211714_705742.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C05_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "取得并读取不同版本日期的双方，明确新日期不自动等于替代优先级，列冲突并请求依据。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C05_r1/traces/20261110_211718_109310.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C11_r1",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "首搜期限，读D01后两次材料搜索无新增，未见D04；材料缺口如实保留，业务不完整。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r1/traces/20261110_211726_495633.json",
+      "gap_keys": [
+        "D04/D04-S1"
+      ]
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C12_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "同文档S1和S2都可见并读到，分别列30/15，不按条款位置裁决。scope相同的措辞应理解为未给出差异，不能视为已核实范围。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [
+        "‘同一/相同范围’应改成‘未给出范围差异’；全文也明确范围缺失，未据此给出通用期限，列措辞风险。"
+      ],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C12_r1/traces/20261110_211726_681661.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C13_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "首次去重search已见D01/30日、D02/15日和八份核验来源元数据；read双方后并列冲突请求确认，副本叙述有实际source_info。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C13_r1/traces/20261110_211735_700734.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "M01_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "核对两轮conversation：首轮区分非差旅普通费用与研发差旅，第二轮继承部门/费用类型，用已见D02回答返程15日。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/M01_r1/traces/20261110_211743_067407.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "E03_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": true,
+      "reason": "两次实际返回为空，没有看到D01；正确保留日历口径未知、请求业务语境，不建议自然日或工作日。安全业务通过，但必要入口证据覆盖退化。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/E03_r1/traces/20261110_211746_450845.json",
+      "gap_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "F01_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": true,
+      "reason": "两次真实工具错误路径均触发，说明工具失败而非制度不存在；没有引用未见条款或编造发生时间。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/F01_r1/traces/20261110_211750_544890.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C01_r2",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "双方原文可见并读取，保留冲突与范围缺口，请求确认，未自行选择期限。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C01_r2/traces/20261110_211802_682859.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C01_r3",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "双方原文可见并读取，列出冲突与缺少适用依据，未追加无来源的执行期限。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C01_r3/traces/20261110_211802_731810.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C11_r2",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "首搜D01、材料检索无新增、read(D01)、再换发票单据凭证仍无D04；安全但不完整。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r2/traces/20261110_211813_536821.json",
+      "gap_keys": [
+        "D04/D04-S1"
+      ]
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C11_r3",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "第二步费用报销查询取得D04；随后读双方，30日与合规票据正确，未扩充其他必交材料或计算口径。",
+      "labels": [
+        "首次未召回，但模型通过后续动作恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r3/traces/20261110_211817_500247.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C13_r2",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "首次双方完整，读取后请求确认，没有15日执行建议；COPY0—7来源关系由实际source_info支持。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C13_r2/traces/20261110_211822_056035.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dedup_rewrite",
+      "run_id": "C13_r3",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "双方原文可见、主结论正确且请求确认，但开头断言通用范围、后文称适用范围相同。实际scope均未提供，不能证明通用适用；严格依据约束不通过，召回完整不等于回答通过。",
+      "labels": [
+        "主答案正确，但附带无依据断言"
+      ],
+      "unsupported_assertions": [
+        "两份现行制度的通用范围存在冲突",
+        "由于适用范围相同"
+      ],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C13_r3/traces/20261110_211827_574994.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dev_B",
+      "run_id": "DEV01_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "第三步改写取得培训申请资料，最终答10日前、主管确认函及结业测验记录，并明确培训报名与申请是否同环节未知；来源边界正确，但该开发题存在环节等价标注歧义。",
+      "labels": [
+        "首次未召回，但模型通过后续动作恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": "培训报名与培训申请是否同一环节未明确；从开发业务总指标中排除，仍报告其原始证据覆盖和实际输出",
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_B/sessions/DEV01_r1/traces/20261110_211845_612432.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dev_B",
+      "run_id": "DEV02_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "第二步资格改写取得转正员工条款，完整回答资格及资产门户登记后前台领取；扩展查借阅期限册数并无必要，但未编造细则。",
+      "labels": [
+        "首次未召回，但模型通过后续动作恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_B/sessions/DEV02_r1/traces/20261110_211843_296653.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dev_B",
+      "run_id": "DEV03_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "首次已得时限与资料，随后读两份；正确答发现故障7日内、序列号及截图，无来源扩张。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_B/sessions/DEV03_r1/traces/20261110_211854_353220.json",
+      "gap_keys": []
+    },
+    {
+      "config": "dev_combo",
+      "run_id": "DEV01_r1",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "仅期限可见，材料两次聚焦仍未取得申请条款；安全但不完整；另有报名/申请环节标注歧义。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": "培训报名与培训申请是否同一环节未明确；从开发业务总指标中排除，仍报告其原始证据覆盖和实际输出",
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_combo/sessions/DEV01_r1/traces/20261110_211910_242611.json",
+      "gap_keys": [
+        "DEV01-2/DEV01-2-S1"
+      ]
+    },
+    {
+      "config": "dev_combo",
+      "run_id": "DEV02_r1",
+      "strict_business_pass": false,
+      "completed_and_business_pass": false,
+      "safe_terminal_and_business_pass": false,
+      "reason": "仅取得流程文档，覆盖表仍明确缺借阅条件，却读该文档后结束，称适用对象全体员工并把流程算条件；未恢复资格原文，不能依据完整语料替模型补转正限制。",
+      "labels": [
+        "必要证据未召回，模型未恢复"
+      ],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [
+        "全体员工确来自已见流程文档元数据，并非凭空数字；问题是把文档scope直接当完整资格，并在覆盖表已知缺条件时停止。"
+      ],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_combo/sessions/DEV02_r1/traces/20261110_211909_031648.json",
+      "gap_keys": [
+        "DEV02-1/DEV02-1-S1"
+      ]
+    },
+    {
+      "config": "dev_combo",
+      "run_id": "DEV03_r1",
+      "strict_business_pass": true,
+      "completed_and_business_pass": true,
+      "safe_terminal_and_business_pass": true,
+      "reason": "首次两片段足够，仅一次search后直接结束，正确回答7日及序列号截图；这是简单问题不机械read的实际路径。",
+      "labels": [],
+      "unsupported_assertions": [],
+      "citation_and_wording_findings": [],
+      "annotation_uncertainty": null,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_combo/sessions/DEV03_r1/traces/20261110_211918_452242.json",
+      "gap_keys": []
+    }
+  ]
+}

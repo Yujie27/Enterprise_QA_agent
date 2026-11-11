@@ -1,0 +1,264 @@
+{
+  "run_id": "C02_r1",
+  "case_id": "C02",
+  "repeat": 1,
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace_path": "examples/evaluation/agent_baseline/20261110_original_agent_v020/sessions/C02_r1/traces/20261110_201559_836292.json",
+  "trace_sha256": "e9c2325d1fb2f76a11ec84c6b97ff574787c355628b4767ab47ba9b332298518",
+  "execution": {
+    "run_id": "C02_r1",
+    "case_id": "C02",
+    "repeat": 1,
+    "execution": "attempted",
+    "started_at_utc": "2026-11-10T12:15:54.131258+00:00",
+    "finished_at_utc": "2026-11-10T12:15:59.838296+00:00",
+    "elapsed_seconds": 5.508758700001636,
+    "uncaught_error": null,
+    "cli_args": [
+      "enterprise-qa",
+      "--corpus",
+      "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\retrieval_baseline\\20261110_raw_query_v020\\input\\qa_boundary_test_design\\corpora\\single.json",
+      "--trace-dir",
+      "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\agent_baseline\\20261110_original_agent_v020\\sessions\\C02_r1\\traces",
+      "报销期限多久？"
+    ],
+    "model_config": {
+      "model": "deepseek-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "endpoint_path": "/v1",
+      "api_key_configured": true,
+      "stream": false,
+      "parameters": {
+        "max_tokens": null,
+        "thinking_enable": false,
+        "reasoning_effort": null,
+        "temperature": null,
+        "top_p": null,
+        "parallel_tool_calls": false,
+        "voice": null
+      },
+      "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+      "tool_budget_per_turn": 4,
+      "configured_budget_before_runner": "4",
+      "react_max_iters": 5,
+      "model_max_retries_default": 3,
+      "model_retry_delay_default": 1.0,
+      "versions": {
+        "agentscope": "2.0.11",
+        "openai": "3.46.0",
+        "python-dotenv": "1.2.4",
+        "enterprise-qa-agent-minimal": "0.2.0"
+      }
+    },
+    "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+    "tool_return_count": 2
+  },
+  "launcher": {
+    "run_id": "C02_r1",
+    "started_at_utc": "2026-11-10T12:15:51.945288+00:00",
+    "finished_at_utc": "2026-11-10T12:16:00.248499+00:00",
+    "returncode": 0,
+    "watchdog_timeout": false
+  },
+  "execution_status": "completed",
+  "model_reply_metadata": [
+    {
+      "turn": 1,
+      "finished_reason": "completed",
+      "usage": {
+        "input_tokens": 3553,
+        "output_tokens": 484,
+        "cache_input_tokens": 2816,
+        "cache_creation_input_tokens": 0
+      },
+      "error": null,
+      "text": "**报销期限：费用发生后 30 日内提交申请。**\n\n依据：\n- **文档 ID**：D01《制度文件D01》\n- **版本**：2026-01\n- **生效日期**：2026-01-01\n- **原文片段**（D01-S1）：“费用报销应在费用发生后30日内提交申请。”\n\n**说明与限制**：\n1. 该制度未载明“30日”是自然日还是工作日，也未说明起算日是否计入当日；如需精确计算截止日，建议向财务部门确认。\n2. 该文档的“适用范围”字段未提供，因此上述期限是否适用于你所在单位或具体费用类型，需以制度适用范围或财务部门解释为准。\n\n我依据检索到的唯一相关条款 D01-S1 并读取原文核对后作答；未发现其他报销期限规定。"
+    }
+  ],
+  "tool_calls": 2,
+  "tool_steps": [
+    {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "executed": true,
+      "arguments": {
+        "query": "报销期限 费用报销 提交时限",
+        "limit": 8
+      },
+      "public_decision_reason": "需要定位报销期限的具体规定。",
+      "full_tool_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.625
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "returned_response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.625}], \"summary\": \"返回 1 条资料\"}",
+            "id": "e6e2a019984a4d0cba4fb6da11ac6248",
+            "created_at": "2026-11-10T20:15:55.807629",
+            "finished_at": null
+          }
+        ],
+        "state": "success",
+        "metadata": {},
+        "id": "bd3b12be9a3f49a0bf99efbb68f1f17a"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "error": null
+    },
+    {
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "executed": true,
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "需要核实该制度原文、版本和适用范围。",
+      "full_tool_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "returned_response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+            "id": "9a7ddbea56c64a00b523d98c20df9b75",
+            "created_at": "2026-11-10T20:15:56.913432",
+            "finished_at": null
+          }
+        ],
+        "state": "success",
+        "metadata": {},
+        "id": "7e34a6a5a063425fbca0ab8ea90322d2"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "error": null
+    }
+  ],
+  "actually_visible_evidence": {
+    "D01/D01-S1": [
+      {
+        "turn": 1,
+        "step": 1,
+        "tool": "search_docs",
+        "visible_evidence": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.625
+        }
+      },
+      {
+        "turn": 1,
+        "step": 2,
+        "tool": "read_doc",
+        "visible_evidence": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。"
+        }
+      }
+    ]
+  },
+  "necessary_evidence_keys": [
+    "D01/D01-S1"
+  ],
+  "missing_necessary_evidence": [],
+  "baseline_raw_query_k5_necessary_hit": [
+    "D01/D01-S1"
+  ],
+  "first_agent_search_necessary_hit": [
+    "D01/D01-S1"
+  ],
+  "first_agent_search_complete": true,
+  "all_visible_complete": true,
+  "recovered_vs_raw_query_k5": false,
+  "recovered_after_agent_first_search": false,
+  "budget_rejected_requests": [],
+  "final_answer": "**报销期限：费用发生后 30 日内提交申请。**\n\n依据：\n- **文档 ID**：D01《制度文件D01》\n- **版本**：2026-01\n- **生效日期**：2026-01-01\n- **原文片段**（D01-S1）：“费用报销应在费用发生后30日内提交申请。”\n\n**说明与限制**：\n1. 该制度未载明“30日”是自然日还是工作日，也未说明起算日是否计入当日；如需精确计算截止日，建议向财务部门确认。\n2. 该文档的“适用范围”字段未提供，因此上述期限是否适用于你所在单位或具体费用类型，需以制度适用范围或财务部门解释为准。\n\n我依据检索到的唯一相关条款 D01-S1 并读取原文核对后作答；未发现其他报销期限规定。",
+  "conversation": null,
+  "mentioned_ids_not_automatically_claim_citations": [
+    "D01",
+    "D01-S1"
+  ],
+  "quote_spans_for_manual_check": [
+    "费用报销应在费用发生后30日内提交申请。",
+    "30日",
+    "适用范围"
+  ],
+  "manual_review": {
+    "run_id": "C02_r1",
+    "strict_pass": true,
+    "business_status": "依据唯一D01回答30日",
+    "main_conclusion_correct": true,
+    "labels": [],
+    "citations": [
+      {
+        "key": "D01/D01-S1",
+        "claim": "费用发生后30日内提交",
+        "supported": true
+      }
+    ],
+    "material_gaps": [
+      "日的计算口径、适用范围及起算日计入方式未提供"
+    ],
+    "unsupported_claims": [],
+    "reason": "读取唯一相关原文后据D01回答，未凭空假设15日冲突，也未替未给出的计算规则作解释。"
+  }
+}

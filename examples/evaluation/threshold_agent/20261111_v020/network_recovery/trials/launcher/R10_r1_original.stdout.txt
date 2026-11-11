@@ -1,0 +1,12 @@
+状态：completed
+研发部门差旅报销期限为：**返程后 15 日内提交报销申请**。
+
+依据：
+- **文档 ID：** D02《制度文件D02》
+- **版本：** 2026-01
+- **生效日期：** 2026-01-01
+- **适用范围：** 研发部门；差旅费用
+- **原文片段：** “研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。”
+
+这里的期限按“提交报销申请”的时间计算。D02 的原文已经明确覆盖研发部门差旅费用，我没有发现同一适用范围下存在冲突条款，因此停止检索。
+Trace：C:\Users\ZONST\Desktop\Enterprise_QA_agent\examples\evaluation\threshold_agent\20261111_v020\network_recovery\trials\sessions\R10_r1_original\traces\20261111_115555_331874.json

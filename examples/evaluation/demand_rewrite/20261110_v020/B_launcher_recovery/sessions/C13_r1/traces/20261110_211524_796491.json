@@ -1,0 +1,248 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "original",
+    "demand_rewrite": true
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "majority.json",
+    "sha256": "62339fffd0de2d67a0eae3c355e2b3979e932afbc0db7da8af70c063176e99a6"
+  },
+  "timestamp_utc": "2026-11-10T13:15:24.795988+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限多久？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 2,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限多久？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 费用报销 提交时间",
+        "limit": 5
+      },
+      "public_decision_reason": "需要先定位与报销期限相关的制度条款。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [],
+        "missing": [
+          "报销期限"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 5 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "COPY0",
+            "title": "制度文件COPY0",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY0-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "COPY1",
+            "title": "制度文件COPY1",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY1-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "COPY2",
+            "title": "制度文件COPY2",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY2-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "COPY3",
+            "title": "制度文件COPY3",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY3-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "COPY4",
+            "title": "制度文件COPY4",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY4-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          }
+        ],
+        "summary": "返回 5 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 5,
+          "seen_evidence_count": 5,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "差旅费 报销期限 天数",
+          "limit": 5
+        },
+        "executed": true,
+        "public_decision_reason": "费用报销可能按费用类型区分期限，需要核对差旅费是否有单独规定。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "差旅费 报销期限 天数",
+        "limit": 5
+      },
+      "public_decision_reason": "费用报销可能按费用类型区分期限，需要核对差旅费是否有单独规定。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限（一般费用）",
+          "报销期限（差旅费）"
+        ],
+        "covered": [
+          {
+            "need": "报销期限（一般费用）",
+            "doc_id": "COPY0",
+            "section_id": "COPY0-S1",
+            "evidence": "费用发生后15日内提交申请"
+          }
+        ],
+        "missing": [
+          "报销期限（差旅费）"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "summary": "返回 5 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "COPY0",
+            "title": "制度文件COPY0",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY0-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.429
+          },
+          {
+            "doc_id": "COPY1",
+            "title": "制度文件COPY1",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY1-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.429
+          },
+          {
+            "doc_id": "COPY2",
+            "title": "制度文件COPY2",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY2-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.429
+          },
+          {
+            "doc_id": "COPY3",
+            "title": "制度文件COPY3",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY3-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.429
+          },
+          {
+            "doc_id": "COPY4",
+            "title": "制度文件COPY4",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY4-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.429
+          }
+        ],
+        "summary": "返回 5 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 5,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "根据现有资料，费用报销期限为：**费用发生后 15 日内提交申请**。\n\n**依据原文**\n- 文档：COPY0（版本 2026-01，生效日期 2026-01-01），条款 COPY0-S1：\n  > “费用报销应在费用发生后15日内提交申请。”\n- COPY1、COPY2、COPY3、COPY4 的 COPY1-S1、COPY2-S1、COPY3-S1、COPY4-S1 条款表述完全相同，版本均为 2026-01，生效日期均为 2026-01-01。\n\n**注意**\n- 上述文档均未注明适用范围，因此我无法确认该期限是否适用于所有组织、所有费用类型。\n- 我另行检索差旅费报销期限，但没有发现单独的差旅费期限条款；仅检索到上述同一条“15 日”规定，无法确认差旅费是否有其他专项规定。\n- 原文仅写“15 日”，未说明按自然日还是工作日计算，也未说明“费用发生”的具体起算口径；我无法补充解释。\n\n覆盖说明：已支持“一般费用报销期限”这一需求，依据是 COPY0-S1 等条款；尚未发现“差旅费专项期限”的依据。经过一次针对性改查仍未获得新增证据后，我停止检索。"
+    }
+  ],
+  "answer": "根据现有资料，费用报销期限为：**费用发生后 15 日内提交申请**。\n\n**依据原文**\n- 文档：COPY0（版本 2026-01，生效日期 2026-01-01），条款 COPY0-S1：\n  > “费用报销应在费用发生后15日内提交申请。”\n- COPY1、COPY2、COPY3、COPY4 的 COPY1-S1、COPY2-S1、COPY3-S1、COPY4-S1 条款表述完全相同，版本均为 2026-01，生效日期均为 2026-01-01。\n\n**注意**\n- 上述文档均未注明适用范围，因此我无法确认该期限是否适用于所有组织、所有费用类型。\n- 我另行检索差旅费报销期限，但没有发现单独的差旅费期限条款；仅检索到上述同一条“15 日”规定，无法确认差旅费是否有其他专项规定。\n- 原文仅写“15 日”，未说明按自然日还是工作日计算，也未说明“费用发生”的具体起算口径；我无法补充解释。\n\n覆盖说明：已支持“一般费用报销期限”这一需求，依据是 COPY0-S1 等条款；尚未发现“差旅费专项期限”的依据。经过一次针对性改查仍未获得新增证据后，我停止检索。"
+}

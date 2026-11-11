@@ -1,0 +1,13 @@
+{
+  "name": "A＋去重",
+  "before_sha256": "92accd64e2b8336d3606cb12060ef866e5e8d8d570036710b61c389f57beb283",
+  "source_sha256": "d6c87d5b5ceaebe275c9a9b1f49e5ffa9509e5d23e02065e90f37511799a3a54",
+  "business_pass": 16,
+  "execution_and_business_pass": 14,
+  "budget_incomplete_runs": [
+    "C11_r2",
+    "C11_r3"
+  ],
+  "result_count": 18,
+  "gold_unchanged_sha256": "b9a951d8744804d9c9b5427ae753ccd8b143d8ab6865c90944e6e080de672c0a"
+}

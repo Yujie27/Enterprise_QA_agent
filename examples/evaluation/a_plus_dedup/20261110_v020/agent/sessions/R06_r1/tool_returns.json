@@ -1,0 +1,68 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T12:49:09.370758+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。",
+          "score": 0.8
+        }
+      ],
+      "summary": "返回 1 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。\", \"score\": 0.8}], \"summary\": \"返回 1 条资料\"}",
+          "id": "e93da0f6d1174b30acff3d848d3934f3",
+          "created_at": "2026-11-10T20:49:09.370758",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "ee235921f27a4252a46eff14d78a04ca"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T12:49:10.878119+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。",
+          "score": 0.571
+        }
+      ],
+      "summary": "返回 1 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。\", \"score\": 0.571}], \"summary\": \"返回 1 条资料\"}",
+          "id": "c43d97ff85a54298918950a8e36ce051",
+          "created_at": "2026-11-10T20:49:10.878119",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "7b1ed61c696f492586cda67c0496513d"
+    }
+  }
+]

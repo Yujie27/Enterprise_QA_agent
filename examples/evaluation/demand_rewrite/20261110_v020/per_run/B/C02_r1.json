@@ -1,0 +1,180 @@
+{
+  "config": "B",
+  "run_id": "C02_r1",
+  "case_id": "C02",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C02_r1/traces/20261110_210815_727547.json",
+  "status": "completed",
+  "answer": "根据检索到的制度，费用报销的提交期限为 **30 日**。\n\n- **文档 ID**：D01（制度文件D01）\n- **版本**：2026-01\n- **生效日期**：2026-01-01\n- **条款**：D01-S1\n- **原文**：“费用报销应在费用发生后30日内提交申请。”\n\n该文档的适用范围未注明。目前仅检索到这一条规定；如果还有其他费用类型或特殊情形的报销期限，现有资料无法确认。\n\n**覆盖说明**：已依据 D01-S1 支持“报销提交期限”这一需求；未发现缺失项。",
+  "conversation": null,
+  "tool_calls": 2,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 费用报销 提交时限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要检索报销时限的相关制度条款。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.625
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 1,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "new_keys": [
+        "D01/D01-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "检索到30日期限，需读取原文核实适用范围与版本。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": true
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销提交期限"
+        ],
+        "covered": [],
+        "missing": [
+          "报销提交期限"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销提交期限"
+        ],
+        "covered": [
+          "报销提交期限：D01-S1，30日"
+        ],
+        "missing": []
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {
+    "D01/D01-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    }
+  },
+  "required": [
+    "D01/D01-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "recovered_after_first": false,
+  "first_query": "报销期限 费用报销 提交时限",
+  "queries": [
+    "报销期限 费用报销 提交时限"
+  ],
+  "no_new_repeat_searches": 0,
+  "search_tool_attempts": 1,
+  "underlying_queries": 1,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "B",
+    "run_id": "C02_r1",
+    "strict_business_pass": true,
+    "completed_and_business_pass": true,
+    "safe_terminal_and_business_pass": true,
+    "reason": "唯一D01支持费用发生后30日，限定未注明适用范围，没有假定隐藏冲突而拒答。",
+    "labels": [],
+    "unsupported_assertions": [],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": null,
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C02_r1/traces/20261110_210815_727547.json",
+    "gap_keys": []
+  },
+  "no_new_successful_searches": 0,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 0,
+  "post_coverage_reads": 1
+}

@@ -1,0 +1,24 @@
+{
+  "commit": "e0ddf0fe0011f230143137147ab54bb3e5f68ec6",
+  "branch": "feat/multi-path-evaluation_interactive_QA",
+  "historical_files_verified": 331,
+  "historical_changed": [],
+  "source_hashes": {
+    "src/enterprise_qa_agent/agent.py": "2e2ab5c7af1e0f50fcb484439790f4b1fad60d51cee5351b055aa73b9d94e560",
+    "src/enterprise_qa_agent/cli.py": "39e56bcbbf644fdcd1c03d35b8e0e07841d45770ed5eaf636b56b8bbbd2c4e4c",
+    "src/enterprise_qa_agent/knowledge.py": "9a307e9e56bc363508e603444468592da85a30be502a0a60df0b73ca92e60beb",
+    "src/enterprise_qa_agent/__init__.py": "ab5420f27d2d0df4961e838c0b6c39cea53163c06cbc3f67bc6547dc2e35b89c"
+  },
+  "model_configuration_equal": true,
+  "frozen_cases_equal": true,
+  "frozen_gold_sha256": "b9a951d8744804d9c9b5427ae753ccd8b143d8ab6865c90944e6e080de672c0a",
+  "git_staged_diff": "",
+  "worktree": "M src/enterprise_qa_agent/agent.py\n M src/enterprise_qa_agent/cli.py\n M src/enterprise_qa_agent/knowledge.py\n?? examples/evaluation/\n?? scripts/\n?? tests/test_coverage_rewrite.py\n?? tests/test_dedup.py",
+  "scripts": {
+    "scripts/coverage_experiment.py": "55efdea0ca0753b233364b8aafc225b1d0ee4be9a6929288f83d357c8e6430b7",
+    "scripts/prepare_coverage_recovery.py": "67aae5f14cd70680d23cb526b498d8c1d9a913b09e71ea8afe8aae6d8ddb015a",
+    "scripts/prepare_coverage_sets.py": "65e7997b38d2bc49ed638fe21f660617c66d65f24eb8f0ddb77fc5b1240bb323"
+  },
+  "no_commit_or_push": true,
+  "configured_credential_absent_from_experiment_files": true
+}

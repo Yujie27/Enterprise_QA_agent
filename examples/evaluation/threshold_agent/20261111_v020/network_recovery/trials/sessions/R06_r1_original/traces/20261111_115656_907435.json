@@ -1,0 +1,150 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": false,
+    "match_threshold": "original"
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "negative.json",
+    "sha256": "be30677b523f7f560e3eb8e8e803f957d3da1c4a7d5ff8a5dd9f2a8ae2179abb"
+  },
+  "timestamp_utc": "2026-11-11T03:56:56.906931+00:00",
+  "mode": "agentscope_react",
+  "question": "公司育儿补贴怎么申请？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 3,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "公司育儿补贴怎么申请？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "育儿补贴 申请流程",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位育儿补贴的制度依据和申请流程。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 1 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。",
+            "score": 0.667
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "生育津贴 育儿补贴 申领条件 材料",
+          "limit": 5
+        },
+        "executed": true,
+        "public_decision_reason": "同时检索可能相关的生育福利条款，确认适用范围。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "生育津贴 育儿补贴 申领条件 材料",
+        "limit": 5
+      },
+      "public_decision_reason": "同时检索可能相关的生育福利条款，确认适用范围。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "summary": "返回 1 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。",
+            "score": 0.4
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "子女 生育 福利 补贴 员工关怀 申领",
+          "limit": 10
+        },
+        "executed": true,
+        "public_decision_reason": "首轮仅命中明确排除育儿补贴的报销条款，需换关键词确认是否有专项制度。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "子女 生育 福利 补贴 员工关怀 申领",
+        "limit": 10
+      },
+      "public_decision_reason": "首轮仅命中明确排除育儿补贴的报销条款，需换关键词确认是否有专项制度。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 3,
+      "tool": "search_docs",
+      "summary": "没有检索到匹配资料",
+      "observation": {
+        "results": [],
+        "summary": "没有检索到匹配资料"
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "## 结论：无法确认公司育儿补贴的申请方式\n\n现有制度资料中**没有**规定育儿补贴的申请入口、材料和期限，因此无法给出申请流程。\n\n### 检索到的相关条款\n\n| 项目 | 内容 |\n|---|---|\n| 文档 ID | D01（制度文件D01） |\n| 版本 | 2026-01 |\n| 生效日期 | 2026-01-01 |\n| 章节 | D01-S1 |\n\n**原文片段：**\n> “普通费用报销期限为费用发生后30日。**育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。**”\n\n### 说明\n\n1. 该条款唯一的相关内容是**明确排除**：育儿补贴不走普通费用报销流程，也不适用“费用发生后30日”的报销期限；该文件同时声明不规定申请入口、材料与期限。\n2. 换用“子女、生育、福利、补贴、员工关怀、申领”等关键词检索，返回**0 条结果**，未找到育儿补贴的专项制度。\n3. 按规则，无证据不推测，因此不能说明“去哪里提交”“需要哪些材料”“多久内申请”。\n\n### 建议的下一步\n\n- 请确认公司是否有单行的《育儿补贴管理办法》或人力资源福利类制度文件（可提供制度名称或文档编号），我再据此核对原文；\n- 或直接向人力资源部门确认申请入口与所需材料。\n\n**为何停止**：首轮仅命中一份明确声明不涵盖育儿补贴的条款，二次检索无结果，按规则不再重复检索，故说明资料不足并请求补充制度来源。"
+    }
+  ],
+  "answer": "## 结论：无法确认公司育儿补贴的申请方式\n\n现有制度资料中**没有**规定育儿补贴的申请入口、材料和期限，因此无法给出申请流程。\n\n### 检索到的相关条款\n\n| 项目 | 内容 |\n|---|---|\n| 文档 ID | D01（制度文件D01） |\n| 版本 | 2026-01 |\n| 生效日期 | 2026-01-01 |\n| 章节 | D01-S1 |\n\n**原文片段：**\n> “普通费用报销期限为费用发生后30日。**育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。**”\n\n### 说明\n\n1. 该条款唯一的相关内容是**明确排除**：育儿补贴不走普通费用报销流程，也不适用“费用发生后30日”的报销期限；该文件同时声明不规定申请入口、材料与期限。\n2. 换用“子女、生育、福利、补贴、员工关怀、申领”等关键词检索，返回**0 条结果**，未找到育儿补贴的专项制度。\n3. 按规则，无证据不推测，因此不能说明“去哪里提交”“需要哪些材料”“多久内申请”。\n\n### 建议的下一步\n\n- 请确认公司是否有单行的《育儿补贴管理办法》或人力资源福利类制度文件（可提供制度名称或文档编号），我再据此核对原文；\n- 或直接向人力资源部门确认申请入口与所需材料。\n\n**为何停止**：首轮仅命中一份明确声明不涵盖育儿补贴的条款，二次检索无结果，按规则不再重复检索，故说明资料不足并请求补充制度来源。"
+}

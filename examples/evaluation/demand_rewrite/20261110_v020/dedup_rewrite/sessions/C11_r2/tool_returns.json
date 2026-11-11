@@ -1,0 +1,157 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T13:18:07.894469+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.667
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 1,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.667}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 1, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "8484a8d3665f4937bcfb176e4198b602",
+          "created_at": "2026-11-10T21:18:07.894469",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "cd246bcd07924520aa7fdacf939bbe83"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T13:18:07.898125+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [],
+      "summary": "没有检索到匹配资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [], \"summary\": \"没有检索到匹配资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "d9b31a8f831543d1aa14cc601aa3611a",
+          "created_at": "2026-11-10T21:18:07.898125",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "ef316bae100140528e9c2a2e16c2503d"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-10T13:18:09.855046+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 0
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}]}, \"summary\": \"已读取文档原文\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 0}}",
+          "id": "448f11aa4f8b481f8d54ec93bc5321a9",
+          "created_at": "2026-11-10T21:18:09.855046",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "9a1393d045f24e23b1cf2049f5a22bc2"
+    }
+  },
+  {
+    "index": 4,
+    "timestamp_utc": "2026-11-10T13:18:09.858373+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.4
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.4}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "ddeda2b866c9411ab27e65de9fd58a26",
+          "created_at": "2026-11-10T21:18:09.858373",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "889c9621f5e64fba8c3b18e9f5c469e6"
+    }
+  }
+]

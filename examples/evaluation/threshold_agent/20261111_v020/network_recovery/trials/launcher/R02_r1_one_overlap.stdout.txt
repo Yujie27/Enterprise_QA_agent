@@ -1,0 +1,12 @@
+状态：completed
+研发同事出差产生的差旅费用，应在**返程后15日内提交报销申请**。
+
+依据：
+- 文档：D02《制度文件D02》
+- 版本：2026-01
+- 生效日期：2026-01-01
+- 适用范围：研发部门；差旅费用
+- 原文：“研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。”
+
+回答依据为 D02 中针对研发部门差旅费用的直接规定。
+Trace：C:\Users\ZONST\Desktop\Enterprise_QA_agent\examples\evaluation\threshold_agent\20261111_v020\network_recovery\trials\sessions\R02_r1_one_overlap\traces\20261111_115546_783849.json

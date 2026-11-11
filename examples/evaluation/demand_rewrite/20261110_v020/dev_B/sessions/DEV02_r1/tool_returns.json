@@ -1,0 +1,182 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T13:18:34.661036+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "DEV02-2",
+          "title": "内部服务说明",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工",
+          "section_id": "DEV02-2-S1",
+          "text": "图书借阅须登录资产门户登记书号，再到前台领取。",
+          "score": 0.429
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 1,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"DEV02-2\", \"title\": \"内部服务说明\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工\", \"section_id\": \"DEV02-2-S1\", \"text\": \"图书借阅须登录资产门户登记书号，再到前台领取。\", \"score\": 0.429}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 1, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "5a98948317924eadad682fbe43a01ec0",
+          "created_at": "2026-11-10T21:18:34.661036",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "22081e024c6b445f8e6d0d811d32232d"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T13:18:36.890647+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "DEV02-2",
+          "title": "内部服务说明",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工",
+          "section_id": "DEV02-2-S1",
+          "text": "图书借阅须登录资产门户登记书号，再到前台领取。",
+          "score": 0.333
+        },
+        {
+          "doc_id": "DEV02-1",
+          "title": "内部服务说明",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工",
+          "section_id": "DEV02-1-S1",
+          "text": "企业图书馆仅向转正员工开放外借。",
+          "score": 0.222
+        }
+      ],
+      "summary": "返回 2 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 1,
+        "seen_evidence_count": 2,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"DEV02-2\", \"title\": \"内部服务说明\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工\", \"section_id\": \"DEV02-2-S1\", \"text\": \"图书借阅须登录资产门户登记书号，再到前台领取。\", \"score\": 0.333}, {\"doc_id\": \"DEV02-1\", \"title\": \"内部服务说明\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工\", \"section_id\": \"DEV02-1-S1\", \"text\": \"企业图书馆仅向转正员工开放外借。\", \"score\": 0.222}], \"summary\": \"返回 2 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 1, \"seen_evidence_count\": 2, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "59b1b6aa1d974d59bff4160ea20df613",
+          "created_at": "2026-11-10T21:18:36.890647",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "5e1c91e7acff487ea60e99891e266689"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-10T13:18:39.766406+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "DEV02-1",
+        "title": "内部服务说明",
+        "scope": "全体员工",
+        "version": "1",
+        "effective_from": "2026-01-01",
+        "tags": [
+          "图书馆",
+          "资格"
+        ],
+        "sections": [
+          {
+            "section_id": "DEV02-1-S1",
+            "text": "企业图书馆仅向转正员工开放外借。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 2,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 0
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"DEV02-1\", \"title\": \"内部服务说明\", \"scope\": \"全体员工\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"tags\": [\"图书馆\", \"资格\"], \"sections\": [{\"section_id\": \"DEV02-1-S1\", \"text\": \"企业图书馆仅向转正员工开放外借。\"}]}, \"summary\": \"已读取文档原文\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 2, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 0}}",
+          "id": "79753dfbf1c8466c8df8fe129ef5459d",
+          "created_at": "2026-11-10T21:18:39.766406",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "89a67c79768e449fa7efcc333899d7ec"
+    }
+  },
+  {
+    "index": 4,
+    "timestamp_utc": "2026-11-10T13:18:39.768506+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "DEV02-2",
+        "title": "内部服务说明",
+        "scope": "全体员工",
+        "version": "1",
+        "effective_from": "2026-01-01",
+        "tags": [
+          "图书",
+          "借阅"
+        ],
+        "sections": [
+          {
+            "section_id": "DEV02-2-S1",
+            "text": "图书借阅须登录资产门户登记书号，再到前台领取。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 2,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 0
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"DEV02-2\", \"title\": \"内部服务说明\", \"scope\": \"全体员工\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"tags\": [\"图书\", \"借阅\"], \"sections\": [{\"section_id\": \"DEV02-2-S1\", \"text\": \"图书借阅须登录资产门户登记书号，再到前台领取。\"}]}, \"summary\": \"已读取文档原文\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 2, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 0}}",
+          "id": "61c13ee4c1cc4a4592a6fa085ac804da",
+          "created_at": "2026-11-10T21:18:39.768506",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "1a778cf9b24e4bb08e05a532ea524db5"
+    }
+  }
+]

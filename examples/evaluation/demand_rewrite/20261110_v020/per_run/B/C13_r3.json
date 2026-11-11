@@ -1,0 +1,263 @@
+{
+  "config": "B",
+  "run_id": "C13_r3",
+  "case_id": "C13",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/majority.json",
+  "corpus_sha256": "62339fffd0de2d67a0eae3c355e2b3979e932afbc0db7da8af70c063176e99a6",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C13_r3/traces/20261110_211646_127759.json",
+  "status": "completed",
+  "answer": "按现有制度，**费用报销应在费用发生后 15 日内提交申请**。\n\n- **文档**：COPY0《制度文件COPY0》\n- **版本**：2026-01\n- **生效日期**：2026-01-01\n- **条款**：COPY0-S1\n- **原文**：“费用报销应在费用发生后15日内提交申请。”\n\n检索到的 COPY1—COPY4 也载有相同条款，未发现相互矛盾。该条款仅明确“提交申请”的期限；若你询问的是审批或款项到账时限，现有资料无法确认。\n\n本次回答依据检索片段及 COPY0 原文；报销期限已有依据，未发现需要进一步核实的冲突。",
+  "conversation": null,
+  "tool_calls": 2,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 费用报销 提交时限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位与报销提交期限相关的制度条款",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "COPY0",
+            "title": "制度文件COPY0",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY0-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "COPY1",
+            "title": "制度文件COPY1",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY1-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "COPY2",
+            "title": "制度文件COPY2",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY2-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "COPY3",
+            "title": "制度文件COPY3",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY3-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "COPY4",
+            "title": "制度文件COPY4",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "COPY4-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          }
+        ],
+        "summary": "返回 5 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 5,
+          "seen_evidence_count": 5,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "COPY0/COPY0-S1",
+        "COPY1/COPY1-S1",
+        "COPY2/COPY2-S1",
+        "COPY3/COPY3-S1",
+        "COPY4/COPY4-S1"
+      ],
+      "new_keys": [
+        "COPY0/COPY0-S1",
+        "COPY1/COPY1-S1",
+        "COPY2/COPY2-S1",
+        "COPY3/COPY3-S1",
+        "COPY4/COPY4-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "COPY0"
+      },
+      "public_decision_reason": "检索到多份相同条款，需读取原文核实版本与适用范围",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "COPY0",
+          "title": "制度文件COPY0",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "COPY0-S1",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ],
+          "copied_from": "D02"
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 5,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "COPY0/COPY0-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": false
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [],
+        "missing": [
+          "报销期限"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [
+          {
+            "need": "报销期限",
+            "doc_id": "COPY0",
+            "section_id": "COPY0-S1",
+            "evidence": "费用报销应在费用发生后15日内提交申请。"
+          }
+        ],
+        "missing": []
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {
+    "COPY4/COPY4-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    },
+    "COPY3/COPY3-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    },
+    "COPY2/COPY2-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    },
+    "COPY0/COPY0-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    },
+    "COPY1/COPY1-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    }
+  },
+  "required": [
+    "D01/D01-S1",
+    "D02/D02-S1"
+  ],
+  "missing": [
+    "D01/D01-S1",
+    "D02/D02-S1"
+  ],
+  "first_recall": 0.0,
+  "cumulative_recall": 0.0,
+  "recovered_after_first": false,
+  "first_query": "报销期限 费用报销 提交时限",
+  "queries": [
+    "报销期限 费用报销 提交时限"
+  ],
+  "no_new_repeat_searches": 0,
+  "search_tool_attempts": 1,
+  "underlying_queries": 1,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "B",
+    "run_id": "C13_r3",
+    "strict_business_pass": false,
+    "completed_and_business_pass": false,
+    "safe_terminal_and_business_pass": false,
+    "reason": "search副本后read(COPY0)，仅15日可见；没有取得30日，不属于看见冲突仍裁决。来源叙述仅说措辞相同，没有扩张所有副本的copied_from。",
+    "labels": [
+      "必要证据未召回，模型未恢复"
+    ],
+    "unsupported_assertions": [],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": null,
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C13_r3/traces/20261110_211646_127759.json",
+    "gap_keys": [
+      "D01/D01-S1",
+      "D02/D02-S1"
+    ]
+  },
+  "no_new_successful_searches": 0,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 0,
+  "post_coverage_reads": 0
+}

@@ -1,0 +1,251 @@
+{
+  "config": "B",
+  "run_id": "C11_r3",
+  "case_id": "C11",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限和需要的材料分别是什么？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+  "corpus_sha256": "484efa2062c4e47183b2a02017f819d67b5a91a43c5c78a0d2bed7744ea289b6",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r3/traces/20261110_211629_675803.json",
+  "status": "completed",
+  "answer": "**报销期限：有据可查**\n\n- 文档：D01《制度文件D01》，版本 **2026-01**，生效日期 **2026-01-01**\n- 原文（D01-S1）：“费用报销应在费用发生后30日内提交申请。”\n- 注意：该文档未提供适用范围，因此无法确认是否有特定费用类型或部门例外。\n\n**报销所需材料：无法确认**\n\n现有资料中未检索到关于报销材料、发票或单据清单的规定；我只能确认 D01 的上述期限条款，不能据此推定材料要求。\n\n**证据覆盖说明**：报销期限已由 D01-S1 支持；报销所需材料仍缺失，暂无依据。",
+  "conversation": null,
+  "tool_calls": 3,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 报销材料 要求",
+        "limit": 8
+      },
+      "public_decision_reason": "需要先定位报销制度中关于期限和材料的条款。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.333
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 1,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "new_keys": [
+        "D01/D01-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "检索只返回期限条款，需读取原文确认是否还包含报销材料及适用范围。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销 提交材料 发票 单据 清单",
+        "limit": 8
+      },
+      "public_decision_reason": "期限已有依据，尚缺材料要求，需针对报销凭证和单据再检索一次。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.286
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": false
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限",
+          "报销所需材料"
+        ],
+        "covered": [],
+        "missing": [
+          "报销期限",
+          "报销所需材料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限",
+          "报销所需材料"
+        ],
+        "covered": [
+          "报销期限：D01-S1（费用发生后30日内提交申请）"
+        ],
+        "missing": [
+          "报销所需材料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 3,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限",
+          "报销所需材料"
+        ],
+        "covered": [
+          "报销期限：D01-S1（费用发生后30日内提交申请）"
+        ],
+        "missing": [
+          "报销所需材料"
+        ]
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {
+    "D01/D01-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    }
+  },
+  "required": [
+    "D01/D01-S1",
+    "D04/D04-S1"
+  ],
+  "missing": [
+    "D04/D04-S1"
+  ],
+  "first_recall": 0.5,
+  "cumulative_recall": 0.5,
+  "recovered_after_first": false,
+  "first_query": "报销期限 报销材料 要求",
+  "queries": [
+    "报销期限 报销材料 要求",
+    "报销 提交材料 发票 单据 清单"
+  ],
+  "no_new_repeat_searches": 1,
+  "search_tool_attempts": 2,
+  "underlying_queries": 2,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "B",
+    "run_id": "C11_r3",
+    "strict_business_pass": false,
+    "completed_and_business_pass": false,
+    "safe_terminal_and_business_pass": false,
+    "reason": "首搜D01，读取后材料改写无新增；未恢复D04，未编造材料，完整业务不通过。",
+    "labels": [
+      "必要证据未召回，模型未恢复"
+    ],
+    "unsupported_assertions": [],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": null,
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r3/traces/20261110_211629_675803.json",
+    "gap_keys": [
+      "D04/D04-S1"
+    ]
+  },
+  "no_new_successful_searches": 1,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 0,
+  "post_coverage_reads": 0
+}

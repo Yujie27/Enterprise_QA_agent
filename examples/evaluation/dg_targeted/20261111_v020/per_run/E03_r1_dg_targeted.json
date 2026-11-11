@@ -1,0 +1,142 @@
+{
+  "run_id": "E03_r1_dg_targeted",
+  "case_id": "E03",
+  "repeat": 1,
+  "batch": "alternating",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "30日是工作日还是自然日？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace": "examples/evaluation/dg_targeted/20261111_v020/trials/sessions/E03_r1_dg_targeted/traces/20261111_125018_348804.json",
+  "status": "completed",
+  "answer": "**无法确认“30日”是工作日还是自然日。**\n\n**检索到的依据：**\n- 文档：D01《制度文件D01》\n- 版本：2026-01\n- 生效日期：2026-01-01\n- 适用范围：未提供\n- 原文：**“费用报销应在费用发生后30日内提交申请。”**（D01-S1）\n\n该条款只写了“30日内”，**没有明确“日”是按工作日还是自然日计算**；现有资料中也未检索到关于期限计算口径的通用定义。因此不能判断为工作日或自然日，也不能自行按其中一种口径执行。\n\n请补充您所指的具体制度或业务场景（例如费用报销、合同履行等），以便核对对应条款；若即为费用报销，则还需确认该制度是否有配套解释或实施细则。\n\n**结束说明：** 已检索并读取唯一相关原文，但日别计算口径缺失，故停止检索并说明资料不足。",
+  "tool_calls": 3,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "30日 工作日 自然日",
+        "limit": 10
+      },
+      "public_decision_reason": "用户未说明具体制度场景，需检索包含“30日”期限及日别计算的条款。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.167
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "检索片段未注明“日”的计算口径，需读取原文核实是否有工作日或自然日定义。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "期限计算 工作日 自然日 定义",
+        "limit": 10
+      },
+      "public_decision_reason": "为确认是否存在适用于“30日”的通用日别定义，需要补充检索。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.125
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    }
+  ],
+  "required": [
+    "D01/D01-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "D01/D01-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "question_response_complete": true,
+    "citations_support_conclusions": true,
+    "unsupported_meaning": [],
+    "process_errors": [],
+    "wording_risks": [],
+    "business_verdict": "pass",
+    "reason": "取得并读取D01，正确保留计算口径缺失；说明与实际工具一致。"
+  },
+  "prompt_mode": "dg_targeted",
+  "coverage_complete_at_step": 1,
+  "post_coverage_authorized_tools": 2,
+  "no_new_searches": 1,
+  "c11_post_sufficient_searches": null,
+  "correct_terminal": true
+}

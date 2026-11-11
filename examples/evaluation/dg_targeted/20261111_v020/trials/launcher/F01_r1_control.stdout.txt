@@ -1,0 +1,13 @@
+状态：tool_error
+**当前无法确认报销期限。**
+
+原因：检索制度资料时，检索工具连续两次报错（`RuntimeError: simulated search failure`），都没有返回任何制度片段，因此我手上没有可引用的原文，也就无法给出版本、生效日期和条款依据。
+
+请注意：报销期限属于有明确制度依据的事项，我不会凭印象或常识给一个数字。
+
+建议您：
+- 稍后再让我重试检索；或
+- 直接告知您适用的报销制度名称/文档 ID，我可以读取原文后据条款回答。
+
+**说明**：本次回答基于“资料不可得”而停止，不是因为没有相关规定，而是因为检索功能故障（连续两次同类失败后按规则停止重试，避免无意义重复调用）。
+Trace：C:\Users\ZONST\Desktop\Enterprise_QA_agent\examples\evaluation\dg_targeted\20261111_v020\trials\sessions\F01_r1_control\traces\20261111_125024_768681.json

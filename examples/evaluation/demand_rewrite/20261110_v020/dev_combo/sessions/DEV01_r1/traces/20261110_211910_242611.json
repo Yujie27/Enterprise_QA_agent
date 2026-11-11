@@ -1,0 +1,321 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": true
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "DEV01.json",
+    "sha256": "973c6168df4b00242039862dab3399b696eecc6228e3c97fc2ad99c047183d7c"
+  },
+  "timestamp_utc": "2026-11-10T13:19:10.242058+00:00",
+  "mode": "agentscope_react",
+  "question": "员工培训报名截止时间和所需资料分别是什么？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 4,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "员工培训报名截止时间和所需资料分别是什么？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "员工培训 报名截止时间",
+        "limit": 5
+      },
+      "public_decision_reason": "分别检索培训报名的截止时间与所需资料，以便准确回答两项要求。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "培训报名截止时间",
+          "培训报名所需资料"
+        ],
+        "covered": [],
+        "missing": [
+          "培训报名截止时间",
+          "培训报名所需资料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 1 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "DEV01-1",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV01-1-S1",
+            "text": "培训报名须在开课前10日完成。",
+            "score": 0.25
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 1,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "员工培训 报名 所需资料 材料",
+          "limit": 5
+        },
+        "executed": true,
+        "public_decision_reason": "分别检索培训报名的截止时间与所需资料，以便准确回答两项要求。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "员工培训 报名 所需资料 材料",
+        "limit": 5
+      },
+      "public_decision_reason": "分别检索培训报名的截止时间与所需资料，以便准确回答两项要求。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "培训报名截止时间",
+          "培训报名所需资料"
+        ],
+        "covered": [],
+        "missing": [
+          "培训报名截止时间",
+          "培训报名所需资料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "summary": "返回 1 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "DEV01-1",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV01-1-S1",
+            "text": "培训报名须在开课前10日完成。",
+            "score": 0.25
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "DEV01-1"
+        },
+        "executed": true,
+        "public_decision_reason": "已找到报名截止时间条款，需要读取原文核对适用范围并确认是否列明所需资料。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "DEV01-1"
+      },
+      "public_decision_reason": "已找到报名截止时间条款，需要读取原文核对适用范围并确认是否列明所需资料。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 3,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "培训报名截止时间",
+          "培训报名所需资料"
+        ],
+        "covered": [
+          {
+            "need": "培训报名截止时间",
+            "doc_id": "DEV01-1",
+            "section_id": "DEV01-1-S1",
+            "evidence": "培训报名须在开课前10日完成。"
+          }
+        ],
+        "missing": [
+          "培训报名所需资料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "DEV01-1",
+          "title": "内部服务说明",
+          "scope": "全体员工",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "tags": [
+            "培训",
+            "报名"
+          ],
+          "sections": [
+            {
+              "section_id": "DEV01-1-S1",
+              "text": "培训报名须在开课前10日完成。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "培训报名材料清单 提交资料",
+          "limit": 10
+        },
+        "executed": true,
+        "public_decision_reason": "现有原文只规定截止时间，尚未找到报名所需资料，需要针对该缺口继续检索。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 4,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "培训报名材料清单 提交资料",
+        "limit": 10
+      },
+      "public_decision_reason": "现有原文只规定截止时间，尚未找到报名所需资料，需要针对该缺口继续检索。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 4,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "培训报名截止时间",
+          "培训报名所需资料"
+        ],
+        "covered": [
+          {
+            "need": "培训报名截止时间",
+            "doc_id": "DEV01-1",
+            "section_id": "DEV01-1-S1",
+            "evidence": "培训报名须在开课前10日完成。"
+          }
+        ],
+        "missing": [
+          "培训报名所需资料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 4,
+      "tool": "search_docs",
+      "summary": "返回 1 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "DEV01-1",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV01-1-S1",
+            "text": "培训报名须在开课前10日完成。",
+            "score": 0.3
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "**报名截止时间：开课前 10 日完成报名。**\n\n- **依据：**《内部服务说明》（文档 ID：DEV01-1；版本：1；生效日期：2026-01-01；适用范围：全体员工）\n- **原文：**“培训报名须在开课前10日完成。”\n\n**报名所需资料：无法确认。** 当前检索到的制度原文只规定了报名期限，没有列明所需资料。\n\n**证据覆盖说明：**“报名截止时间”已有 DEV01-1-S1 支持；“报名所需资料”经针对性检索仍无相关依据，因此未作推断。"
+    }
+  ],
+  "answer": "**报名截止时间：开课前 10 日完成报名。**\n\n- **依据：**《内部服务说明》（文档 ID：DEV01-1；版本：1；生效日期：2026-01-01；适用范围：全体员工）\n- **原文：**“培训报名须在开课前10日完成。”\n\n**报名所需资料：无法确认。** 当前检索到的制度原文只规定了报名期限，没有列明所需资料。\n\n**证据覆盖说明：**“报名截止时间”已有 DEV01-1-S1 支持；“报名所需资料”经针对性检索仍无相关依据，因此未作推断。"
+}

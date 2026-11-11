@@ -1,0 +1,178 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T12:50:19.492062+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.4
+        }
+      ],
+      "summary": "返回 1 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.4}], \"summary\": \"返回 1 条资料\"}",
+          "id": "d76acc768c3c49828270f23bda27a685",
+          "created_at": "2026-11-10T20:50:19.492062",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "11a27a2b555843399516d3e299052a22"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T12:50:19.493738+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.375
+        },
+        {
+          "doc_id": "D04",
+          "title": "制度文件D04",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D04-S1",
+          "text": "费用报销申请须附合规票据。",
+          "score": 0.375
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.375}, {\"doc_id\": \"D04\", \"title\": \"制度文件D04\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D04-S1\", \"text\": \"费用报销申请须附合规票据。\", \"score\": 0.375}], \"summary\": \"返回 2 条资料\"}",
+          "id": "f76603e58a1f43938ab498acc63bd6f4",
+          "created_at": "2026-11-10T20:50:19.493738",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "de816085655d4ba18e170e89907b75d9"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-10T12:50:21.113032+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "f9abeeddb3d74a85a84f3e3794016f94",
+          "created_at": "2026-11-10T20:50:21.113032",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "2cc9da5dd034486c914dc819fb79675e"
+    }
+  },
+  {
+    "index": 4,
+    "timestamp_utc": "2026-11-10T12:50:21.114320+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D04",
+        "title": "制度文件D04",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "票据",
+          "申请"
+        ],
+        "sections": [
+          {
+            "section_id": "D04-S1",
+            "text": "费用报销申请须附合规票据。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D04\", \"title\": \"制度文件D04\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"票据\", \"申请\"], \"sections\": [{\"section_id\": \"D04-S1\", \"text\": \"费用报销申请须附合规票据。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "21f6b4a79b8a43e19df6e21c9f388a53",
+          "created_at": "2026-11-10T20:50:21.114320",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "5fd1a9a990274b9e813832db2dde4ded"
+    }
+  },
+  {
+    "index": 5,
+    "timestamp_utc": "2026-11-10T12:50:23.010445+00:00",
+    "payload_passed_to_original_tool_response": {
+      "error": "tool_call_limit_reached",
+      "results": []
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"error\": \"tool_call_limit_reached\", \"results\": []}",
+          "id": "0ca9a1a30d6443fa8585e1ae15170c48",
+          "created_at": "2026-11-10T20:50:23.010445",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "8dd1e45730154ba89a6e9efeeecafb14"
+    }
+  }
+]

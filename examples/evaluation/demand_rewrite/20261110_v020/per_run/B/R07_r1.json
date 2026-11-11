@@ -1,0 +1,197 @@
+{
+  "config": "B",
+  "run_id": "R07_r1",
+  "case_id": "R07",
+  "messages": [
+    {
+      "role": "user",
+      "content": "研发部门差旅报销期限？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scope_metadata.json",
+  "corpus_sha256": "3aa266892a871de20fd2655755f3c6e9b170dbcc1115ee71a52f129aa3077640",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/R07_r1/traces/20261110_210807_476043.json",
+  "status": "completed",
+  "answer": "根据 **D01《制度文件D01》**（版本 **2026-01**，生效日期 **2026-01-01**，适用范围：**研发部门；差旅费用**）：\n\n> **“差旅费用报销应在返程后15日内提交申请。”**  \n> —— D01-S1\n\n因此，研发部门差旅费用应在**返程后15日内**提交报销申请。\n\n检索还发现，D02 规定销售部门为返程后20日内，但其适用范围为销售部门，不适用于研发部门，因此不构成针对研发部门的冲突。\n\n**证据覆盖说明：**“研发部门差旅报销期限”已由 D01-S1 原文支持，无缺失需求；因适用原文已足以回答，未继续扩展检索。",
+  "conversation": null,
+  "tool_calls": 2,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "研发部门 差旅 报销 期限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位适用于研发部门差旅报销期限的制度条款。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "section_id": "D01-S1",
+            "text": "差旅费用报销应在返程后15日内提交申请。",
+            "score": 0.5
+          },
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "销售部门；差旅费用",
+            "section_id": "D02-S1",
+            "text": "差旅费用报销应在返程后20日内提交申请。",
+            "score": 0.5
+          }
+        ],
+        "summary": "返回 2 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 2,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ],
+      "new_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "已找到研发部门适用条款，读取原文以核实版本、生效日期和适用范围。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "研发部门；差旅费用",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "差旅费用报销应在返程后15日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": true
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "研发部门差旅报销期限"
+        ],
+        "covered": [],
+        "missing": [
+          "研发部门差旅报销期限"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "研发部门差旅报销期限"
+        ],
+        "covered": [
+          "研发部门差旅报销期限：D01-S1 返程后15日内"
+        ],
+        "missing": []
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {
+    "D02/D02-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    },
+    "D01/D01-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    }
+  },
+  "required": [
+    "D01/D01-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "recovered_after_first": false,
+  "first_query": "研发部门 差旅 报销 期限",
+  "queries": [
+    "研发部门 差旅 报销 期限"
+  ],
+  "no_new_repeat_searches": 0,
+  "search_tool_attempts": 1,
+  "underlying_queries": 1,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "B",
+    "run_id": "R07_r1",
+    "strict_business_pass": true,
+    "completed_and_business_pass": true,
+    "safe_terminal_and_business_pass": true,
+    "reason": "实际见研发D01和销售D02的scope，按研发答返程15日；明确销售20日不适用。没有反事实控制，不能因果证明不依赖顺序。",
+    "labels": [],
+    "unsupported_assertions": [],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": null,
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/R07_r1/traces/20261110_210807_476043.json",
+    "gap_keys": []
+  },
+  "no_new_successful_searches": 0,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 0,
+  "post_coverage_reads": 1
+}

@@ -1,0 +1,112 @@
+{
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "single.json",
+    "sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a"
+  },
+  "timestamp_utc": "2026-11-10T12:15:43.983424+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限多久？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 2,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限多久？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要查找报销期限的制度依据。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 1 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.667
+          }
+        ]
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D01"
+        },
+        "executed": true,
+        "public_decision_reason": "候选规则适用范围未标明，需要读取原文核对。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "候选规则适用范围未标明，需要读取原文核对。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        }
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "根据现有制度，报销期限为 **30 日**。\n\n- **文档：** D01《制度文件D01》\n- **版本：** 2026-01\n- **生效日期：** 2026-01-01\n- **原文片段（D01-S1）：** “费用报销应在费用发生后**30日内**提交申请。”\n- **适用范围：** 原文未标明具体适用范围。\n\n说明：检索到并读取了 D01 全文，该制度对报销期限有明确规定，且未发现与之冲突的其他条款；因此，以上内容依据该单一制度回答。如果您的报销事项属于其他专项制度，建议进一步确认其适用范围。"
+    }
+  ],
+  "answer": "根据现有制度，报销期限为 **30 日**。\n\n- **文档：** D01《制度文件D01》\n- **版本：** 2026-01\n- **生效日期：** 2026-01-01\n- **原文片段（D01-S1）：** “费用报销应在费用发生后**30日内**提交申请。”\n- **适用范围：** 原文未标明具体适用范围。\n\n说明：检索到并读取了 D01 全文，该制度对报销期限有明确规定，且未发现与之冲突的其他条款；因此，以上内容依据该单一制度回答。如果您的报销事项属于其他专项制度，建议进一步确认其适用范围。"
+}

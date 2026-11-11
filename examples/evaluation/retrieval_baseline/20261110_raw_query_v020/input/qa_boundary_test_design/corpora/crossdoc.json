@@ -1,0 +1,39 @@
+[
+  {
+    "doc_id": "D10",
+    "title": "制度文件D10",
+    "version": "2026-01",
+    "effective_from": "2026-01-01",
+    "scope": "部门A；差旅",
+    "tags": [
+      "部门A",
+      "差旅",
+      "报销",
+      "R7"
+    ],
+    "sections": [
+      {
+        "section_id": "D10-S1",
+        "text": "部门A的差旅报销按规则R7执行。"
+      }
+    ]
+  },
+  {
+    "doc_id": "D11",
+    "title": "制度文件D11",
+    "version": "2026-01",
+    "effective_from": "2026-01-01",
+    "scope": "规则R7",
+    "tags": [
+      "R7",
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "D11-S1",
+        "text": "规则R7：差旅报销应在返程后18日内提交申请。"
+      }
+    ]
+  }
+]

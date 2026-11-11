@@ -1,0 +1,7 @@
+{
+  "command": ".venv/Scripts/python.exe -B -m unittest discover -s tests -v",
+  "tests": 26,
+  "failures": 0,
+  "errors": 0,
+  "seconds": 0.43
+}

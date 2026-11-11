@@ -1,0 +1,162 @@
+{
+  "run_id": "C01_r1_dg_targeted",
+  "case_id": "C01",
+  "repeat": 1,
+  "batch": "alternating",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/conflict.json",
+  "corpus_sha256": "26d2059e88b8a3b446c6d25ab96df3a0e1d80e0e526e0dc327883c40c4d22bcf",
+  "trace": "examples/evaluation/dg_targeted/20261111_v020/trials/sessions/C01_r1_dg_targeted/traces/20261111_124911_055822.json",
+  "status": "completed",
+  "answer": "现有资料中有两条报销期限规定，但内容互相冲突，且均未注明适用范围或优先适用的依据，因此目前无法确定应适用哪一个期限：\n\n| 文档 | 版本 | 生效日期 | 原文片段 |\n|---|---|---|---|\n| D01（D01-S1） | 2026-01 | 2026-01-01 | “费用报销应在费用发生后30日内提交申请。” |\n| D02（D02-S1） | 2026-01 | 2026-01-01 | “费用报销应在费用发生后15日内提交申请。” |\n\n两份文件的版本和生效日期相同，适用范围均标注为“未提供”，也没有说明两者之间的替代关系或优先级。因此，不能仅凭上述信息认定应采用 **30日** 还是 **15日**。\n\n请确认适用于您所在主体或业务类型的制度，或提供优先级依据；如能提供费用发生日期，也可据此核对具体截止日。\n\n说明：因检索到两条报销期限冲突的规定，我已读取两份原文核对，停止进一步检索，以避免在缺乏依据的情况下推断。",
+  "tool_calls": 3,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要检索报销期限的相关制度依据。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.667
+          },
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D02-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.667
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "两条报销期限不一致，需要读取原文核对适用范围和优先级依据。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      },
+      "public_decision_reason": "两条报销期限不一致，需要读取原文核对适用范围和优先级依据。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D02-S1",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "D02/D02-S1"
+      ]
+    }
+  ],
+  "required": [
+    "D01/D01-S1",
+    "D02/D02-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "D02/D02-S1": 1,
+    "D01/D01-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "question_response_complete": true,
+    "citations_support_conclusions": true,
+    "unsupported_meaning": [],
+    "process_errors": [],
+    "wording_risks": [
+      "提供费用发生日期核截止日是非必要追问，未实际给出计算口径"
+    ],
+    "business_verdict": "pass",
+    "reason": "双方可见并读取，明确范围未提供、优先级未知，请求确认，不选期限；额外提议提供费用日期核截止日非已给计算规则，记非必要追问风险。"
+  },
+  "prompt_mode": "dg_targeted",
+  "coverage_complete_at_step": 1,
+  "post_coverage_authorized_tools": 2,
+  "no_new_searches": 0,
+  "c11_post_sufficient_searches": null,
+  "correct_terminal": true
+}

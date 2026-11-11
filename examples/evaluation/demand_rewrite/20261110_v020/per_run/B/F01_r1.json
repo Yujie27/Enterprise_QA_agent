@@ -1,0 +1,126 @@
+{
+  "config": "B",
+  "run_id": "F01_r1",
+  "case_id": "F01",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/B_launcher_recovery/sessions/F01_r1/traces/20261110_211536_392067.json",
+  "status": "tool_error",
+  "answer": "无法确认报销期限。\n\n检索工具连续两次报错，错误信息为：“检索工具失败：RuntimeError: simulated search failure for evaluation”。因此，我既没有取得任何制度片段或文档 ID，也无法核验版本、生效日期和原文。\n\n请您稍后重试，或直接提供相关制度文档的编号或正文；在取得可核验的原文前，我不能对报销期限给出结论。\n\n本次覆盖情况：需求“报销期限”仍缺依据，没有可引用文档。",
+  "conversation": null,
+  "tool_calls": 2,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要检索制度中关于报销申请期限的规定",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+        "results": []
+      },
+      "visible_keys": [],
+      "new_keys": [],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "费用报销 提交 时限 规定",
+        "limit": 5
+      },
+      "public_decision_reason": "首次检索工具报错，换一种表达重试一次以确认是否有相关制度",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+        "results": []
+      },
+      "visible_keys": [],
+      "new_keys": [],
+      "required_evidence_complete_before_call": false
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [],
+        "missing": [
+          "报销期限"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [],
+        "missing": [
+          "报销期限"
+        ]
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {},
+  "required": [],
+  "missing": [],
+  "first_recall": null,
+  "cumulative_recall": null,
+  "recovered_after_first": false,
+  "first_query": "报销期限",
+  "queries": [
+    "报销期限",
+    "费用报销 提交 时限 规定"
+  ],
+  "no_new_repeat_searches": 1,
+  "search_tool_attempts": 2,
+  "underlying_queries": 0,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "B",
+    "run_id": "F01_r1",
+    "strict_business_pass": true,
+    "completed_and_business_pass": false,
+    "safe_terminal_and_business_pass": true,
+    "reason": "两次真实工具错误路径均触发，说明工具失败而非制度不存在；没有引用未见条款或编造发生时间。",
+    "labels": [],
+    "unsupported_assertions": [],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": null,
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/B_launcher_recovery/sessions/F01_r1/traces/20261110_211536_392067.json",
+    "gap_keys": []
+  },
+  "no_new_successful_searches": 0,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 2,
+  "post_coverage_reads": 0
+}

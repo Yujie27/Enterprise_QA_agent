@@ -1,0 +1,98 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T13:17:31.454301+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工；非差旅普通费用",
+          "section_id": "D01-S1",
+          "text": "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。",
+          "score": 0.625
+        },
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "研发部门；差旅费用",
+          "section_id": "D02-S1",
+          "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。",
+          "score": 0.5
+        }
+      ],
+      "summary": "返回 2 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 2,
+        "seen_evidence_count": 2,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工；非差旅普通费用\", \"section_id\": \"D01-S1\", \"text\": \"普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。\", \"score\": 0.625}, {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"section_id\": \"D02-S1\", \"text\": \"研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。\", \"score\": 0.5}], \"summary\": \"返回 2 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 2, \"seen_evidence_count\": 2, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "659897d03da0458883fdee3fb18a81ce",
+          "created_at": "2026-11-10T21:17:31.454301",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "d00a87fffbf5487480dbc109f069ec3c"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T13:17:41.640307+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D02",
+        "title": "制度文件D02",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "研发部门；差旅费用",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D02-S1",
+            "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 1,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 0
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D02-S1\", \"text\": \"研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。\"}]}, \"summary\": \"已读取文档原文\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 1, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 0}}",
+          "id": "886ca778f38c406ea7c1de99a5b8292c",
+          "created_at": "2026-11-10T21:17:41.640307",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "1ce3789fa15544349755f754312cba50"
+    }
+  }
+]

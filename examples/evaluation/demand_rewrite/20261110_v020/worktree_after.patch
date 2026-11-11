@@ -1,0 +1,298 @@
+diff --git a/src/enterprise_qa_agent/agent.py b/src/enterprise_qa_agent/agent.py
+index e08db21..7d97508 100644
+--- a/src/enterprise_qa_agent/agent.py
++++ b/src/enterprise_qa_agent/agent.py
+@@ -21,6 +21,16 @@ SYSTEM_PROMPT = """你是企业制度问答助手。必须遵守以下规则：
+ 9. 检索已有相关条款时优先读取候选原文。单份相关原文足以支持问题且未发现矛盾时，可据此回答并说明证据范围，无须反复搜索假设存在的其他规定。不要根据标题中的演示标签推断制度冲突。
+ """
+ 
++DEMAND_REWRITE_PROMPT = """
++证据覆盖策略（启用时替代上面第9条的简单问题处理顺序）：
++开始先识别本轮用户真正询问的独立信息需求（如期限、材料、条件、流程、适用范围），并保留上下文中的部门、事项和费用类型限制。
++每次工具调用的coverage参数填写公开覆盖表：needs为需求列表，covered为已有证据支持的需求及doc_id/section_id，missing为仍无依据的需求。它是你对已见证据的公开判断，不是内部思维过程。首次调用尚无证据时covered为空。
++观察工具返回后逐项更新覆盖表。覆盖一个需求不能代替覆盖其他需求。若尚有缺口，只针对缺失需求生成聚焦查询，必要时从该业务角度尝试不同表达；保留用户限制，不反复检索已覆盖的部分，也不要扩展用户未询问的细则。
++已有充分原文片段支持全部简单需求时，直接回答并引用，不机械读取全文或追查假设的其他规定。资料冲突时仍遵守原来的范围和优先级核验规则。
++工具返回的retrieval_statistics仅是程序统计，不等于语义证据充分。若一次聚焦改写后仍无新增且缺口未恢复，停止并明确区分可答部分与缺口。工具失败不代表制度不存在。
++全部已询问需求有据时结束。最终回答附一句简短公开覆盖说明（已支持的需求及引用、仍缺失的需求）；没有资料的部分不能补齐。不得批量隐藏查询，每次search_docs仅执行一个query。
++"""
++
+ 
+ class RunRecorder:
+     def __init__(self, max_tool_calls: int):
+@@ -31,11 +41,16 @@ class RunRecorder:
+         self.step = 0
+         self.limit_reached = False
+         self.events: list[dict[str, Any]] = []
++        self.demand_rewrite = False
++        self.seen_evidence = set()
++        self.seen_queries = set()
+ 
+     def start_turn(self, question: str) -> int:
+         self.turn += 1
+         self.turn_tool_calls = 0
+         self.limit_reached = False
++        self.seen_evidence = set()
++        self.seen_queries = set()
+         self.events.append({"type": "user_message", "turn": self.turn, "content": question})
+         return len(self.events)
+ 
+@@ -88,6 +103,23 @@ class RunRecorder:
+         if observation is not None:
+             self.events[-1]["observation"] = observation
+ 
++    def coverage_note(self, coverage):
++        if self.demand_rewrite:
++            self.events.append({"type": "coverage_report", "turn": self.turn,
++                                "step": self.step, "source": "model_tool_argument",
++                                "report": coverage or {}, "validated_semantically": False})
++
++    def retrieval_statistics(self, results, query=None):
++        keys = {(r["doc_id"], r["section_id"], r["text"]) for r in results}
++        new = keys - self.seen_evidence
++        repeated = query in self.seen_queries if query is not None else False
++        self.seen_evidence.update(keys)
++        if query is not None:
++            self.seen_queries.add(query)
++        return {"source": "program_observed_evidence", "new_evidence_count": len(new),
++                "seen_evidence_count": len(self.seen_evidence), "exact_query_repeated": repeated,
++                "underlying_queries_this_call": 1 if query is not None else 0}
++
+     def finish_turn(self, event_start: int, answer: str) -> None:
+         """Add observable action transitions without storing private model reasoning."""
+         turn_events = self.events[event_start:]
+@@ -144,46 +176,57 @@ def build_agent(
+     if not api_key or not model_name:
+         raise RuntimeError("真实模式需要在 .env 配置 OPENAI_API_KEY 和 OPENAI_MODEL")
+ 
+-    def search_docs(query: str, decision_reason: str, limit: int = 5):
++    def search_docs(query: str, decision_reason: str, limit: int = 5, coverage: dict | None = None):
+         """检索企业制度片段。适用于需要定位制度、FAQ 或规则依据的问题。
+ 
+         Args:
+             query (str): 检索词或改写后的查询语句。
+             decision_reason (str): 对用户公开的一句动作理由，不含内部思维过程。
+             limit (int): 返回片段数量，范围 1 到 10。
++            coverage (dict): 公开覆盖表，含needs、covered及证据引用、missing；首次无证据时covered为空。
+         """
+         args = {"query": query, "limit": limit}
+         if not recorder.begin_tool("search_docs", args, decision_reason):
+             return _tool_response({"error": "tool_call_limit_reached", "results": []})
+         try:
++            recorder.coverage_note(coverage)
+             if simulate_failure == "search_docs":
+                 raise RuntimeError("simulated search failure for evaluation")
+             results = corpus.search(query, limit)
+             summary = f"返回 {len(results)} 条资料" if results else "没有检索到匹配资料"
+-            recorder.finish_tool("search_docs", summary, {"results": results})
+-            return _tool_response({"results": results, "summary": summary})
++            payload = {"results": results, "summary": summary}
++            if recorder.demand_rewrite:
++                payload["retrieval_statistics"] = recorder.retrieval_statistics(results, query)
++            recorder.finish_tool("search_docs", summary, payload)
++            return _tool_response(payload)
+         except Exception as exc:  # tool errors become observations for the model
+             summary = f"检索工具失败：{type(exc).__name__}: {exc}"
+             recorder.finish_tool("search_docs", summary, {"error": summary})
+             return _tool_response({"error": summary, "results": []})
+ 
+-    def read_doc(doc_id: str, decision_reason: str):
++    def read_doc(doc_id: str, decision_reason: str, coverage: dict | None = None):
+         """读取完整制度原文，核实检索片段、版本或适用范围。
+ 
+         Args:
+             doc_id (str): 资料的文档 ID，例如 D01。
+             decision_reason (str): 对用户公开的一句动作理由，不含内部思维过程。
++            coverage (dict): 公开覆盖表，含needs、covered、missing及已有证据引用。
+         """
+         args = {"doc_id": doc_id}
+         if not recorder.begin_tool("read_doc", args, decision_reason):
+             return _tool_response({"error": "tool_call_limit_reached"})
+         try:
++            recorder.coverage_note(coverage)
+             if simulate_failure == "read_doc":
+                 raise RuntimeError("simulated document read failure for evaluation")
+             doc = corpus.read(doc_id)
+             summary = "已读取文档原文" if doc else f"文档不存在：{doc_id}"
+-            recorder.finish_tool("read_doc", summary, {"document": doc})
+-            return _tool_response({"document": doc, "summary": summary})
++            payload = {"document": doc, "summary": summary}
++            if recorder.demand_rewrite:
++                payload["retrieval_statistics"] = recorder.retrieval_statistics(
++                    [{"doc_id": doc["doc_id"], **s} for s in doc["sections"]] if doc else [])
++            recorder.finish_tool("read_doc", summary, payload)
++            return _tool_response(payload)
+         except Exception as exc:
+             summary = f"读取工具失败：{type(exc).__name__}: {exc}"
+             recorder.finish_tool("read_doc", summary, {"error": summary})
+@@ -191,9 +234,19 @@ def build_agent(
+ 
+     # The two local read-only tools can run without interactive confirmation.
+     allow = PermissionDecision(behavior=PermissionBehavior.ALLOW, message="Local read-only tool")
++    # Keep original tool schemas intact when coverage rewriting is disabled.
++    if recorder.demand_rewrite:
++        search_tool, read_tool = search_docs, read_doc
++    else:
++        def search_tool(query: str, decision_reason: str, limit: int = 5):
++            return search_docs(query, decision_reason, limit)
++        def read_tool(doc_id: str, decision_reason: str):
++            return read_doc(doc_id, decision_reason)
++        search_tool.__doc__ = search_docs.__doc__.split("            coverage (dict)")[0]
++        read_tool.__doc__ = read_doc.__doc__.split("            coverage (dict)")[0]
+     toolkit = Toolkit(tools=[
+-        FunctionTool(search_docs, is_read_only=True, permission=allow),
+-        FunctionTool(read_doc, is_read_only=True, permission=allow),
++        FunctionTool(search_tool, name="search_docs", is_read_only=True, permission=allow),
++        FunctionTool(read_tool, name="read_doc", is_read_only=True, permission=allow),
+     ])
+ 
+     base_url = os.getenv("OPENAI_BASE_URL", "").strip()
+@@ -206,7 +259,7 @@ def build_agent(
+     max_iters = max(2, recorder.max_tool_calls + 1)
+     return Agent(
+         name="EnterprisePolicyQA",
+-        system_prompt=SYSTEM_PROMPT,
++        system_prompt=SYSTEM_PROMPT + (DEMAND_REWRITE_PROMPT if recorder.demand_rewrite else ""),
+         model=model,
+         toolkit=toolkit,
+         react_config=ReActConfig(max_iters=max_iters),
+diff --git a/src/enterprise_qa_agent/cli.py b/src/enterprise_qa_agent/cli.py
+index 6f06162..116a4e5 100644
+--- a/src/enterprise_qa_agent/cli.py
++++ b/src/enterprise_qa_agent/cli.py
+@@ -83,10 +83,12 @@ async def _run_real(
+     corpus: KnowledgeBase,
+     recorder: RunRecorder,
+     simulate_failure: str | None = None,
++    demand_rewrite: bool = False,
+ ) -> tuple[str, str]:
+     from agentscope.message import UserMsg
+ 
+     event_start = recorder.start_turn(question)
++    recorder.demand_rewrite = demand_rewrite
+     agent = build_agent(corpus, recorder, simulate_failure=simulate_failure)
+     response = await agent.reply(UserMsg(name="user", content=question))
+     text = response.get_text_content() or _content_to_text(response.content)
+@@ -102,9 +104,11 @@ async def _run_interactive(
+     corpus: KnowledgeBase,
+     recorder: RunRecorder,
+     simulate_failure: str | None,
++    demand_rewrite: bool = False,
+ ) -> tuple[str, str, list[dict[str, str]]]:
+     from agentscope.message import UserMsg
+ 
++    recorder.demand_rewrite = demand_rewrite
+     agent = build_agent(corpus, recorder, simulate_failure=simulate_failure)
+     conversation: list[dict[str, str]] = []
+     pending = initial_question
+@@ -149,6 +153,8 @@ def main() -> None:
+     parser = argparse.ArgumentParser(description="企业制度问答 Agent")
+     parser.add_argument("question", nargs="*", help="要查询的制度问题")
+     parser.add_argument("--mock", action="store_true", help="离线流程演示，不代表模型决策")
++    parser.add_argument("--retrieval-mode", choices=["original", "dedup"], default="dedup")
++    parser.add_argument("--demand-rewrite", action="store_true", help="按证据覆盖缺口进行模型自主改写")
+     parser.add_argument("--interactive", action="store_true", help="多轮交互模式；输入 /exit 结束")
+     parser.add_argument(
+         "--follow-up",
+@@ -177,7 +183,7 @@ def main() -> None:
+     max_calls = int(os.getenv("MAX_TOOL_CALLS", "4"))
+     if max_calls < 1:
+         parser.error("MAX_TOOL_CALLS 必须大于 0")
+-    corpus = KnowledgeBase(args.corpus)
++    corpus = KnowledgeBase(args.corpus, deduplicate=args.retrieval_mode == "dedup")
+     recorder = RunRecorder(max_calls)
+     conversation: list[dict[str, str]] | None = None
+ 
+@@ -188,16 +194,17 @@ def main() -> None:
+             recorder.finish_turn(1, answer)
+         elif args.interactive:
+             status, answer, conversation = asyncio.run(
+-                _run_interactive(question, args.follow_up, corpus, recorder, args.simulate_failure)
++                _run_interactive(question, args.follow_up, corpus, recorder, args.simulate_failure, args.demand_rewrite)
+             )
+         else:
+             status, answer = asyncio.run(
+-                _run_real(question, corpus, recorder, args.simulate_failure)
++                _run_real(question, corpus, recorder, args.simulate_failure, args.demand_rewrite)
+             )
+     except Exception as exc:
+         status, answer = "failed", f"运行失败：{type(exc).__name__}: {exc}"
+ 
+     trace = {
++        "experiment_config": {"retrieval_mode": args.retrieval_mode, "demand_rewrite": args.demand_rewrite},
+         "trace_schema_version": 2,
+         "app_version": __version__,
+         "corpus": {
+diff --git a/src/enterprise_qa_agent/knowledge.py b/src/enterprise_qa_agent/knowledge.py
+index 7e6599f..9f7b565 100644
+--- a/src/enterprise_qa_agent/knowledge.py
++++ b/src/enterprise_qa_agent/knowledge.py
+@@ -22,7 +22,8 @@ QUERY_ALIASES = {
+ 
+ 
+ class KnowledgeBase:
+-    def __init__(self, path: str | Path = DEFAULT_CORPUS):
++    def __init__(self, path: str | Path = DEFAULT_CORPUS, deduplicate: bool = True):
++        self.deduplicate = deduplicate
+         self.path = Path(path)
+         self._docs: list[dict[str, Any]] = json.loads(self.path.read_text(encoding="utf-8"))
+ 
+@@ -75,9 +76,59 @@ class KnowledgeBase:
+                             },
+                         )
+                     )
++        if self.deduplicate:
++            hits = self._fold_duplicates(hits)
+         hits.sort(key=lambda item: (-item[0], item[1]["doc_id"], item[1]["section_id"]))
+         return [item[1] for item in hits[: max(1, min(limit, 10))]]
+ 
++    def _fold_duplicates(self, hits):
++        """Fold exact evidence before truncation; never infer authority from votes.
++
++        Equality is deliberately conservative: exact text, scope, version and date.
++        A copied_from edge is verified against a unique actual matching original
++        section. Invalid edges remain separate, including orphaned copies.
++        Representatives are chosen ONLY from candidates passing the existing gate.
++        """
++        sections = [(doc, sec) for doc in self._docs for sec in doc.get("sections", [])]
++        by_key = {(doc["doc_id"], sec["section_id"]): (doc, sec) for doc, sec in sections}
++
++        def signature(doc, sec):
++            return (sec["text"], doc.get("scope"), doc.get("version"), doc.get("effective_from"))
++
++        groups = {}
++        for score, hit in hits:
++            doc, sec = by_key[(hit["doc_id"], hit["section_id"])]
++            sig = signature(doc, sec)
++            origin = doc.get("copied_from")
++            valid_origin = None
++            if origin:
++                matches = [(d, s) for d, s in sections if d["doc_id"] == origin
++                           and not d.get("copied_from") and signature(d, s) == sig]
++                if len(matches) == 1:
++                    valid_origin = (matches[0][0]["doc_id"], matches[0][1]["section_id"])
++            # Unverifiable relationships must not silently collapse into another source.
++            group_key = ("invalid_origin", doc["doc_id"], sec["section_id"]) if origin and not valid_origin else ("content", sig)
++            groups.setdefault(group_key, []).append((score, hit, doc, sec, valid_origin))
++        folded = []
++        for group in groups.values():
++            origin_keys = {item[4] for item in group if item[4]}
++            candidates = [item for item in group if (item[1]["doc_id"], item[1]["section_id"]) in origin_keys]
++            representative = sorted(candidates or group, key=lambda item: (-item[0], item[1]["doc_id"], item[1]["section_id"]))[0]
++            score, hit, _, _, _ = representative
++            hit = dict(hit)
++            if len(group) > 1 or any(item[2].get("copied_from") for item in group):
++                hit["source_info"] = {
++                    "grouping": "exact_content_scope_version_date",
++                    "representative_policy": "verified_original_candidate" if candidates else "highest_score_then_id",
++                    "sources": [{"doc_id": d["doc_id"], "section_id": s["section_id"],
++                                 "declared_copied_from": d.get("copied_from"),
++                                 "verified_original": {"doc_id": v[0], "section_id": v[1]} if v else None,
++                                 "relationship": "verified_copy" if v else "unverified_copy" if d.get("copied_from") else "content_duplicate_only"}
++                                for _, _, d, s, v in group],
++                }
++            folded.append((score, hit))
++        return folded
++
+     def read(self, doc_id: str) -> dict[str, Any] | None:
+         for doc in self._docs:
+             if doc["doc_id"].lower() == doc_id.lower():

@@ -1,0 +1,14 @@
+[
+  {
+    "turn": 1,
+    "finished_reason": "completed",
+    "usage": {
+      "input_tokens": 5761,
+      "output_tokens": 1342,
+      "cache_input_tokens": 4608,
+      "cache_creation_input_tokens": 0
+    },
+    "error": null,
+    "text": "按现有制度，**费用报销应在费用发生后 15 日内提交申请**。\n\n- **文档**：COPY0《制度文件COPY0》\n- **版本**：2026-01\n- **生效日期**：2026-01-01\n- **条款**：COPY0-S1\n- **原文**：“费用报销应在费用发生后15日内提交申请。”\n\n检索到的 COPY1—COPY4 也载有相同条款，未发现相互矛盾。该条款仅明确“提交申请”的期限；若你询问的是审批或款项到账时限，现有资料无法确认。\n\n本次回答依据检索片段及 COPY0 原文；报销期限已有依据，未发现需要进一步核实的冲突。"
+  }
+]

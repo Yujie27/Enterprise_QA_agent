@@ -1,0 +1,14 @@
+[
+  {
+    "turn": 1,
+    "finished_reason": "completed",
+    "usage": {
+      "input_tokens": 3473,
+      "output_tokens": 254,
+      "cache_input_tokens": 2688,
+      "cache_creation_input_tokens": 0
+    },
+    "error": null,
+    "text": "根据目前检索到的制度：\n\n- **报销期限：费用发生后 30 日内提交申请。**\n- **依据**：D01《制度文件D01》，版本 **2026-01**，生效日期 **2026-01-01**，条款 **D01-S1**。\n- **原文**：“费用报销应在费用发生后30日内提交申请。”\n\n说明：该文档未标注适用范围；以上仅为该制度原文规定。本次回答依据检索到的 D01 原文作出。"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "name": "B启动保护恢复",
+  "retrieval_mode": "original",
+  "demand_rewrite": true,
+  "reason": "README transient edit triggered hash guard before model calls; original launcher failures retained",
+  "replaces_model_outcome": false
+}

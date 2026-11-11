@@ -1,0 +1,46 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T12:49:59.229055+00:00",
+    "payload_passed_to_original_tool_response": {
+      "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+      "results": []
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"error\": \"检索工具失败：RuntimeError: simulated search failure for evaluation\", \"results\": []}",
+          "id": "7a8c841e50ba4c9fa309855ae31708d1",
+          "created_at": "2026-11-10T20:49:59.229055",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "ba7ef4b9f7c0454db4064403da78bbd9"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T12:50:00.852830+00:00",
+    "payload_passed_to_original_tool_response": {
+      "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+      "results": []
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"error\": \"检索工具失败：RuntimeError: simulated search failure for evaluation\", \"results\": []}",
+          "id": "44c096036e5242ad80e3f85fdd7c8b10",
+          "created_at": "2026-11-10T20:50:00.852830",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "0bdf97be43804ab19783ced23281e8a6"
+    }
+  }
+]

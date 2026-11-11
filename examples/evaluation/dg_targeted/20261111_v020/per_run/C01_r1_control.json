@@ -1,0 +1,162 @@
+{
+  "run_id": "C01_r1_control",
+  "case_id": "C01",
+  "repeat": 1,
+  "batch": "alternating",
+  "threshold": "control",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/conflict.json",
+  "corpus_sha256": "26d2059e88b8a3b446c6d25ab96df3a0e1d80e0e526e0dc327883c40c4d22bcf",
+  "trace": "examples/evaluation/dg_targeted/20261111_v020/trials/sessions/C01_r1_control/traces/20261111_124903_525507.json",
+  "status": "completed",
+  "answer": "**无法确定单一报销期限，存在冲突条款。**\n\n两份制度均为 2026-01 版、2026-01-01 生效，适用范围均未提供，且未给出优先级或替代关系，因此不能仅凭版本、日期或编号选择其一。\n\n| 文档 | 版本 | 生效日期 | 原文 |\n|---|---|---|---|\n| D01 | 2026-01 | 2026-01-01 | 「费用报销应在费用发生后30日内提交申请。」（D01-S1） |\n| D02 | 2026-01 | 2026-01-01 | 「费用报销应在费用发生后15日内提交申请。」（D02-S1） |\n\n因此，同一报销事项可能适用 30 日或 15 日，需请您确认适用哪份制度，或提供两者的优先级依据（如是否分别适用于不同费用类型、主体或地区）。\n\n依据检索与原文核对结果作答；因同范围规则矛盾且无优先级，未作单一结论。",
+  "tool_calls": 3,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 报销时限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要检索报销期限的制度依据。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.4
+          },
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D02-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.4
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "候选规则期限冲突，需要读取原文确认适用范围。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      },
+      "public_decision_reason": "候选规则期限冲突，需要读取原文确认适用范围。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D02-S1",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "D02/D02-S1"
+      ]
+    }
+  ],
+  "required": [
+    "D01/D01-S1",
+    "D02/D02-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "D02/D02-S1": 1,
+    "D01/D01-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "question_response_complete": true,
+    "citations_support_conclusions": true,
+    "unsupported_meaning": [
+      "因同范围规则矛盾且无优先级"
+    ],
+    "process_errors": [],
+    "wording_risks": [],
+    "business_verdict": "fail",
+    "reason": "双方可见并读取，主结论并列冲突追问正确，末句“同范围规则矛盾”把范围未知说成同范围，属于适用性判断扩张。"
+  },
+  "prompt_mode": "control",
+  "coverage_complete_at_step": 1,
+  "post_coverage_authorized_tools": 2,
+  "no_new_searches": 0,
+  "c11_post_sufficient_searches": null,
+  "correct_terminal": true
+}

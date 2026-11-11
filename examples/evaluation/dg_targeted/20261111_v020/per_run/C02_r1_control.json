@@ -1,0 +1,112 @@
+{
+  "run_id": "C02_r1_control",
+  "case_id": "C02",
+  "repeat": 1,
+  "batch": "alternating",
+  "threshold": "control",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace": "examples/evaluation/dg_targeted/20261111_v020/trials/sessions/C02_r1_control/traces/20261111_124948_170175.json",
+  "status": "completed",
+  "answer": "根据现有制度资料，**费用报销应在费用发生后 30 日内提交申请**。\n\n- **依据文档**：D01《制度文件D01》\n- **版本**：2026-01\n- **生效日期**：2026-01-01\n- **原文片段**（D01-S1）：“费用报销应在费用发生后30日内提交申请。”\n\n说明：本次回答是根据检索到的候选条款，并读取该制度原文后得出的；该文档未提供具体适用范围，因此上述结论仅以现有资料为限。",
+  "tool_calls": 2,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 费用报销 提交时间要求",
+        "limit": 5
+      },
+      "public_decision_reason": "需要先定位与报销提交期限直接相关的制度条款。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.5
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "已找到报销期限候选条款，需要读取原文核实适用范围及是否存在例外。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    }
+  ],
+  "required": [
+    "D01/D01-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "D01/D01-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "question_response_complete": true,
+    "citations_support_conclusions": true,
+    "unsupported_meaning": [],
+    "process_errors": [],
+    "wording_risks": [],
+    "business_verdict": "pass",
+    "reason": "唯一D01有据回答30日，正常单证据回答。"
+  },
+  "prompt_mode": "control",
+  "coverage_complete_at_step": 1,
+  "post_coverage_authorized_tools": 1,
+  "no_new_searches": 0,
+  "c11_post_sufficient_searches": null,
+  "correct_terminal": true
+}

@@ -1,0 +1,51 @@
+{
+  "run_id": "DEV02_r1",
+  "case_id": "DEV02",
+  "repeat": 1,
+  "execution": "attempted",
+  "started_at_utc": "2026-11-10T13:19:00.009175+00:00",
+  "finished_at_utc": "2026-11-10T13:19:09.033180+00:00",
+  "elapsed_seconds": 8.850531000003684,
+  "uncaught_error": null,
+  "cli_args": [
+    "enterprise-qa",
+    "--corpus",
+    "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\demand_rewrite\\20261110_v020\\DEV02.json",
+    "--trace-dir",
+    "examples\\evaluation\\demand_rewrite\\20261110_v020\\dev_combo\\sessions\\DEV02_r1\\traces",
+    "图书借阅需要满足什么条件，如何办理？",
+    "--retrieval-mode",
+    "dedup",
+    "--demand-rewrite"
+  ],
+  "model_config": {
+    "model": "deepseek-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "endpoint_path": "/v1",
+    "api_key_configured": true,
+    "stream": false,
+    "parameters": {
+      "max_tokens": null,
+      "thinking_enable": false,
+      "reasoning_effort": null,
+      "temperature": null,
+      "top_p": null,
+      "parallel_tool_calls": false,
+      "voice": null
+    },
+    "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+    "tool_budget_per_turn": 4,
+    "configured_budget_before_runner": "4",
+    "react_max_iters": 5,
+    "model_max_retries_default": 3,
+    "model_retry_delay_default": 1.0,
+    "versions": {
+      "agentscope": "2.0.11",
+      "openai": "3.46.0",
+      "python-dotenv": "1.2.4",
+      "enterprise-qa-agent-minimal": "0.2.0"
+    }
+  },
+  "corpus_sha256": "ce16c3eb45fea0cf4a386df4f9ed78cf3f6f150cdb6b5453060bda71561f3883",
+  "tool_return_count": 2
+}

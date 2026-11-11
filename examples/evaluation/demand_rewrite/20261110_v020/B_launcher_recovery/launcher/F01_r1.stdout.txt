@@ -1,0 +1,9 @@
+状态：tool_error
+无法确认报销期限。
+
+检索工具连续两次报错，错误信息为：“检索工具失败：RuntimeError: simulated search failure for evaluation”。因此，我既没有取得任何制度片段或文档 ID，也无法核验版本、生效日期和原文。
+
+请您稍后重试，或直接提供相关制度文档的编号或正文；在取得可核验的原文前，我不能对报销期限给出结论。
+
+本次覆盖情况：需求“报销期限”仍缺依据，没有可引用文档。
+Trace：examples\evaluation\demand_rewrite\20261110_v020\B_launcher_recovery\sessions\F01_r1\traces\20261110_211536_392067.json

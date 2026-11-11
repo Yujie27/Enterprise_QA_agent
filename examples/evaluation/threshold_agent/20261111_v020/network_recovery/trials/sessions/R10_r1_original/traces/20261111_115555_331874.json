@@ -1,0 +1,129 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": false,
+    "match_threshold": "original"
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "scoped.json",
+    "sha256": "b20613e6e68529f6b9439b499589073e66ceaa541a84fdd754e70788e8a1de11"
+  },
+  "timestamp_utc": "2026-11-11T03:55:55.330836+00:00",
+  "mode": "agentscope_react",
+  "question": "不要查年假，我只问研发部门差旅报销期限。",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 2,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "不要查年假，我只问研发部门差旅报销期限。"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "研发部门 差旅报销期限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位研发部门差旅费用报销期限的制度依据。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "section_id": "D02-S1",
+            "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。",
+            "score": 0.75
+          },
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工；非差旅普通费用",
+            "section_id": "D01-S1",
+            "text": "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。",
+            "score": 0.375
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D02"
+        },
+        "executed": true,
+        "public_decision_reason": "检索到的候选条款直接适用于研发部门差旅费用，需要读取原文核实版本、生效日期和完整表述。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      },
+      "public_decision_reason": "检索到的候选条款直接适用于研发部门差旅费用，需要读取原文核实版本、生效日期和完整表述。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "研发部门；差旅费用",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D02-S1",
+              "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "研发部门差旅报销期限为：**返程后 15 日内提交报销申请**。\n\n依据：\n- **文档 ID：** D02《制度文件D02》\n- **版本：** 2026-01\n- **生效日期：** 2026-01-01\n- **适用范围：** 研发部门；差旅费用\n- **原文片段：** “研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。”\n\n这里的期限按“提交报销申请”的时间计算。D02 的原文已经明确覆盖研发部门差旅费用，我没有发现同一适用范围下存在冲突条款，因此停止检索。"
+    }
+  ],
+  "answer": "研发部门差旅报销期限为：**返程后 15 日内提交报销申请**。\n\n依据：\n- **文档 ID：** D02《制度文件D02》\n- **版本：** 2026-01\n- **生效日期：** 2026-01-01\n- **适用范围：** 研发部门；差旅费用\n- **原文片段：** “研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。”\n\n这里的期限按“提交报销申请”的时间计算。D02 的原文已经明确覆盖研发部门差旅费用，我没有发现同一适用范围下存在冲突条款，因此停止检索。"
+}

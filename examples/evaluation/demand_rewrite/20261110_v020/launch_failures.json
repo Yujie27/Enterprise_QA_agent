@@ -1,0 +1,26 @@
+[
+  {
+    "folder": "B",
+    "run_id": "C13_r1",
+    "stage": "launcher_before_model",
+    "trace": null
+  },
+  {
+    "folder": "B",
+    "run_id": "M01_r1",
+    "stage": "launcher_before_model",
+    "trace": null
+  },
+  {
+    "folder": "B",
+    "run_id": "E03_r1",
+    "stage": "launcher_before_model",
+    "trace": null
+  },
+  {
+    "folder": "B",
+    "run_id": "F01_r1",
+    "stage": "launcher_before_model",
+    "trace": null
+  }
+]

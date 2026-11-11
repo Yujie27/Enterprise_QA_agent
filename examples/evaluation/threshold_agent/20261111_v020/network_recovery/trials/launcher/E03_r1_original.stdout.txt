@@ -1,0 +1,12 @@
+状态：insufficient_evidence
+我无法确认。我按“30日 工作日 自然日”和“期限 计算 工作日 自然日”两次检索，均未找到匹配的制度资料。已连续两次检索无结果，因此停止检索，不能凭常识推断。
+
+请补充说明你问的是哪个场景的“30日”，例如：
+
+- 请假或年假的提交、审批时限；
+- 报销、付款或合同履约期限；
+- 申诉、复核、异议提出的期限；
+- 通知送达或材料补正的期限。
+
+提供具体业务事项或制度名称后，我可以再定位对应条款，并核对原文中的期限计算口径。本次回答仅说明资料不足，未引用任何制度条款。
+Trace：C:\Users\ZONST\Desktop\Enterprise_QA_agent\examples\evaluation\threshold_agent\20261111_v020\network_recovery\trials\sessions\E03_r1_original\traces\20261111_115711_346999.json

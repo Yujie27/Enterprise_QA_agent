@@ -1,0 +1,146 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T13:17:20.136645+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.3
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 1,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.3}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 1, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "a1a252dc3fb04999ae27b2c5444912cf",
+          "created_at": "2026-11-10T21:17:20.136645",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "c1895397c5ba4dc3b0a691e9a4c8cadc"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T13:17:22.548317+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 0
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}]}, \"summary\": \"已读取文档原文\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 0}}",
+          "id": "6fbf993df9b142f89d3ac8308c8e3458",
+          "created_at": "2026-11-10T21:17:22.548317",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "c52d5f3b238a45728bdcb4add3fa689d"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-10T13:17:22.553013+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [],
+      "summary": "没有检索到匹配资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [], \"summary\": \"没有检索到匹配资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "7a11c9044c1e40b8b7be704ca1d8642e",
+          "created_at": "2026-11-10T21:17:22.553013",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "2c11959a65a54d949f13d0a510e6a99b"
+    }
+  },
+  {
+    "index": 4,
+    "timestamp_utc": "2026-11-10T13:17:24.251029+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [],
+      "summary": "没有检索到匹配资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [], \"summary\": \"没有检索到匹配资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "abe90d19a1d04e82adb9ed29a7e93fe3",
+          "created_at": "2026-11-10T21:17:24.251029",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "53206726d8df4adfaed869b0bba3f836"
+    }
+  }
+]

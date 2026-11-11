@@ -1,0 +1,9 @@
+[
+  {
+    "folder": "pilot_C11",
+    "field": "user_turn_count",
+    "frozen_value": 1,
+    "actual_planned_turns": 3,
+    "reason": "子集计划生成器统计了唯一case的轮数，未乘重复次数；保留原清单，补充本勘误。不涉及模型/预算/语料。"
+  }
+]

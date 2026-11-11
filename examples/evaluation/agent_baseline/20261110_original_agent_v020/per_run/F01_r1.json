@@ -1,0 +1,182 @@
+{
+  "run_id": "F01_r1",
+  "case_id": "F01",
+  "repeat": 1,
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace_path": "examples/evaluation/agent_baseline/20261110_original_agent_v020/sessions/F01_r1/traces/20261110_201634_070272.json",
+  "trace_sha256": "9d9560c27c9efaad782a3de949f22432c295cf87d297a7b55ff7660ca4e261a1",
+  "execution": {
+    "run_id": "F01_r1",
+    "case_id": "F01",
+    "repeat": 1,
+    "execution": "attempted",
+    "started_at_utc": "2026-11-10T12:16:30.090802+00:00",
+    "finished_at_utc": "2026-11-10T12:16:34.071775+00:00",
+    "elapsed_seconds": 3.754530199999863,
+    "uncaught_error": null,
+    "cli_args": [
+      "enterprise-qa",
+      "--corpus",
+      "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\retrieval_baseline\\20261110_raw_query_v020\\input\\qa_boundary_test_design\\corpora\\single.json",
+      "--trace-dir",
+      "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\agent_baseline\\20261110_original_agent_v020\\sessions\\F01_r1\\traces",
+      "--simulate-failure",
+      "search_docs",
+      "报销期限多久？"
+    ],
+    "model_config": {
+      "model": "deepseek-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "endpoint_path": "/v1",
+      "api_key_configured": true,
+      "stream": false,
+      "parameters": {
+        "max_tokens": null,
+        "thinking_enable": false,
+        "reasoning_effort": null,
+        "temperature": null,
+        "top_p": null,
+        "parallel_tool_calls": false,
+        "voice": null
+      },
+      "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+      "tool_budget_per_turn": 4,
+      "configured_budget_before_runner": "4",
+      "react_max_iters": 5,
+      "model_max_retries_default": 3,
+      "model_retry_delay_default": 1.0,
+      "versions": {
+        "agentscope": "2.0.11",
+        "openai": "3.46.0",
+        "python-dotenv": "1.2.4",
+        "enterprise-qa-agent-minimal": "0.2.0"
+      }
+    },
+    "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+    "tool_return_count": 2
+  },
+  "launcher": {
+    "run_id": "F01_r1",
+    "started_at_utc": "2026-11-10T12:16:27.986584+00:00",
+    "finished_at_utc": "2026-11-10T12:16:34.332429+00:00",
+    "returncode": 0,
+    "watchdog_timeout": false
+  },
+  "execution_status": "tool_error",
+  "model_reply_metadata": [
+    {
+      "turn": 1,
+      "finished_reason": "completed",
+      "usage": {
+        "input_tokens": 2142,
+        "output_tokens": 340,
+        "cache_input_tokens": 1536,
+        "cache_creation_input_tokens": 0
+      },
+      "error": null,
+      "text": "无法确认报销期限。\n\n**原因**：我使用两组查询（“报销期限”“费用报销 提交时间 规定”）检索制度库，均返回同一类工具故障，错误信息为 `RuntimeError: simulated search failure for evaluation`，没有得到任何制度片段。由于检索工具连续失败，我按规则停止继续重试，也无法读取原文核对版本、生效日期和适用范围。\n\n**结论**：目前没有可引用的文档 ID、版本、生效日期或原文片段，因此不能给出报销期限的具体天数；任何具体期限都会是无依据的猜测。\n\n**建议**：\n- 请稍后重试，或由我重新检索；\n- 如方便，请提供制度名称或文档 ID，我可直接读取原文答复；\n- 也可向财务部门确认现行报销制度的提交时限。\n\n说明：本次是基于工具返回的空结果与故障信息停止检索，并非依据制度条款作出的结论。"
+    }
+  ],
+  "tool_calls": 2,
+  "tool_steps": [
+    {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "executed": true,
+      "arguments": {
+        "query": "报销期限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位报销期限的制度依据",
+      "full_tool_return": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+        "results": []
+      },
+      "returned_response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"error\": \"检索工具失败：RuntimeError: simulated search failure for evaluation\", \"results\": []}",
+            "id": "5207dd1f07eb45f5b321ad4b12d1f2c3",
+            "created_at": "2026-11-10T20:16:31.902259",
+            "finished_at": null
+          }
+        ],
+        "state": "success",
+        "metadata": {},
+        "id": "a8fa8a805ab340509e5e4b9f92bf9a5d"
+      },
+      "visible_keys": [],
+      "error": "检索工具失败：RuntimeError: simulated search failure for evaluation"
+    },
+    {
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "executed": true,
+      "arguments": {
+        "query": "费用报销 提交时间 规定",
+        "limit": 5
+      },
+      "public_decision_reason": "补充检索报销提交时限的相关条款",
+      "full_tool_return": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+        "results": []
+      },
+      "returned_response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"error\": \"检索工具失败：RuntimeError: simulated search failure for evaluation\", \"results\": []}",
+            "id": "b6193033980e44fb90675e0a61d76113",
+            "created_at": "2026-11-10T20:16:31.904388",
+            "finished_at": null
+          }
+        ],
+        "state": "success",
+        "metadata": {},
+        "id": "4e2021a34f6043ce8f8c8fe138853726"
+      },
+      "visible_keys": [],
+      "error": "检索工具失败：RuntimeError: simulated search failure for evaluation"
+    }
+  ],
+  "actually_visible_evidence": {},
+  "necessary_evidence_keys": [],
+  "missing_necessary_evidence": [],
+  "baseline_raw_query_k5_necessary_hit": null,
+  "first_agent_search_necessary_hit": [],
+  "first_agent_search_complete": null,
+  "all_visible_complete": null,
+  "recovered_vs_raw_query_k5": null,
+  "recovered_after_agent_first_search": null,
+  "budget_rejected_requests": [],
+  "final_answer": "无法确认报销期限。\n\n**原因**：我使用两组查询（“报销期限”“费用报销 提交时间 规定”）检索制度库，均返回同一类工具故障，错误信息为 `RuntimeError: simulated search failure for evaluation`，没有得到任何制度片段。由于检索工具连续失败，我按规则停止继续重试，也无法读取原文核对版本、生效日期和适用范围。\n\n**结论**：目前没有可引用的文档 ID、版本、生效日期或原文片段，因此不能给出报销期限的具体天数；任何具体期限都会是无依据的猜测。\n\n**建议**：\n- 请稍后重试，或由我重新检索；\n- 如方便，请提供制度名称或文档 ID，我可直接读取原文答复；\n- 也可向财务部门确认现行报销制度的提交时限。\n\n说明：本次是基于工具返回的空结果与故障信息停止检索，并非依据制度条款作出的结论。",
+  "conversation": null,
+  "mentioned_ids_not_automatically_claim_citations": [],
+  "quote_spans_for_manual_check": [
+    "报销期限",
+    "费用报销 提交时间 规定"
+  ],
+  "manual_review": {
+    "run_id": "F01_r1",
+    "strict_pass": true,
+    "business_status": "工具失败，期限未核实",
+    "main_conclusion_correct": true,
+    "labels": [],
+    "citations": [],
+    "material_gaps": [
+      "因工具错误未取得任何制度证据"
+    ],
+    "unsupported_claims": [],
+    "reason": "两次search均返回原生故障注入错误，路径已触发；停止并明确未取得证据，未把制度不存在当作结论，未引用整个single语料中实际未见的D01。执行状态tool_error是预期故障，不算工程崩溃。"
+  }
+}

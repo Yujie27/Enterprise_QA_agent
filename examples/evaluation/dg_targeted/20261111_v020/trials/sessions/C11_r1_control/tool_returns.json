@@ -1,0 +1,123 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-11T04:48:00.502326+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.333
+        },
+        {
+          "doc_id": "D04",
+          "title": "制度文件D04",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D04-S1",
+          "text": "费用报销申请须附合规票据。",
+          "score": 0.167
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.333}, {\"doc_id\": \"D04\", \"title\": \"制度文件D04\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D04-S1\", \"text\": \"费用报销申请须附合规票据。\", \"score\": 0.167}], \"summary\": \"返回 2 条资料\"}",
+          "id": "ab75767c28e34b24958917dc1944564d",
+          "created_at": "2026-11-11T12:48:00.502326",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "9b7f3fe055d0484cac308c445955f545"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-11T04:48:01.943499+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "a6072d8e7e044436b9188ccc9c996f8b",
+          "created_at": "2026-11-11T12:48:01.943499",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "31ee7915634e410fb34df603a675c6f8"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-11T04:48:01.944501+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D04",
+        "title": "制度文件D04",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "票据",
+          "申请"
+        ],
+        "sections": [
+          {
+            "section_id": "D04-S1",
+            "text": "费用报销申请须附合规票据。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D04\", \"title\": \"制度文件D04\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"票据\", \"申请\"], \"sections\": [{\"section_id\": \"D04-S1\", \"text\": \"费用报销申请须附合规票据。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "7f1927f866024900aa45c01fb298577c",
+          "created_at": "2026-11-11T12:48:01.944501",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "9b0e087942e34a76b27fc0b6be67f32b"
+    }
+  }
+]

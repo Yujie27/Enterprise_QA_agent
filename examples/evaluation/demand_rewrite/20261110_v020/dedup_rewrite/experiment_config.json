@@ -1,0 +1,5 @@
+{
+  "name": "去重＋按需改写",
+  "retrieval_mode": "dedup",
+  "demand_rewrite": true
+}

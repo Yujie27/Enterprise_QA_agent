@@ -1,0 +1,82 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T13:16:53.870519+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。",
+          "score": 0.833
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 1,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。\", \"score\": 0.833}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 1, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "6907d726db2b480aacc49ae7b72aca5c",
+          "created_at": "2026-11-10T21:16:53.870519",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "f889b85dda7649b9bb416123e69e0a96"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T13:16:55.431389+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。",
+          "score": 0.75
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"普通费用报销期限为费用发生后30日。育儿补贴不适用此报销制度；本文件不规定育儿补贴申请入口、材料和期限。\", \"score\": 0.75}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "d96fea9a4a414b6d82dfcfa4882c56ae",
+          "created_at": "2026-11-10T21:16:55.431389",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "0830c37848ee46de8ae758d0f60b9452"
+    }
+  }
+]

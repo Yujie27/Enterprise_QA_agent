@@ -1,0 +1,167 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T13:19:03.589104+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "DEV01-1",
+          "title": "内部服务说明",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工",
+          "section_id": "DEV01-1-S1",
+          "text": "培训报名须在开课前10日完成。",
+          "score": 0.25
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 1,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"DEV01-1\", \"title\": \"内部服务说明\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工\", \"section_id\": \"DEV01-1-S1\", \"text\": \"培训报名须在开课前10日完成。\", \"score\": 0.25}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 1, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "50a96555ab2e4e8b8067c44b47c2b6bb",
+          "created_at": "2026-11-10T21:19:03.589104",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "25720ad40b5d4caeb2b922984648d713"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T13:19:03.592338+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "DEV01-1",
+          "title": "内部服务说明",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工",
+          "section_id": "DEV01-1-S1",
+          "text": "培训报名须在开课前10日完成。",
+          "score": 0.25
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"DEV01-1\", \"title\": \"内部服务说明\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工\", \"section_id\": \"DEV01-1-S1\", \"text\": \"培训报名须在开课前10日完成。\", \"score\": 0.25}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "ca73e9482ea04c499d1f428e6e710b83",
+          "created_at": "2026-11-10T21:19:03.592338",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "6d88b4168c10464c85186214976612dd"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-10T13:19:05.328959+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "DEV01-1",
+        "title": "内部服务说明",
+        "scope": "全体员工",
+        "version": "1",
+        "effective_from": "2026-01-01",
+        "tags": [
+          "培训",
+          "报名"
+        ],
+        "sections": [
+          {
+            "section_id": "DEV01-1-S1",
+            "text": "培训报名须在开课前10日完成。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 0
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"DEV01-1\", \"title\": \"内部服务说明\", \"scope\": \"全体员工\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"tags\": [\"培训\", \"报名\"], \"sections\": [{\"section_id\": \"DEV01-1-S1\", \"text\": \"培训报名须在开课前10日完成。\"}]}, \"summary\": \"已读取文档原文\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 0}}",
+          "id": "50d4feb60ccc4af9a348d4fc9b84913e",
+          "created_at": "2026-11-10T21:19:05.328959",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "375ac2662b1c4ff5af2c4e92b42faafd"
+    }
+  },
+  {
+    "index": 4,
+    "timestamp_utc": "2026-11-10T13:19:07.364556+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "DEV01-1",
+          "title": "内部服务说明",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工",
+          "section_id": "DEV01-1-S1",
+          "text": "培训报名须在开课前10日完成。",
+          "score": 0.3
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"DEV01-1\", \"title\": \"内部服务说明\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工\", \"section_id\": \"DEV01-1-S1\", \"text\": \"培训报名须在开课前10日完成。\", \"score\": 0.3}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "2e8a7cdd63c94ac09ef86542e817fbd5",
+          "created_at": "2026-11-10T21:19:07.364556",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "974292772e9844dcb7e9a6801f79fe12"
+    }
+  }
+]

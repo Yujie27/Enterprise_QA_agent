@@ -1,0 +1,6 @@
+{
+  "name": "B重点先测",
+  "retrieval_mode": "original",
+  "demand_rewrite": true,
+  "excluded_from_frozen_denominators": true
+}

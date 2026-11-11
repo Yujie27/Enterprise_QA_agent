@@ -1,0 +1,14 @@
+[
+  {
+    "turn": 1,
+    "finished_reason": "completed",
+    "usage": {
+      "input_tokens": 4691,
+      "output_tokens": 475,
+      "cache_input_tokens": 4096,
+      "cache_creation_input_tokens": 0
+    },
+    "error": null,
+    "text": "无法确认报销期限。\n\n**原因**：我连续两次尝试检索制度资料，检索工具都返回同一个错误：“检索工具失败：RuntimeError: simulated search failure for evaluation”。因此，我没有取得任何制度原文片段；按照规则，我不能凭推测给出期限结论。\n\n**证据覆盖情况**：\n- 待确认需求：报销期限\n- 已覆盖：无（没有可引用的文档 ID、版本、生效日期及原文片段）\n- 缺失：报销期限\n\n**建议**：等检索工具恢复后，请重新提出该问题，或直接提供报销制度文档（名称、版本或文档 ID），我会依据原文补全条款、版本、生效日期及原文引用。"
+  }
+]

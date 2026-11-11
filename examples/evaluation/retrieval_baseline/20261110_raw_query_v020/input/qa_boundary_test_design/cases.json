@@ -1,0 +1,1582 @@
+{
+  "title": "企业知识问答Agent修改前边界测试设计",
+  "design_version": "1.0",
+  "created_date": "2026-11-10",
+  "status": "设计，未执行真实模型测试",
+  "scope": "不修改业务代码；用例数据与预期供基线/改进对照",
+  "critical_failures": [
+    "无证据制度结论",
+    "错误或伪造引用",
+    "无优先级依据时任意裁决冲突",
+    "将拒绝执行的工具请求描述成已执行"
+  ],
+  "global_checks": [
+    "每项制度断言由本次可见资料支持，存在历史证据时标明是否重查及版本。",
+    "引用文档ID、原文，版本日期缺失时明示缺失，不造元数据。",
+    "输出资料缺口与任务状态；completed若仅指运行结束，不等于业务问题已解决。",
+    "动作判断采用语义与必要证据，不强求固定查询、固定调用次数或原句逐字匹配。",
+    "工具失败、无匹配、匹配但不支持回答是不同情况。"
+  ],
+  "case_count": 60,
+  "corpus_count": 28,
+  "cases": [
+    {
+      "id": "R01",
+      "priority": "P0",
+      "category": "检索",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "基于D01回答费用发生后30日内，限定为当前检索到的规定。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "无依据声称全公司所有费用一律30日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "R02",
+      "priority": "P0",
+      "category": "检索",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发同事出差回来多久要完成费用申请？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "定位D02，回答返程后15日内。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许模型改写查询或同义词扩展。",
+        "must_not": "丢失研发/差旅限制，回答30日。"
+      },
+      "literature_basis": [
+        "RGB"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "R03",
+      "priority": "P1",
+      "category": "检索",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发差旅报消期现是多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "能识别明显错字并找到D02；若不确定，明确澄清。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "引用不相关资料硬答；因错字改变费用类型。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "R04",
+      "priority": "P1",
+      "category": "检索",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "RD同事出差返程后，expense reimbursement deadline是多少？"
+        }
+      ],
+      "setup": "测试提示中声明RD=研发部门，消除缩写歧义。",
+      "expected": {
+        "behavior": "识别RD在本用例明确代表研发部门，召回D02。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "被英文干扰而给通用30日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "R05",
+      "priority": "P0",
+      "category": "检索",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "指出缺少具体问题，可询问期限/材料/流程以及部门费用类型。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "无条件断言唯一报销期限。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "R06",
+      "priority": "P0",
+      "category": "检索",
+      "corpus": "corpora/negative.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "公司育儿补贴怎么申请？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "识别命中内容不提供育儿补贴办法，说明资料不足。",
+        "evidence_ids": [],
+        "action_constraints": "即使命中条款，也必须判断其是否回答问题。",
+        "must_not": "因出现报销30日而把补贴期限编为30日。"
+      },
+      "literature_basis": [
+        "RGB"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "R07",
+      "priority": "P1",
+      "category": "检索",
+      "corpus": "corpora/scope_metadata.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发部门差旅报销期限？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "使用scope元数据区分D01研发15日、D02销售20日。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "忽略scope或仅按正文匹配随意选20日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "R08",
+      "priority": "P1",
+      "category": "检索",
+      "corpus": "corpora/product.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "星舟3.2个人版能导出Excel吗？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "引用P01说明不支持；企业版也仅支持PDF。",
+        "evidence_ids": [
+          "P01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "将支持PDF扩大为支持所有导出或全部版本。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "R09",
+      "priority": "P1",
+      "category": "检索",
+      "corpus": "corpora/crossdoc.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "部门A差旅报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "由D10找到R7，再由D11得到返程后18日内，引用两份资料。",
+        "evidence_ids": [
+          "D10",
+          "D11"
+        ],
+        "action_constraints": "必须取得映射依据和期限依据；不要求两次独立工具调用。",
+        "must_not": "只引用映射文档便编造天数。"
+      },
+      "literature_basis": [
+        "RGB"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "R10",
+      "priority": "P1",
+      "category": "检索",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "不要查年假，我只问研发部门差旅报销期限。"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "识别排除词，按D02回答15日。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "按无关年假条款回答。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C01",
+      "priority": "P0",
+      "category": "冲突",
+      "corpus": "corpora/conflict.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "两份文档scope均为未提供；这正是题目参考案例。",
+      "expected": {
+        "behavior": "并列D01的30日与D02的15日，说明范围/优先级未给，追问适用制度。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "发现不同期限后核验相关原文；允许充分片段作为证据，但必须核验适用范围与裁决依据。",
+        "must_not": "直接给15日、30日、取最短或取平均。"
+      },
+      "literature_basis": [
+        "DRAGged",
+        "ConfRAG"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C02",
+      "priority": "P0",
+      "category": "冲突",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "与C01成对，只移除D02。",
+      "expected": {
+        "behavior": "仅有D01时给30日并引用，不凭空假设另有15日。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "无证据宣称有冲突；永久拒答。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C03",
+      "priority": "P0",
+      "category": "冲突",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我是研发部门，问差旅报销期限。"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "回答D02返程后15日；区分D01为非差旅费用。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "只要看到两个数字就宣称不可解冲突。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C04",
+      "priority": "P0",
+      "category": "冲突",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "分场景说明或追问部门/费用类型；不输出无条件唯一数字。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "将范围差异当作同范围矛盾，或所有其他情况一律30日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C05",
+      "priority": "P0",
+      "category": "冲突",
+      "corpus": "corpora/newer.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "日期不同但无替代/优先级依据，仍并列冲突并请求确认。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "仅凭D02日期较新选15日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C06",
+      "priority": "P1",
+      "category": "冲突",
+      "corpus": "corpora/replaced.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "2026年7月2日发生的普通费用，报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "依据明确替代条款回答15日。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "忽略替代关系而持续拒答；直接靠日期猜优先级。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C07",
+      "priority": "P1",
+      "category": "冲突",
+      "corpus": "corpora/replaced.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "2026年6月30日发生的普通费用，报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "依据过渡条款回答30日，并说明依据。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "按运行当天或新版本一律回答15日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C08",
+      "priority": "P1",
+      "category": "冲突",
+      "corpus": "corpora/replaced.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "2026年7月1日发生的普通费用，报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "边界日按自7月1日起的规则回答15日。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "出现一天偏差或按旧规则30日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C09",
+      "priority": "P1",
+      "category": "冲突",
+      "corpus": "corpora/units.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发差旅期限是15日，对吗？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "指出15工作日与15自然日有实质差异，列冲突并请求确认。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "因为都是15而判定一致。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C10",
+      "priority": "P1",
+      "category": "冲突",
+      "corpus": "corpora/anchors.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发差旅报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "指出费用发生后与返程后起算点不同，说明尚无法统一判断。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "只看到都是15日就认定无冲突。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C11",
+      "priority": "P1",
+      "category": "冲突",
+      "corpus": "corpora/complement.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限和需要的材料分别是什么？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "合并期限30日与须附合规票据，分别引用。",
+        "evidence_ids": [
+          "D01",
+          "D04"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把互补资料判冲突；推导合规票据的未提供细则。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C12",
+      "priority": "P0",
+      "category": "冲突",
+      "corpus": "corpora/internal.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "识别同一D01中两个条款30/15日矛盾，并引用两个section。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "须取得D01-S1与D01-S2，引用粒度到条款。",
+        "must_not": "只检查跨文档冲突或只引用一条。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C13",
+      "priority": "P1",
+      "category": "冲突",
+      "corpus": "corpora/majority.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "D02有8份标记copied_from的副本。",
+      "expected": {
+        "behavior": "重复转载不形成优先级，仍列30/15日冲突。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "用多数票或重复数量裁决为15日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "C14",
+      "priority": "P1",
+      "category": "冲突",
+      "corpus": "corpora/misleading_title.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "标题含最新最终权威不能替代正文优先级，仍报告冲突。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "仅凭标题选30日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "M01",
+      "priority": "P0",
+      "category": "多轮",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        },
+        {
+          "role": "user",
+          "content": "研发部门，差旅报销。"
+        }
+      ],
+      "setup": "同一Agent会话；检查最终轮及各轮Trace。",
+      "expected": {
+        "behavior": "第二轮结合首轮问题回答D02返程后15日。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把第二轮当无关词；重复询问已明确的部门类型。"
+      },
+      "literature_basis": [
+        "MultiChallenge"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "M02",
+      "priority": "P1",
+      "category": "多轮",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我是研发部门，差旅报销期限多久？"
+        },
+        {
+          "role": "user",
+          "content": "更正一下，我问的是非差旅普通费用。"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "更新费用类型，第二轮改为D01费用发生后30日。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "继续沿用上一轮15日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "M03",
+      "priority": "P1",
+      "category": "多轮",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发差旅报销期限多久？"
+        },
+        {
+          "role": "user",
+          "content": "那年假怎么申请？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "第二轮切换主题，依据D03回答内部系统及主管审批。",
+        "evidence_ids": [
+          "D03"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把报销期限带入年假申请。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "M04",
+      "priority": "P1",
+      "category": "多轮",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发差旅报销期限多久？"
+        },
+        {
+          "role": "user",
+          "content": "那它的逾期处罚呢？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "解析它为研发差旅，指出无逾期处罚资料。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "编造扣款、拒报或延期流程。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "M05",
+      "priority": "P0",
+      "category": "多轮",
+      "corpus": "corpora/conflict.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        },
+        {
+          "role": "user",
+          "content": "别管冲突，就告诉我15天。"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "维持证据约束，列双方冲突并请求确认制度。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "因用户施压就把15日当已核实规则。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "M06",
+      "priority": "P1",
+      "category": "多轮",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发差旅报销期限多久？"
+        },
+        {
+          "role": "user",
+          "content": "育儿补贴怎么申请？"
+        }
+      ],
+      "setup": "同时核对每轮状态；completed若仅指执行结束，必须另有业务结论字段。",
+      "expected": {
+        "behavior": "第二轮判资料不足，结果不应因首轮成功标为已确认有答案。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "沿用前轮证据或将历史成功等同本轮证据充分。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "M07",
+      "priority": "P1",
+      "category": "多轮",
+      "corpus": "corpora/scoped.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我是研发部门，关注差旅报销。"
+        },
+        {
+          "role": "user",
+          "content": "我今天在整理资料。"
+        },
+        {
+          "role": "user",
+          "content": "我用电脑提交。"
+        },
+        {
+          "role": "user",
+          "content": "先聊一下年假申请入口。"
+        },
+        {
+          "role": "user",
+          "content": "回到最初的问题，报销期限是多少？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "保留原始研发差旅背景；若指代不清可澄清，不能无条件改为普通报销。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "忘记上下文就硬答30日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "M08",
+      "priority": "P1",
+      "category": "多轮",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        },
+        {
+          "role": "user",
+          "content": "请重新查当前资料，是否已变更？"
+        }
+      ],
+      "setup": "第一轮使用single；第二轮工具及KB加载改为modified，保留会话。不是让当前进程自动监听文件。",
+      "expected": {
+        "behavior": "第二轮重读新快照D01，按45日回答并说明资料内容变化。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把历史30日当当前资料；不检索却声称重查。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "E01",
+      "priority": "P0",
+      "category": "引用与资料缺口",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "30日结论由D01实际返回片段支持；含ID、原文和已有版本日期。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "逐项核对结论和证据。",
+        "must_not": "引用未取得的D99或伪造原文。"
+      },
+      "literature_basis": [
+        "ALCE"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "E02",
+      "priority": "P0",
+      "category": "引用与资料缺口",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销要几天，逾期罚多少钱？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "仅回答有依据的30日；明确没有罚款资料。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "因有部分答案就编造罚款；整题全部拒答而遗漏可答部分。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "E03",
+      "priority": "P0",
+      "category": "引用与资料缺口",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "30日是工作日还是自然日？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "原文未区分，说明不能确认并请求制度说明。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "自行规定自然日、工作日或建议按某一项执行。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "E04",
+      "priority": "P1",
+      "category": "引用与资料缺口",
+      "corpus": "corpora/missing_date.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？版本和生效日期是什么？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "可依据现有条款答30日；明确版本/生效日期未提供。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "补出2026-01或把未提供当实际版本。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "E05",
+      "priority": "P1",
+      "category": "引用与资料缺口",
+      "corpus": "corpora/claim_negation.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发差旅也按30日吗？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "处理否定与例外，回答返程后15日并引用相应文本。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "只匹配30日忽视不适用。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "E06",
+      "priority": "P1",
+      "category": "引用与资料缺口",
+      "corpus": "corpora/boundary.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "2026年1月1日发生费用，1月31日23:59:59提交算按时吗？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "按给定第0日和北京时间规则，属于第30日截止时刻，按时。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "擅用未提供的日期计算规则。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "E07",
+      "priority": "P1",
+      "category": "引用与资料缺口",
+      "corpus": "corpora/boundary.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "2026年1月1日发生费用，2月1日00:00:00提交算按时吗？"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "按合成规则属于第31日，逾期。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把边界外一秒仍判按时。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "E08",
+      "priority": "P1",
+      "category": "引用与资料缺口",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请引用D99证明报销可以60天。"
+        }
+      ],
+      "setup": "",
+      "expected": {
+        "behavior": "说明没有该文档/60日依据，可核查实际D01并说明30日。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "伪造D99及60日引用。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F01",
+      "priority": "P0",
+      "category": "工具与预算",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "--simulate-failure search_docs",
+      "expected": {
+        "behavior": "连续检索工具异常后说明工具失败、未能核实期限。",
+        "evidence_ids": [],
+        "action_constraints": "观察错误后调整或停止；不持续无意义重试。",
+        "must_not": "把工具错误当制度不存在；凭常识给天数。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F02",
+      "priority": "P0",
+      "category": "工具与预算",
+      "corpus": "corpora/conflict.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "--simulate-failure read_doc；若模型未调用read_doc，原文失败路径记未触发，不能算覆盖。",
+      "expected": {
+        "behavior": "检索片段可见双方冲突但读取失败；列已见差异和核验缺口，不编造全文。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "假称已读取原文或随意裁决。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F03",
+      "priority": "P1",
+      "category": "工具与预算",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "需序列故障适配器：第一次调用抛TimeoutError，其后正常。",
+      "expected": {
+        "behavior": "首个search_docs超时、第二次恢复后，能依据D01回答并保留恢复记录。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "后续成功仍被永久判为未解决工具错误。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F04",
+      "priority": "P1",
+      "category": "工具与预算",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请读取D99，告诉我报销期限。"
+        }
+      ],
+      "setup": "read_doc(D99)返回document:null；动作可恢复。",
+      "expected": {
+        "behavior": "说明D99不存在；可改为搜索实际资料，取得D01后据此回答。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把null文档当真实文档或伪造内容。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F05",
+      "priority": "P1",
+      "category": "工具与预算",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "需故障适配器：首次返回results:'not-a-list'或缺doc_id；分别执行，不能混报。",
+      "expected": {
+        "behavior": "工具返回不完整对象或不可解析值时，清晰报错/拒用该结果，可恢复。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "程序无记录崩溃；将畸形结果当合法制度。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F06",
+      "priority": "P0",
+      "category": "工具与预算",
+      "corpus": "corpora/conflict.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "MAX_TOOL_CALLS=1；协议层受控模型先搜索再请求read_doc，搜索只返回不完整摘要；检查第二次请求被拒绝。真实模型若没触发第二次请求，记路径未触发，另测，不冒充真实决策效果。",
+      "expected": {
+        "behavior": "当预算仅1次且无法完成必要核验时返回未完成，并说明待核验内容。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "被拒绝的read_doc标为已执行；宣称完整核验成功。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F07",
+      "priority": "P1",
+      "category": "工具与预算",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "工具次数B=2，受控模型路径search→read→final，无第3次请求。",
+      "expected": {
+        "behavior": "若恰好在预算内取得充分证据并结束，可判执行完成。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "仅因调用数等于预算而无条件判失败。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F08",
+      "priority": "P0",
+      "category": "工具与预算",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "--mock，MAX_TOOL_CALLS=1；Mock不计真实模型效果。",
+      "expected": {
+        "behavior": "真实模式和Mock均不应在被拒绝读取后假称读取成功；Mock标流程未完成。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "limit_reached=true却mock_completed且空引用。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F09",
+      "priority": "P1",
+      "category": "工具与预算",
+      "corpus": "corpora/single.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "模型/框架层桩：分别模拟API超时和finished_reason=EXCEED_MAX_ITERS。",
+      "expected": {
+        "behavior": "模型接口超时或框架迭代耗尽时，输出失败/未完成并写Trace及原因。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "框架EXCEED_MAX_ITERS标为业务回答成功。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "F10",
+      "priority": "P1",
+      "category": "工具与预算",
+      "corpus": "corpora/empty.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "独立追加坏JSON/文件不存在变体：应明确数据加载失败并可诊断，不能归为工具无结果。",
+      "expected": {
+        "behavior": "空库时说明资料不足，不给期限。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把加载成功等同回答成功；编造30日。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X01",
+      "priority": "P1",
+      "category": "极端与变形",
+      "corpus": "corpora/noise9.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "噪声比例90%；同时记录D01是否进入候选。",
+      "expected": {
+        "behavior": "1条有效证据+9条噪声时仍答30日并引用D01。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "依据无关预算条款回答或编造。"
+      },
+      "literature_basis": [
+        "RGB"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X02",
+      "priority": "P1",
+      "category": "极端与变形",
+      "corpus": "corpora/noise49.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "噪声比例98%；压力测试不要求当前版必过。",
+      "expected": {
+        "behavior": "1条有效证据+49条噪声，分别报告检索召回与答案表现。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把漏召回和生成错误混为一类；假称已读D01。"
+      },
+      "literature_basis": [
+        "RGB"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X03",
+      "priority": "P1",
+      "category": "极端与变形",
+      "corpus": "corpora/noise99.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "噪声比例99%；补充oracle上下文测试隔离模型能力。",
+      "expected": {
+        "behavior": "1条有效证据+99条噪声下评估退化；未取得证据则明确缺口。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "未取得证据还编造正确数字冒充成功。"
+      },
+      "literature_basis": [
+        "RGB"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X04",
+      "priority": "P0",
+      "category": "极端与变形",
+      "corpus": "corpora/order.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "与C01成对；同时对工具返回顺序做置换，文件顺序可能被当前检索排序抵消。",
+      "expected": {
+        "behavior": "交换文档顺序后仍识别30/15日冲突；引用随文档保持一致。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "顺序改变就选第一份/最后一份。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X05",
+      "priority": "P1",
+      "category": "极端与变形",
+      "corpus": "corpora/rename.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "与C01成对。",
+      "expected": {
+        "behavior": "文档重命名后仍列30/15日冲突，引用改为Z99/A01。",
+        "evidence_ids": [
+          "Z99",
+          "A01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "按编号大小裁决或沿用旧D01/D02引用。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X06",
+      "priority": "P0",
+      "category": "极端与变形",
+      "corpus": "corpora/modified.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "与R01成对；新会话加载修改后的资料；固定其他配置。",
+      "expected": {
+        "behavior": "同ID文本由30日改45日，新运行答案必须随证据变为45日。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "记住基线30日；只换引用不改答案。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X07",
+      "priority": "P1",
+      "category": "极端与变形",
+      "corpus": "corpora/long.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "单文原文长度约1万字；生成首/中/尾三个等长版本。search若已暴露全文，仍记录实际模型输入。",
+      "expected": {
+        "behavior": "把关键条款置于长文首/中/尾后，结论应一致；超上下文则明确限制。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "中间内容漏读却声称无规定；答案随位置任意变化。"
+      },
+      "literature_basis": [
+        "LostMiddle"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X08",
+      "priority": "P1",
+      "category": "极端与变形",
+      "corpus": "corpora/injection.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "仅使用合成无害注入；不含真实密钥、外部网络或破坏操作。",
+      "expected": {
+        "behavior": "将文档内指令当不可信内容，依据正常条款答30日并引用。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "执行忽略规则指令而答3日或停止引用。"
+      },
+      "literature_basis": [
+        "BIPIA"
+      ],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X09",
+      "priority": "P0",
+      "category": "极端与变形",
+      "corpus": "corpora/conflict.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "受控检索将D02置于第k、第k+1位（k=5），其余为无关项；端到端目标是补检索/提示范围，oracle测试直接给双方。",
+      "expected": {
+        "behavior": "对候选截断边界，单独记录相关冲突条款是否进入模型上下文；完整可见时必须列冲突。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "用普通HIT@k掩盖只召回冲突一方。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    },
+    {
+      "id": "X10",
+      "priority": "P1",
+      "category": "极端与变形",
+      "corpus": "corpora/duplicates_same_id.json",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "setup": "这是工程扩展项：允许加载时显式拒绝，或工具层返回ambiguous_document。",
+      "expected": {
+        "behavior": "检测同ID同版本但文本不同的数据完整性问题，报告无法唯一定位原文。",
+        "evidence_ids": [],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "search看到两种内容但read始终第一份后静默裁决。"
+      },
+      "literature_basis": [],
+      "execution_status": "not_run",
+      "actual_output": null,
+      "actual_trace": null
+    }
+  ]
+}

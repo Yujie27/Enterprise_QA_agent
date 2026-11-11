@@ -1,0 +1,327 @@
+{
+  "run_id": "E03_r1",
+  "case_id": "E03",
+  "repeat": 1,
+  "messages": [
+    {
+      "role": "user",
+      "content": "30日是工作日还是自然日？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace_path": "examples/evaluation/agent_baseline/20261110_original_agent_v020/sessions/E03_r1/traces/20261110_201630_139675.json",
+  "trace_sha256": "0adc6258cda7a6d5e4f75e7b6c20f1e0706decd2ee7b7910ae3af9de4aaeab76",
+  "execution": {
+    "run_id": "E03_r1",
+    "case_id": "E03",
+    "repeat": 1,
+    "execution": "attempted",
+    "started_at_utc": "2026-11-10T12:16:21.218745+00:00",
+    "finished_at_utc": "2026-11-10T12:16:30.142290+00:00",
+    "elapsed_seconds": 8.768361100002949,
+    "uncaught_error": null,
+    "cli_args": [
+      "enterprise-qa",
+      "--corpus",
+      "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\retrieval_baseline\\20261110_raw_query_v020\\input\\qa_boundary_test_design\\corpora\\single.json",
+      "--trace-dir",
+      "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\agent_baseline\\20261110_original_agent_v020\\sessions\\E03_r1\\traces",
+      "30日是工作日还是自然日？"
+    ],
+    "model_config": {
+      "model": "deepseek-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "endpoint_path": "/v1",
+      "api_key_configured": true,
+      "stream": false,
+      "parameters": {
+        "max_tokens": null,
+        "thinking_enable": false,
+        "reasoning_effort": null,
+        "temperature": null,
+        "top_p": null,
+        "parallel_tool_calls": false,
+        "voice": null
+      },
+      "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+      "tool_budget_per_turn": 4,
+      "configured_budget_before_runner": "4",
+      "react_max_iters": 5,
+      "model_max_retries_default": 3,
+      "model_retry_delay_default": 1.0,
+      "versions": {
+        "agentscope": "2.0.11",
+        "openai": "3.46.0",
+        "python-dotenv": "1.2.4",
+        "enterprise-qa-agent-minimal": "0.2.0"
+      }
+    },
+    "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+    "tool_return_count": 4
+  },
+  "launcher": {
+    "run_id": "E03_r1",
+    "started_at_utc": "2026-11-10T12:16:18.843383+00:00",
+    "finished_at_utc": "2026-11-10T12:16:30.477442+00:00",
+    "returncode": 0,
+    "watchdog_timeout": false
+  },
+  "execution_status": "completed",
+  "model_reply_metadata": [
+    {
+      "turn": 1,
+      "finished_reason": "completed",
+      "usage": {
+        "input_tokens": 6143,
+        "output_tokens": 871,
+        "cache_input_tokens": 5120,
+        "cache_creation_input_tokens": 0
+      },
+      "error": null,
+      "text": "**无法确认“30日”是工作日还是自然日。**\n\n已检索到的唯一相关条款：\n\n- **文档 ID：D01**（制度文件D01）\n- **版本：2026-01**\n- **生效日期：2026-01-01**\n- **原文片段**：“费用报销应在费用发生后30日内提交申请。”\n- **适用范围**：资料中标注为“未提供”\n\n该条款只规定了“30日内”，**没有说明“日”是指工作日还是自然日**；另检索“期限计算口径/‘日’的定义”类条款，未检索到匹配资料。\n\n因此，仅凭现有制度资料无法确定该口径，也不能自行推定。请补充说明您所指的具体业务场景（例如费用报销，还是其他事项），以便核对对应制度；若确为报销场景，建议向制度归口部门确认“30日”的计算口径。\n\n**说明**：本次因检索到的原文缺少关键定义、且未检索到通用计算规则而停止检索并作上述答复。"
+    }
+  ],
+  "tool_calls": 4,
+  "tool_steps": [
+    {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "executed": true,
+      "arguments": {
+        "query": "30日 工作日 自然日 计算",
+        "limit": 8
+      },
+      "public_decision_reason": "需要定位制度中对“30日”计算方式的明确规定",
+      "full_tool_return": {
+        "results": [],
+        "summary": "没有检索到匹配资料"
+      },
+      "returned_response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"results\": [], \"summary\": \"没有检索到匹配资料\"}",
+            "id": "a2b1b2cfa2d44acdaab5e59fa829ccac",
+            "created_at": "2026-11-10T20:16:23.252257",
+            "finished_at": null
+          }
+        ],
+        "state": "success",
+        "metadata": {},
+        "id": "88a17145aecb46bc83c4ba9d5b09f3e7"
+      },
+      "visible_keys": [],
+      "error": null
+    },
+    {
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "executed": true,
+      "arguments": {
+        "query": "期限届满 30日 日历日 自然日",
+        "limit": 8
+      },
+      "public_decision_reason": "需要补充检索期限计算口径的相关条款",
+      "full_tool_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.222
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "returned_response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.222}], \"summary\": \"返回 1 条资料\"}",
+            "id": "824a8bcdc3c046feb5571d4642567070",
+            "created_at": "2026-11-10T20:16:23.254325",
+            "finished_at": null
+          }
+        ],
+        "state": "success",
+        "metadata": {},
+        "id": "bef21151e0eb43b4bf19d0c386dc2d39"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "error": null
+    },
+    {
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "executed": true,
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "检索片段未说明“日”的计算口径，需读取原文核实",
+      "full_tool_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "returned_response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+            "id": "d6f51f2309294ef7910dade226b20467",
+            "created_at": "2026-11-10T20:16:24.785900",
+            "finished_at": null
+          }
+        ],
+        "state": "success",
+        "metadata": {},
+        "id": "cc1e1e8afeb143988500270e72c66fff"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "error": null
+    },
+    {
+      "turn": 1,
+      "step": 4,
+      "tool": "search_docs",
+      "executed": true,
+      "arguments": {
+        "query": "本制度所称“日”指工作日 自然日 定义",
+        "limit": 8
+      },
+      "public_decision_reason": "需确认是否存在适用于期限计算的通用定义条款",
+      "full_tool_return": {
+        "results": [],
+        "summary": "没有检索到匹配资料"
+      },
+      "returned_response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"results\": [], \"summary\": \"没有检索到匹配资料\"}",
+            "id": "185994c62f26449b8a034620b126b0c8",
+            "created_at": "2026-11-10T20:16:27.272438",
+            "finished_at": null
+          }
+        ],
+        "state": "success",
+        "metadata": {},
+        "id": "0bde0719a11b4903b24a20e56dc2746f"
+      },
+      "visible_keys": [],
+      "error": null
+    }
+  ],
+  "actually_visible_evidence": {
+    "D01/D01-S1": [
+      {
+        "turn": 1,
+        "step": 2,
+        "tool": "search_docs",
+        "visible_evidence": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.222
+        }
+      },
+      {
+        "turn": 1,
+        "step": 3,
+        "tool": "read_doc",
+        "visible_evidence": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。"
+        }
+      }
+    ]
+  },
+  "necessary_evidence_keys": [
+    "D01/D01-S1"
+  ],
+  "missing_necessary_evidence": [],
+  "baseline_raw_query_k5_necessary_hit": null,
+  "first_agent_search_necessary_hit": [],
+  "first_agent_search_complete": false,
+  "all_visible_complete": true,
+  "recovered_vs_raw_query_k5": null,
+  "recovered_after_agent_first_search": true,
+  "budget_rejected_requests": [],
+  "final_answer": "**无法确认“30日”是工作日还是自然日。**\n\n已检索到的唯一相关条款：\n\n- **文档 ID：D01**（制度文件D01）\n- **版本：2026-01**\n- **生效日期：2026-01-01**\n- **原文片段**：“费用报销应在费用发生后30日内提交申请。”\n- **适用范围**：资料中标注为“未提供”\n\n该条款只规定了“30日内”，**没有说明“日”是指工作日还是自然日**；另检索“期限计算口径/‘日’的定义”类条款，未检索到匹配资料。\n\n因此，仅凭现有制度资料无法确定该口径，也不能自行推定。请补充说明您所指的具体业务场景（例如费用报销，还是其他事项），以便核对对应制度；若确为报销场景，建议向制度归口部门确认“30日”的计算口径。\n\n**说明**：本次因检索到的原文缺少关键定义、且未检索到通用计算规则而停止检索并作上述答复。",
+  "conversation": null,
+  "mentioned_ids_not_automatically_claim_citations": [
+    "D01"
+  ],
+  "quote_spans_for_manual_check": [
+    "30日",
+    "费用报销应在费用发生后30日内提交申请。",
+    "未提供",
+    "30日内",
+    "日",
+    "期限计算口径/‘日’的定义",
+    "30日"
+  ],
+  "manual_review": {
+    "run_id": "E03_r1",
+    "strict_pass": true,
+    "business_status": "日的含义无法确定，请求制度说明",
+    "main_conclusion_correct": true,
+    "labels": [
+      "首次未召回，但模型通过后续动作恢复"
+    ],
+    "citations": [
+      {
+        "key": "D01/D01-S1",
+        "claim": "原文仅30日内，没有工作日或自然日定义",
+        "supported": true
+      }
+    ],
+    "material_gaps": [
+      "工作日/自然日定义"
+    ],
+    "unsupported_claims": [],
+    "reason": "Agent首次搜索无结果，第二次改写取得D01，再读取原文并补查定义。明确无法确认且不建议按某类日执行；这里恢复指Agent自身首次搜索到后续，不是原检索基线（E03此前未测）。"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "internal.json",
+    "sha256": "26210b3bcb27f4193396c8149a4079391b23b9e6e463535e536eaff961235c73"
+  },
+  "timestamp_utc": "2026-11-10T12:49:39.454848+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限多久？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 2,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限多久？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 费用报销 提交时限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位报销期限的制度条款。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S2",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625
+          }
+        ]
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D01"
+        },
+        "executed": true,
+        "public_decision_reason": "两条款期限不同，需读取原文确认适用范围和替代关系。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "两条款期限不同，需读取原文确认适用范围和替代关系。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            },
+            {
+              "section_id": "D01-S2",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ]
+        }
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "## 无法确定统一期限：制度内部存在冲突条款\n\n**文档：** D01《制度文件D01》\n**版本：** 2026-01\n**生效日期：** 2026-01-01\n**适用范围：** 未提供\n\n### 冲突条款原文\n\n| 条款 | 原文片段 |\n|---|---|\n| D01-S1 | “费用报销应在费用发生后**30日内**提交申请。” |\n| D01-S2 | “费用报销应在费用发生后**15日内**提交申请。” |\n\n### 说明\n\n这两条款均针对“费用报销提交申请”的同一事项，但分别规定为 30 日和 15 日。D01 全文有两节，**未提供适用范围划分，也未规定哪一条优先适用、是否以后条替代前条**。因此，仅凭文档标题、编号或条款顺序无法确定应以哪一条为准。\n\n**结论：** 目前无法确认唯一适用的报销期限；请确认应以 30 日还是 15 日为准，或提供该制度的优先级、适用范围说明或替代关系依据。\n\n**为何停止：** 已检索并读取 D01 原文，两条款仍在同一范围内互相矛盾且无优先级依据，按规则应并列引用并请求确认，不再重复检索假设存在的其他规定。"
+    }
+  ],
+  "answer": "## 无法确定统一期限：制度内部存在冲突条款\n\n**文档：** D01《制度文件D01》\n**版本：** 2026-01\n**生效日期：** 2026-01-01\n**适用范围：** 未提供\n\n### 冲突条款原文\n\n| 条款 | 原文片段 |\n|---|---|\n| D01-S1 | “费用报销应在费用发生后**30日内**提交申请。” |\n| D01-S2 | “费用报销应在费用发生后**15日内**提交申请。” |\n\n### 说明\n\n这两条款均针对“费用报销提交申请”的同一事项，但分别规定为 30 日和 15 日。D01 全文有两节，**未提供适用范围划分，也未规定哪一条优先适用、是否以后条替代前条**。因此，仅凭文档标题、编号或条款顺序无法确定应以哪一条为准。\n\n**结论：** 目前无法确认唯一适用的报销期限；请确认应以 30 日还是 15 日为准，或提供该制度的优先级、适用范围说明或替代关系依据。\n\n**为何停止：** 已检索并读取 D01 原文，两条款仍在同一范围内互相矛盾且无优先级依据，按规则应并列引用并请求确认，不再重复检索假设存在的其他规定。"
+}

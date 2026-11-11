@@ -1,0 +1,362 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": true
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "majority.json",
+    "sha256": "62339fffd0de2d67a0eae3c355e2b3979e932afbc0db7da8af70c063176e99a6"
+  },
+  "timestamp_utc": "2026-11-10T13:17:35.700207+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限多久？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 3,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限多久？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要查找报销期限相关制度条款。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [],
+        "missing": [
+          "报销期限"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.667
+          },
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D02-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.667,
+            "source_info": {
+              "grouping": "exact_content_scope_version_date",
+              "representative_policy": "verified_original_candidate",
+              "sources": [
+                {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1",
+                  "declared_copied_from": null,
+                  "verified_original": null,
+                  "relationship": "content_duplicate_only"
+                },
+                {
+                  "doc_id": "COPY0",
+                  "section_id": "COPY0-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY1",
+                  "section_id": "COPY1-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY2",
+                  "section_id": "COPY2-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY3",
+                  "section_id": "COPY3-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY4",
+                  "section_id": "COPY4-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY5",
+                  "section_id": "COPY5-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY6",
+                  "section_id": "COPY6-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY7",
+                  "section_id": "COPY7-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                }
+              ]
+            }
+          }
+        ],
+        "summary": "返回 2 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 2,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D01"
+        },
+        "executed": true,
+        "public_decision_reason": "两份候选制度的期限不同且适用范围未明，需要读取原文核对。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "两份候选制度的期限不同且适用范围未明，需要读取原文核对。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [
+          {
+            "doc_id": "D01",
+            "section_id": "D01-S1",
+            "note": "30日内"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "D02-S1",
+            "note": "15日内"
+          }
+        ],
+        "missing": [
+          "两份条款的适用范围及适用优先级"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D02"
+        },
+        "executed": true,
+        "public_decision_reason": "两份候选制度的期限不同且适用范围未明，需要读取原文核对。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      },
+      "public_decision_reason": "两份候选制度的期限不同且适用范围未明，需要读取原文核对。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 3,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [
+          {
+            "doc_id": "D01",
+            "section_id": "D01-S1",
+            "note": "30日内"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "D02-S1",
+            "note": "15日内"
+          }
+        ],
+        "missing": [
+          "两份条款的适用范围及适用优先级"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D02-S1",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "无法确定统一的报销期限。我检索到两份现行版本相同（2026-01，均自 2026-01-01 生效），但报销期限规定相互冲突的制度，且两者都未提供适用范围或优先级信息：\n\n| 文档 | 版本 | 生效日期 | 条款 | 原文 |\n|---|---|---|---|---|\n| D01 | 2026-01 | 2026-01-01 | D01-S1 | “费用报销应在费用发生后30日内提交申请。” |\n| D02 | 2026-01 | 2026-01-01 | D02-S1 | “费用报销应在费用发生后15日内提交申请。” |\n\n两份制度的适用范围均标注为“未提供”，因此无法按业务或费用类型判断哪一份适用；也没有材料说明 D01 与 D02 之间存在替代关系或优先级。因此我不能只凭生效日期、标题或文档编号来选择其中一个期限。\n\n**请确认**：您适用的是 D01（30日）还是 D02（15日），或者请提供这两份制度的优先级或替代关系依据；确认后我可以给出确定答复。\n\n补充：检索结果中还出现了 COPY0–COPY7，其内容与 D02-S1 一致，并标注为从 D02 复制，属于副本，不构成独立规则。\n\n**覆盖说明**：报销期限本身已有 D01、D02 原文支持；仍缺失的是两份制度的适用范围及优先级依据。"
+    }
+  ],
+  "answer": "无法确定统一的报销期限。我检索到两份现行版本相同（2026-01，均自 2026-01-01 生效），但报销期限规定相互冲突的制度，且两者都未提供适用范围或优先级信息：\n\n| 文档 | 版本 | 生效日期 | 条款 | 原文 |\n|---|---|---|---|---|\n| D01 | 2026-01 | 2026-01-01 | D01-S1 | “费用报销应在费用发生后30日内提交申请。” |\n| D02 | 2026-01 | 2026-01-01 | D02-S1 | “费用报销应在费用发生后15日内提交申请。” |\n\n两份制度的适用范围均标注为“未提供”，因此无法按业务或费用类型判断哪一份适用；也没有材料说明 D01 与 D02 之间存在替代关系或优先级。因此我不能只凭生效日期、标题或文档编号来选择其中一个期限。\n\n**请确认**：您适用的是 D01（30日）还是 D02（15日），或者请提供这两份制度的优先级或替代关系依据；确认后我可以给出确定答复。\n\n补充：检索结果中还出现了 COPY0–COPY7，其内容与 D02-S1 一致，并标注为从 D02 复制，属于副本，不构成独立规则。\n\n**覆盖说明**：报销期限本身已有 D01、D02 原文支持；仍缺失的是两份制度的适用范围及优先级依据。"
+}

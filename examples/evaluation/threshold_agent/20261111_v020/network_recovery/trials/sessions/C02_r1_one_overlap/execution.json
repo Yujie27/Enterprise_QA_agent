@@ -1,0 +1,52 @@
+{
+  "run_id": "C02_r1_one_overlap",
+  "case_id": "C02",
+  "repeat": 1,
+  "execution": "attempted",
+  "started_at_utc": "2026-11-11T03:56:29.031578+00:00",
+  "finished_at_utc": "2026-11-11T03:56:32.283068+00:00",
+  "elapsed_seconds": 3.080645899997762,
+  "uncaught_error": null,
+  "cli_args": [
+    "enterprise-qa",
+    "--corpus",
+    "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\retrieval_baseline\\20261110_raw_query_v020\\input\\qa_boundary_test_design\\corpora\\single.json",
+    "--trace-dir",
+    "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\threshold_agent\\20261111_v020\\network_recovery\\trials\\sessions\\C02_r1_one_overlap\\traces",
+    "报销期限多久？",
+    "--retrieval-mode",
+    "dedup",
+    "--match-threshold",
+    "one_overlap"
+  ],
+  "model_config": {
+    "model": "deepseek-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "endpoint_path": "/v1",
+    "api_key_configured": true,
+    "stream": false,
+    "parameters": {
+      "max_tokens": null,
+      "thinking_enable": false,
+      "reasoning_effort": null,
+      "temperature": null,
+      "top_p": null,
+      "parallel_tool_calls": false,
+      "voice": null
+    },
+    "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+    "tool_budget_per_turn": 4,
+    "configured_budget_before_runner": "4",
+    "react_max_iters": 5,
+    "model_max_retries_default": 3,
+    "model_retry_delay_default": 1.0,
+    "versions": {
+      "agentscope": "2.0.11",
+      "openai": "3.46.0",
+      "python-dotenv": "1.2.4",
+      "enterprise-qa-agent-minimal": "0.2.0"
+    }
+  },
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "tool_return_count": 2
+}

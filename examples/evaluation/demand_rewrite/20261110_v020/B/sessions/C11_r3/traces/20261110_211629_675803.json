@@ -1,0 +1,241 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "original",
+    "demand_rewrite": true
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "complement.json",
+    "sha256": "484efa2062c4e47183b2a02017f819d67b5a91a43c5c78a0d2bed7744ea289b6"
+  },
+  "timestamp_utc": "2026-11-10T13:16:29.675247+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限和需要的材料分别是什么？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 3,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限和需要的材料分别是什么？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 报销材料 要求",
+        "limit": 8
+      },
+      "public_decision_reason": "需要先定位报销制度中关于期限和材料的条款。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限",
+          "报销所需材料"
+        ],
+        "covered": [],
+        "missing": [
+          "报销期限",
+          "报销所需材料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 1 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.333
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 1,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D01"
+        },
+        "executed": true,
+        "public_decision_reason": "检索只返回期限条款，需读取原文确认是否还包含报销材料及适用范围。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "检索只返回期限条款，需读取原文确认是否还包含报销材料及适用范围。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限",
+          "报销所需材料"
+        ],
+        "covered": [
+          "报销期限：D01-S1（费用发生后30日内提交申请）"
+        ],
+        "missing": [
+          "报销所需材料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "报销 提交材料 发票 单据 清单",
+          "limit": 8
+        },
+        "executed": true,
+        "public_decision_reason": "期限已有依据，尚缺材料要求，需针对报销凭证和单据再检索一次。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销 提交材料 发票 单据 清单",
+        "limit": 8
+      },
+      "public_decision_reason": "期限已有依据，尚缺材料要求，需针对报销凭证和单据再检索一次。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 3,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限",
+          "报销所需材料"
+        ],
+        "covered": [
+          "报销期限：D01-S1（费用发生后30日内提交申请）"
+        ],
+        "missing": [
+          "报销所需材料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 3,
+      "tool": "search_docs",
+      "summary": "返回 1 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.286
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "**报销期限：有据可查**\n\n- 文档：D01《制度文件D01》，版本 **2026-01**，生效日期 **2026-01-01**\n- 原文（D01-S1）：“费用报销应在费用发生后30日内提交申请。”\n- 注意：该文档未提供适用范围，因此无法确认是否有特定费用类型或部门例外。\n\n**报销所需材料：无法确认**\n\n现有资料中未检索到关于报销材料、发票或单据清单的规定；我只能确认 D01 的上述期限条款，不能据此推定材料要求。\n\n**证据覆盖说明**：报销期限已由 D01-S1 支持；报销所需材料仍缺失，暂无依据。"
+    }
+  ],
+  "answer": "**报销期限：有据可查**\n\n- 文档：D01《制度文件D01》，版本 **2026-01**，生效日期 **2026-01-01**\n- 原文（D01-S1）：“费用报销应在费用发生后30日内提交申请。”\n- 注意：该文档未提供适用范围，因此无法确认是否有特定费用类型或部门例外。\n\n**报销所需材料：无法确认**\n\n现有资料中未检索到关于报销材料、发票或单据清单的规定；我只能确认 D01 的上述期限条款，不能据此推定材料要求。\n\n**证据覆盖说明**：报销期限已由 D01-S1 支持；报销所需材料仍缺失，暂无依据。"
+}

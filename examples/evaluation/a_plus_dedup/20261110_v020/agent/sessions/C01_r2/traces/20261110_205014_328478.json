@@ -1,0 +1,171 @@
+{
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "conflict.json",
+    "sha256": "26d2059e88b8a3b446c6d25ab96df3a0e1d80e0e526e0dc327883c40c4d22bcf"
+  },
+  "timestamp_utc": "2026-11-10T12:50:14.327854+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限多久？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 3,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限多久？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 报销时限 费用报销",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位报销期限相关制度条款",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.571
+          },
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D02-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.571
+          }
+        ]
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D01"
+        },
+        "executed": true,
+        "public_decision_reason": "两处候选期限不同，需读取D01原文核对适用范围",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "两处候选期限不同，需读取D01原文核对适用范围",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        }
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D02"
+        },
+        "executed": true,
+        "public_decision_reason": "两处候选期限不同，需读取D02原文核对适用范围",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      },
+      "public_decision_reason": "两处候选期限不同，需读取D02原文核对适用范围",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D02-S1",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ]
+        }
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "## 结论：无法确定唯一期限，两处条款存在冲突\n\n检索到两份制度对同一事项（费用报销提交时限）规定了不同的期限；两份制度的版本与生效日期相同，适用范围均未提供，也未给出优先级或替代关系。因此不能仅凭生效日期或文档编号选择其中一个答案。\n\n### 冲突条款并列\n\n| 文档 | 版本 | 生效日期 | 适用范围 | 原文片段 |\n|---|---|---|---|---|\n| D01（D01-S1） | 2026-01 | 2026-01-01 | 未提供 | “费用报销应在费用发生后**30日内**提交申请。” |\n| D02（D02-S1） | 2026-01 | 2026-01-01 | 未提供 | “费用报销应在费用发生后**15日内**提交申请。” |\n\n两份文档在系统中的标签（tags）均为：报销、期限、费用；从现有资料看，二者的适用情形无法区分。\n\n### 需您确认\n1. 您所在单位或业务场景适用 D01 还是 D02；\n2. 或者请提供制度间的优先级依据（如是否有上位制度、替代通知、部门适用范围说明）。\n\n在获得上述信息前，请按**两者中较严格的 15 日**来处理，以确保不违反任一制度（此为风险规避建议，不构成制度结论）。\n\n**说明**：本次回答基于 D01、D02 的完整原文比对；因两条款效力层级相同、适用范围缺失且无冲突解决规则，故停止检索并请您确认适用制度。"
+    }
+  ],
+  "answer": "## 结论：无法确定唯一期限，两处条款存在冲突\n\n检索到两份制度对同一事项（费用报销提交时限）规定了不同的期限；两份制度的版本与生效日期相同，适用范围均未提供，也未给出优先级或替代关系。因此不能仅凭生效日期或文档编号选择其中一个答案。\n\n### 冲突条款并列\n\n| 文档 | 版本 | 生效日期 | 适用范围 | 原文片段 |\n|---|---|---|---|---|\n| D01（D01-S1） | 2026-01 | 2026-01-01 | 未提供 | “费用报销应在费用发生后**30日内**提交申请。” |\n| D02（D02-S1） | 2026-01 | 2026-01-01 | 未提供 | “费用报销应在费用发生后**15日内**提交申请。” |\n\n两份文档在系统中的标签（tags）均为：报销、期限、费用；从现有资料看，二者的适用情形无法区分。\n\n### 需您确认\n1. 您所在单位或业务场景适用 D01 还是 D02；\n2. 或者请提供制度间的优先级依据（如是否有上位制度、替代通知、部门适用范围说明）。\n\n在获得上述信息前，请按**两者中较严格的 15 日**来处理，以确保不违反任一制度（此为风险规避建议，不构成制度结论）。\n\n**说明**：本次回答基于 D01、D02 的完整原文比对；因两条款效力层级相同、适用范围缺失且无冲突解决规则，故停止检索并请您确认适用制度。"
+}

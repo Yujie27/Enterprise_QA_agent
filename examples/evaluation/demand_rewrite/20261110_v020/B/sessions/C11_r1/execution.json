@@ -1,0 +1,51 @@
+{
+  "run_id": "C11_r1",
+  "case_id": "C11",
+  "repeat": 1,
+  "execution": "attempted",
+  "started_at_utc": "2026-11-10T13:08:19.059491+00:00",
+  "finished_at_utc": "2026-11-10T13:08:27.092511+00:00",
+  "elapsed_seconds": 7.831802199994854,
+  "uncaught_error": null,
+  "cli_args": [
+    "enterprise-qa",
+    "--corpus",
+    "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\retrieval_baseline\\20261110_raw_query_v020\\input\\qa_boundary_test_design\\corpora\\complement.json",
+    "--trace-dir",
+    "examples\\evaluation\\demand_rewrite\\20261110_v020\\B\\sessions\\C11_r1\\traces",
+    "报销期限和需要的材料分别是什么？",
+    "--retrieval-mode",
+    "original",
+    "--demand-rewrite"
+  ],
+  "model_config": {
+    "model": "deepseek-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "endpoint_path": "/v1",
+    "api_key_configured": true,
+    "stream": false,
+    "parameters": {
+      "max_tokens": null,
+      "thinking_enable": false,
+      "reasoning_effort": null,
+      "temperature": null,
+      "top_p": null,
+      "parallel_tool_calls": false,
+      "voice": null
+    },
+    "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+    "tool_budget_per_turn": 4,
+    "configured_budget_before_runner": "4",
+    "react_max_iters": 5,
+    "model_max_retries_default": 3,
+    "model_retry_delay_default": 1.0,
+    "versions": {
+      "agentscope": "2.0.11",
+      "openai": "3.46.0",
+      "python-dotenv": "1.2.4",
+      "enterprise-qa-agent-minimal": "0.2.0"
+    }
+  },
+  "corpus_sha256": "484efa2062c4e47183b2a02017f819d67b5a91a43c5c78a0d2bed7744ea289b6",
+  "tool_return_count": 4
+}

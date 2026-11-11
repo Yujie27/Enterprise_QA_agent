@@ -1,0 +1,170 @@
+{
+  "1": {
+    "positive_n": 25,
+    "necessary_n": 37,
+    "recall_macro": 0.74,
+    "recall_micro": 0.6486486486486487,
+    "hit": [
+      24,
+      25
+    ],
+    "determinate_hit": [
+      15,
+      15
+    ],
+    "conflict_complete": [
+      0,
+      9
+    ],
+    "canonical_conflict_complete": [
+      0,
+      9
+    ],
+    "negative_any_candidate": [
+      1,
+      1
+    ],
+    "negative_any_unrelated": [
+      0,
+      1
+    ],
+    "crossdoc_entry": [
+      2,
+      2
+    ],
+    "crossdoc_complete": [
+      0,
+      2
+    ],
+    "strict_pass": [
+      14,
+      26
+    ]
+  },
+  "3": {
+    "positive_n": 25,
+    "necessary_n": 37,
+    "recall_macro": 0.94,
+    "recall_micro": 0.918918918918919,
+    "hit": [
+      24,
+      25
+    ],
+    "determinate_hit": [
+      15,
+      15
+    ],
+    "conflict_complete": [
+      8,
+      9
+    ],
+    "canonical_conflict_complete": [
+      8,
+      9
+    ],
+    "negative_any_candidate": [
+      1,
+      1
+    ],
+    "negative_any_unrelated": [
+      0,
+      1
+    ],
+    "crossdoc_entry": [
+      2,
+      2
+    ],
+    "crossdoc_complete": [
+      1,
+      2
+    ],
+    "strict_pass": [
+      24,
+      26
+    ]
+  },
+  "5": {
+    "positive_n": 25,
+    "necessary_n": 37,
+    "recall_macro": 0.94,
+    "recall_micro": 0.918918918918919,
+    "hit": [
+      24,
+      25
+    ],
+    "determinate_hit": [
+      15,
+      15
+    ],
+    "conflict_complete": [
+      8,
+      9
+    ],
+    "canonical_conflict_complete": [
+      8,
+      9
+    ],
+    "negative_any_candidate": [
+      1,
+      1
+    ],
+    "negative_any_unrelated": [
+      0,
+      1
+    ],
+    "crossdoc_entry": [
+      2,
+      2
+    ],
+    "crossdoc_complete": [
+      1,
+      2
+    ],
+    "strict_pass": [
+      24,
+      26
+    ]
+  },
+  "10": {
+    "positive_n": 25,
+    "necessary_n": 37,
+    "recall_macro": 0.98,
+    "recall_micro": 0.972972972972973,
+    "hit": [
+      25,
+      25
+    ],
+    "determinate_hit": [
+      15,
+      15
+    ],
+    "conflict_complete": [
+      9,
+      9
+    ],
+    "canonical_conflict_complete": [
+      9,
+      9
+    ],
+    "negative_any_candidate": [
+      1,
+      1
+    ],
+    "negative_any_unrelated": [
+      0,
+      1
+    ],
+    "crossdoc_entry": [
+      2,
+      2
+    ],
+    "crossdoc_complete": [
+      1,
+      2
+    ],
+    "strict_pass": [
+      25,
+      26
+    ]
+  }
+}

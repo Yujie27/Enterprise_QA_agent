@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\ZONST\Desktop\Enterprise_QA_agent\scripts\coverage_experiment.py", line 82, in <module>
+    worker(a.folder, a.run_id, a.mode)
+  File "C:\Users\ZONST\Desktop\Enterprise_QA_agent\scripts\coverage_experiment.py", line 45, in worker
+    base.worker(folder, run_id)
+  File "C:\Users\ZONST\Desktop\Enterprise_QA_agent\scripts\agent_baseline.py", line 162, in worker
+    manifest = check(folder)
+               ^^^^^^^^^^^^^
+  File "C:\Users\ZONST\Desktop\Enterprise_QA_agent\scripts\agent_baseline.py", line 156, in check
+    assert sha(ROOT / path) == value, f"Protected code or previous baseline changed: {path}"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Protected code or previous baseline changed: README.md

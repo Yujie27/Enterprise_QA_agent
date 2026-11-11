@@ -1,0 +1,22 @@
+[
+  {
+    "doc_id": "P01",
+    "title": "制度文件P01",
+    "version": "3.2",
+    "effective_from": "2026-01-01",
+    "scope": "产品星舟；版本3.2",
+    "tags": [
+      "星舟",
+      "产品",
+      "导出",
+      "PDF",
+      "Excel"
+    ],
+    "sections": [
+      {
+        "section_id": "P01-S1",
+        "text": "产品星舟支持PDF导出，不支持Excel导出。仅支持企业版，个人版没有导出功能。"
+      }
+    ]
+  }
+]

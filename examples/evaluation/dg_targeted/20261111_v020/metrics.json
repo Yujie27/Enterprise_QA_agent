@@ -1,0 +1,54 @@
+{
+  "control": {
+    "runs": 9,
+    "first_recall": 1.0,
+    "cumulative_recall": 1.0,
+    "coverage_denominator": 8,
+    "confirmed_business_pass": 6,
+    "pending_wording": 1,
+    "confirmed_business_fail": 2,
+    "correct_terminal_confirmed_pass": 5,
+    "completed_confirmed_pass": 4,
+    "complete_responses": 9,
+    "supported_citation_runs": 8,
+    "unsupported_runs": 2,
+    "process_error_runs": 0,
+    "tools": 26,
+    "budget_rejections": 1,
+    "no_new_searches": 3,
+    "statuses": {
+      "completed": 7,
+      "incomplete": 1,
+      "tool_error": 1
+    },
+    "c11_tools": 10,
+    "c11_post_coverage_searches": 1,
+    "c11_post_coverage_tools": 7
+  },
+  "dg_targeted": {
+    "runs": 9,
+    "first_recall": 1.0,
+    "cumulative_recall": 1.0,
+    "coverage_denominator": 8,
+    "confirmed_business_pass": 9,
+    "pending_wording": 0,
+    "confirmed_business_fail": 0,
+    "correct_terminal_confirmed_pass": 8,
+    "completed_confirmed_pass": 7,
+    "complete_responses": 9,
+    "supported_citation_runs": 8,
+    "unsupported_runs": 0,
+    "process_error_runs": 0,
+    "tools": 28,
+    "budget_rejections": 1,
+    "no_new_searches": 7,
+    "statuses": {
+      "incomplete": 1,
+      "completed": 7,
+      "tool_error": 1
+    },
+    "c11_tools": 12,
+    "c11_post_coverage_searches": 4,
+    "c11_post_coverage_tools": 9
+  }
+}

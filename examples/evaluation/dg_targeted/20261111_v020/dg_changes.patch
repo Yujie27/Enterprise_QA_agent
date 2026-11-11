@@ -1,0 +1,64 @@
+--- before/src/enterprise_qa_agent/agent.py
++++ dg/src/enterprise_qa_agent/agent.py
+@@ -32,6 +32,17 @@
+ """
+ 
+ 
++DG_TARGETED_PROMPT = """
++本轮分类表达、有据回答与结束策略：
++1. 区分范围相同、范围不同、范围未知。scope未提供只能说范围未知，不能推断都适用、同范围、通用规则或效力层级相同。
++2. 不一致条款引用双方并读取原文核验范围及替代/优先级依据；未知时请求确认，不擅选期限，不建议先按较短期限执行。
++3. 用户实际提出的各子问题都有充分依据后即可结束。简单问题已有充分原文片段无需机械再读全文；冲突必要的原文核验仍须完成。不要扩展用户未问的材料细则、例外、处罚；细节未提供可说明缺失，不反复追查耗尽预算。
++4. 保留原文数字、单位、起算点、限制；合理释义不得新增制度含义。不补造当日/次日、工作日/自然日、故障发生时间。
++5. 重点呈现结论、依据和必要缺口，无须复述检索过程。若描述过程必须符合实际工具记录：没有采用某候选不等于没有检索到该候选。
++这些是回答和停止的提示策略，不代表程序已完成语义验证，也不要求固定工具路径。
++"""
++
++
+ class RunRecorder:
+     def __init__(self, max_tool_calls: int):
+         self.max_tool_calls = max_tool_calls
+@@ -42,6 +53,7 @@
+         self.limit_reached = False
+         self.events: list[dict[str, Any]] = []
+         self.demand_rewrite = False
++        self.dg_targeted = False
+         self.seen_evidence = set()
+         self.seen_queries = set()
+ 
+@@ -259,7 +271,7 @@
+     max_iters = max(2, recorder.max_tool_calls + 1)
+     return Agent(
+         name="EnterprisePolicyQA",
+-        system_prompt=SYSTEM_PROMPT + (DEMAND_REWRITE_PROMPT if recorder.demand_rewrite else ""),
++        system_prompt=SYSTEM_PROMPT + (DEMAND_REWRITE_PROMPT if recorder.demand_rewrite else "") + (DG_TARGETED_PROMPT if recorder.dg_targeted else ""),
+         model=model,
+         toolkit=toolkit,
+         react_config=ReActConfig(max_iters=max_iters),
+--- before/src/enterprise_qa_agent/cli.py
++++ dg/src/enterprise_qa_agent/cli.py
+@@ -155,6 +155,7 @@
+     parser.add_argument("--mock", action="store_true", help="离线流程演示，不代表模型决策")
+     parser.add_argument("--retrieval-mode", choices=["original", "dedup"], default="dedup")
+     parser.add_argument("--demand-rewrite", action="store_true", help="按证据覆盖缺口进行模型自主改写")
++    parser.add_argument("--dg-targeted", action="store_true", help="定向实验：未知范围表达、有据回答及结束策略")
+     parser.add_argument("--match-threshold", choices=["original", "one_overlap"], default="original", help="实验：检索匹配门槛，默认保留原行为")
+     parser.add_argument("--interactive", action="store_true", help="多轮交互模式；输入 /exit 结束")
+     parser.add_argument(
+@@ -186,6 +187,7 @@
+         parser.error("MAX_TOOL_CALLS 必须大于 0")
+     corpus = KnowledgeBase(args.corpus, deduplicate=args.retrieval_mode == "dedup", match_threshold=args.match_threshold)
+     recorder = RunRecorder(max_calls)
++    recorder.dg_targeted = args.dg_targeted
+     conversation: list[dict[str, str]] | None = None
+ 
+     try:
+@@ -205,7 +207,7 @@
+         status, answer = "failed", f"运行失败：{type(exc).__name__}: {exc}"
+ 
+     trace = {
+-        "experiment_config": {"retrieval_mode": args.retrieval_mode, "demand_rewrite": args.demand_rewrite, "match_threshold": args.match_threshold},
++        "experiment_config": {"retrieval_mode": args.retrieval_mode, "demand_rewrite": args.demand_rewrite, "match_threshold": args.match_threshold, "dg_targeted": args.dg_targeted},
+         "trace_schema_version": 2,
+         "app_version": __version__,
+         "corpus": {

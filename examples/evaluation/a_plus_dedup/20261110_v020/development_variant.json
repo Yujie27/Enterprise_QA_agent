@@ -1,0 +1,342 @@
+[
+  {
+    "doc_id": "zeta",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "zeta-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ]
+  },
+  {
+    "doc_id": "omega",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "omega-article",
+        "text": "报销费用发生后30日内提交。"
+      }
+    ]
+  },
+  {
+    "doc_id": "archive-0",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-0-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-1",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-1-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-2",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-2-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-3",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-3-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-4",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-4-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-5",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-5-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-6",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-6-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-7",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-7-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-8",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-8-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-9",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-9-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-10",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-10-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-11",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-11-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-12",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-12-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-13",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-13-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-14",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-14-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-15",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-15-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  },
+  {
+    "doc_id": "archive-16",
+    "title": "报销期限",
+    "scope": "所有职员",
+    "version": "2026-v1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "报销",
+      "期限"
+    ],
+    "sections": [
+      {
+        "section_id": "archive-16-article",
+        "text": "报销费用发生后15日内提交。"
+      }
+    ],
+    "copied_from": "zeta"
+  }
+]

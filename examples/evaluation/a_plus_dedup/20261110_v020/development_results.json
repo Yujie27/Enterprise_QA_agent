@@ -1,0 +1,653 @@
+{
+  "experiment": "A＋去重",
+  "included_in_frozen_metrics": false,
+  "corpus_sha256": "c964d760dfbe81c2cebed0e0bf30c9f6d4b40fe4dfb5ac05a9a631afe54c2310",
+  "query": "报销期限",
+  "copy_count": 17,
+  "unique_rules": 2,
+  "results": [
+    {
+      "k": 1,
+      "candidates": [
+        {
+          "doc_id": "omega",
+          "title": "报销期限",
+          "version": "2026-v1",
+          "effective_from": "2026-01-01",
+          "scope": "所有职员",
+          "section_id": "omega-article",
+          "text": "报销费用发生后30日内提交。",
+          "score": 1.0
+        }
+      ],
+      "both_recalled": false
+    },
+    {
+      "k": 3,
+      "candidates": [
+        {
+          "doc_id": "omega",
+          "title": "报销期限",
+          "version": "2026-v1",
+          "effective_from": "2026-01-01",
+          "scope": "所有职员",
+          "section_id": "omega-article",
+          "text": "报销费用发生后30日内提交。",
+          "score": 1.0
+        },
+        {
+          "doc_id": "zeta",
+          "title": "报销期限",
+          "version": "2026-v1",
+          "effective_from": "2026-01-01",
+          "scope": "所有职员",
+          "section_id": "zeta-article",
+          "text": "报销费用发生后15日内提交。",
+          "score": 1.0,
+          "source_info": {
+            "grouping": "exact_content_scope_version_date",
+            "representative_policy": "verified_original_candidate",
+            "sources": [
+              {
+                "doc_id": "zeta",
+                "section_id": "zeta-article",
+                "declared_copied_from": null,
+                "verified_original": null,
+                "relationship": "content_duplicate_only"
+              },
+              {
+                "doc_id": "archive-0",
+                "section_id": "archive-0-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-1",
+                "section_id": "archive-1-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-2",
+                "section_id": "archive-2-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-3",
+                "section_id": "archive-3-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-4",
+                "section_id": "archive-4-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-5",
+                "section_id": "archive-5-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-6",
+                "section_id": "archive-6-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-7",
+                "section_id": "archive-7-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-8",
+                "section_id": "archive-8-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-9",
+                "section_id": "archive-9-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-10",
+                "section_id": "archive-10-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-11",
+                "section_id": "archive-11-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-12",
+                "section_id": "archive-12-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-13",
+                "section_id": "archive-13-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-14",
+                "section_id": "archive-14-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-15",
+                "section_id": "archive-15-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-16",
+                "section_id": "archive-16-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              }
+            ]
+          }
+        }
+      ],
+      "both_recalled": true
+    },
+    {
+      "k": 5,
+      "candidates": [
+        {
+          "doc_id": "omega",
+          "title": "报销期限",
+          "version": "2026-v1",
+          "effective_from": "2026-01-01",
+          "scope": "所有职员",
+          "section_id": "omega-article",
+          "text": "报销费用发生后30日内提交。",
+          "score": 1.0
+        },
+        {
+          "doc_id": "zeta",
+          "title": "报销期限",
+          "version": "2026-v1",
+          "effective_from": "2026-01-01",
+          "scope": "所有职员",
+          "section_id": "zeta-article",
+          "text": "报销费用发生后15日内提交。",
+          "score": 1.0,
+          "source_info": {
+            "grouping": "exact_content_scope_version_date",
+            "representative_policy": "verified_original_candidate",
+            "sources": [
+              {
+                "doc_id": "zeta",
+                "section_id": "zeta-article",
+                "declared_copied_from": null,
+                "verified_original": null,
+                "relationship": "content_duplicate_only"
+              },
+              {
+                "doc_id": "archive-0",
+                "section_id": "archive-0-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-1",
+                "section_id": "archive-1-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-2",
+                "section_id": "archive-2-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-3",
+                "section_id": "archive-3-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-4",
+                "section_id": "archive-4-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-5",
+                "section_id": "archive-5-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-6",
+                "section_id": "archive-6-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-7",
+                "section_id": "archive-7-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-8",
+                "section_id": "archive-8-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-9",
+                "section_id": "archive-9-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-10",
+                "section_id": "archive-10-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-11",
+                "section_id": "archive-11-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-12",
+                "section_id": "archive-12-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-13",
+                "section_id": "archive-13-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-14",
+                "section_id": "archive-14-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-15",
+                "section_id": "archive-15-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-16",
+                "section_id": "archive-16-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              }
+            ]
+          }
+        }
+      ],
+      "both_recalled": true
+    },
+    {
+      "k": 10,
+      "candidates": [
+        {
+          "doc_id": "omega",
+          "title": "报销期限",
+          "version": "2026-v1",
+          "effective_from": "2026-01-01",
+          "scope": "所有职员",
+          "section_id": "omega-article",
+          "text": "报销费用发生后30日内提交。",
+          "score": 1.0
+        },
+        {
+          "doc_id": "zeta",
+          "title": "报销期限",
+          "version": "2026-v1",
+          "effective_from": "2026-01-01",
+          "scope": "所有职员",
+          "section_id": "zeta-article",
+          "text": "报销费用发生后15日内提交。",
+          "score": 1.0,
+          "source_info": {
+            "grouping": "exact_content_scope_version_date",
+            "representative_policy": "verified_original_candidate",
+            "sources": [
+              {
+                "doc_id": "zeta",
+                "section_id": "zeta-article",
+                "declared_copied_from": null,
+                "verified_original": null,
+                "relationship": "content_duplicate_only"
+              },
+              {
+                "doc_id": "archive-0",
+                "section_id": "archive-0-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-1",
+                "section_id": "archive-1-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-2",
+                "section_id": "archive-2-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-3",
+                "section_id": "archive-3-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-4",
+                "section_id": "archive-4-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-5",
+                "section_id": "archive-5-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-6",
+                "section_id": "archive-6-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-7",
+                "section_id": "archive-7-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-8",
+                "section_id": "archive-8-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-9",
+                "section_id": "archive-9-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-10",
+                "section_id": "archive-10-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-11",
+                "section_id": "archive-11-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-12",
+                "section_id": "archive-12-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-13",
+                "section_id": "archive-13-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-14",
+                "section_id": "archive-14-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-15",
+                "section_id": "archive-15-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "archive-16",
+                "section_id": "archive-16-article",
+                "declared_copied_from": "zeta",
+                "verified_original": {
+                  "doc_id": "zeta",
+                  "section_id": "zeta-article"
+                },
+                "relationship": "verified_copy"
+              }
+            ]
+          }
+        }
+      ],
+      "both_recalled": true
+    }
+  ]
+}

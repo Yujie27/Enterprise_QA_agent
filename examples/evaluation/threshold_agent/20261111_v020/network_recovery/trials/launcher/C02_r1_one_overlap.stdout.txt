@@ -1,0 +1,9 @@
+状态：completed
+根据目前检索到的制度：
+
+- **报销期限：费用发生后 30 日内提交申请。**
+- **依据**：D01《制度文件D01》，版本 **2026-01**，生效日期 **2026-01-01**，条款 **D01-S1**。
+- **原文**：“费用报销应在费用发生后30日内提交申请。”
+
+说明：该文档未标注适用范围；以上仅为该制度原文规定。本次回答依据检索到的 D01 原文作出。
+Trace：C:\Users\ZONST\Desktop\Enterprise_QA_agent\examples\evaluation\threshold_agent\20261111_v020\network_recovery\trials\sessions\C02_r1_one_overlap\traces\20261111_115632_279840.json

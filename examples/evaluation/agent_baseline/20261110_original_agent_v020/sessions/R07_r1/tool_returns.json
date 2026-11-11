@@ -1,0 +1,166 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T12:15:48.322301+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "研发部门；差旅费用",
+          "section_id": "D01-S1",
+          "text": "差旅费用报销应在返程后15日内提交申请。",
+          "score": 0.429
+        },
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "销售部门；差旅费用",
+          "section_id": "D02-S1",
+          "text": "差旅费用报销应在返程后20日内提交申请。",
+          "score": 0.429
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"section_id\": \"D01-S1\", \"text\": \"差旅费用报销应在返程后15日内提交申请。\", \"score\": 0.429}, {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"销售部门；差旅费用\", \"section_id\": \"D02-S1\", \"text\": \"差旅费用报销应在返程后20日内提交申请。\", \"score\": 0.429}], \"summary\": \"返回 2 条资料\"}",
+          "id": "65f994d4ab734b7aa9a2cb408df12817",
+          "created_at": "2026-11-10T20:15:48.322301",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "2d97c264867f4f31b689448738089df6"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T12:15:48.323348+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "研发部门；差旅费用",
+          "section_id": "D01-S1",
+          "text": "差旅费用报销应在返程后15日内提交申请。",
+          "score": 0.571
+        },
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "销售部门；差旅费用",
+          "section_id": "D02-S1",
+          "text": "差旅费用报销应在返程后20日内提交申请。",
+          "score": 0.571
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"section_id\": \"D01-S1\", \"text\": \"差旅费用报销应在返程后15日内提交申请。\", \"score\": 0.571}, {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"销售部门；差旅费用\", \"section_id\": \"D02-S1\", \"text\": \"差旅费用报销应在返程后20日内提交申请。\", \"score\": 0.571}], \"summary\": \"返回 2 条资料\"}",
+          "id": "2f549e820e2c424bb68a145adb1c8f1d",
+          "created_at": "2026-11-10T20:15:48.323348",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "c4c15fe08cc845ca92877cfc7d97c5eb"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-10T12:15:49.974633+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "研发部门；差旅费用",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D01-S1",
+            "text": "差旅费用报销应在返程后15日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"差旅费用报销应在返程后15日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "a1d2c3a7101c4df1867754268e67d8d0",
+          "created_at": "2026-11-10T20:15:49.974633",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "6fd2e9913b88417091cb42b54db11786"
+    }
+  },
+  {
+    "index": 4,
+    "timestamp_utc": "2026-11-10T12:15:49.975669+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D02",
+        "title": "制度文件D02",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "销售部门；差旅费用",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D02-S1",
+            "text": "差旅费用报销应在返程后20日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"销售部门；差旅费用\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D02-S1\", \"text\": \"差旅费用报销应在返程后20日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "ae77f57f7693453d96b4a629647743fc",
+          "created_at": "2026-11-10T20:15:49.975669",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "02fae13b3e914837b7b6f7d6998b9a27"
+    }
+  }
+]

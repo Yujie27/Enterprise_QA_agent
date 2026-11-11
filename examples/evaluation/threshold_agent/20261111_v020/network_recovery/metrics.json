@@ -1,0 +1,40 @@
+{
+  "original": {
+    "runs": 10,
+    "first_recall": 0.7222222222222222,
+    "cumulative_recall": 0.8333333333333334,
+    "evidence_denominator": 9,
+    "first_complete": 5,
+    "cumulative_complete": 7,
+    "business_pass": 8,
+    "correct_terminal_and_business_pass": 8,
+    "completed_and_business_pass": 7,
+    "tools": 30,
+    "budget_rejections": 0,
+    "unsupported_runs": 1,
+    "wrong_source_citations": 0,
+    "statuses": {
+      "completed": 9,
+      "insufficient_evidence": 1
+    }
+  },
+  "one_overlap": {
+    "runs": 10,
+    "first_recall": 1.0,
+    "cumulative_recall": 1.0,
+    "evidence_denominator": 9,
+    "first_complete": 9,
+    "cumulative_complete": 9,
+    "business_pass": 7,
+    "correct_terminal_and_business_pass": 6,
+    "completed_and_business_pass": 6,
+    "tools": 28,
+    "budget_rejections": 1,
+    "unsupported_runs": 3,
+    "wrong_source_citations": 0,
+    "statuses": {
+      "completed": 9,
+      "incomplete": 1
+    }
+  }
+}

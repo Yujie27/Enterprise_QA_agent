@@ -1,0 +1,5 @@
+状态：tool_error
+检索工具连续两次出现同类故障，未能取得可用的制度资料，因此目前**无法确认报销期限**，也不能据此给出具体天数。
+
+请稍后重试，或提供适用制度的名称、文档 ID 及适用主体/地区，以便核对后回答。
+Trace：C:\Users\ZONST\Desktop\Enterprise_QA_agent\examples\evaluation\dg_targeted\20261111_v020\trials\sessions\F01_r1_dg_targeted\traces\20261111_125031_352835.json

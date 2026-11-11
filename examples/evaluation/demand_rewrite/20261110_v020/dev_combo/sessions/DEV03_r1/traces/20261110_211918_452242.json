@@ -1,0 +1,103 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": true
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "DEV03.json",
+    "sha256": "ef157f13c65a59f90c6a5ca8466ceb31dd1e53e6d65ce275a8640c90ba17013a"
+  },
+  "timestamp_utc": "2026-11-10T13:19:18.452242+00:00",
+  "mode": "agentscope_react",
+  "question": "设备维修申请的时限和需要的资料是什么？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 1,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "设备维修申请的时限和需要的资料是什么？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "设备维修申请 时限 所需资料",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位设备维修申请的制度条款，分别核实申请时限和提交资料。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "设备维修申请的时限",
+          "设备维修申请需要的资料"
+        ],
+        "covered": [],
+        "missing": [
+          "设备维修申请的时限",
+          "设备维修申请需要的资料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "DEV03-1",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV03-1-S1",
+            "text": "设备维修应在发现故障后7日内申报。",
+            "score": 0.333
+          },
+          {
+            "doc_id": "DEV03-2",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV03-2-S1",
+            "text": "设备维修工单须填写序列号并附故障截图。",
+            "score": 0.333
+          }
+        ],
+        "summary": "返回 2 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 2,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "根据检索到的《内部服务说明》：\n\n- **申请时限**：设备发现故障后，应在 **7 日内**申报。  \n  依据：DEV03-1《内部服务说明》第1版，2026-01-01生效，适用范围“全体员工”，DEV03-1-S1：“设备维修应在发现故障后7日内申报。”\n\n- **所需资料**：设备维修工单须**填写设备序列号，并附上故障截图**。  \n  依据：DEV03-2《内部服务说明》第1版，2026-01-01生效，适用范围“全体员工”，DEV03-2-S1：“设备维修工单须填写序列号并附故障截图。”\n\n**证据覆盖说明**：问题中的“申请时限”和“所需资料”两项需求，均有制度原文支持，即分别由 DEV03-1 和 DEV03-2 对应支持；未发现两者之间的冲突。上述资料范围仅以检索到的条款为限。"
+    }
+  ],
+  "answer": "根据检索到的《内部服务说明》：\n\n- **申请时限**：设备发现故障后，应在 **7 日内**申报。  \n  依据：DEV03-1《内部服务说明》第1版，2026-01-01生效，适用范围“全体员工”，DEV03-1-S1：“设备维修应在发现故障后7日内申报。”\n\n- **所需资料**：设备维修工单须**填写设备序列号，并附上故障截图**。  \n  依据：DEV03-2《内部服务说明》第1版，2026-01-01生效，适用范围“全体员工”，DEV03-2-S1：“设备维修工单须填写序列号并附故障截图。”\n\n**证据覆盖说明**：问题中的“申请时限”和“所需资料”两项需求，均有制度原文支持，即分别由 DEV03-1 和 DEV03-2 对应支持；未发现两者之间的冲突。上述资料范围仅以检索到的条款为限。"
+}

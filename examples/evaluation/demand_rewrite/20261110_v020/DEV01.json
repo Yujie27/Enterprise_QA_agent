@@ -1,0 +1,36 @@
+[
+  {
+    "doc_id": "DEV01-1",
+    "title": "内部服务说明",
+    "scope": "全体员工",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "培训",
+      "报名"
+    ],
+    "sections": [
+      {
+        "section_id": "DEV01-1-S1",
+        "text": "培训报名须在开课前10日完成。"
+      }
+    ]
+  },
+  {
+    "doc_id": "DEV01-2",
+    "title": "内部服务说明",
+    "scope": "全体员工",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "培训",
+      "申请"
+    ],
+    "sections": [
+      {
+        "section_id": "DEV01-2-S1",
+        "text": "培训申请须上传主管确认函及结业测验记录。"
+      }
+    ]
+  }
+]

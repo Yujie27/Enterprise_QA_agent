@@ -1,0 +1,121 @@
+{
+  "prepared_at_utc": "2026-11-10T13:06:03.169212+00:00",
+  "cases": [
+    {
+      "case_id": "DEV01",
+      "messages": [
+        {
+          "role": "user",
+          "content": "员工培训报名截止时间和所需资料分别是什么？"
+        }
+      ],
+      "corpus": "examples/evaluation/demand_rewrite/20261110_v020/DEV01.json",
+      "corpus_sha256": "973c6168df4b00242039862dab3399b696eecc6228e3c97fc2ad99c047183d7c",
+      "necessary_evidence": [
+        {
+          "doc_id": "DEV01-1",
+          "section_id": "DEV01-1-S1"
+        },
+        {
+          "doc_id": "DEV01-2",
+          "section_id": "DEV01-2-S1"
+        }
+      ],
+      "simulate_failure": null,
+      "expected": "两项需求均按原文回答，无未给出的细则",
+      "development": true
+    },
+    {
+      "case_id": "DEV02",
+      "messages": [
+        {
+          "role": "user",
+          "content": "图书借阅需要满足什么条件，如何办理？"
+        }
+      ],
+      "corpus": "examples/evaluation/demand_rewrite/20261110_v020/DEV02.json",
+      "corpus_sha256": "ce16c3eb45fea0cf4a386df4f9ed78cf3f6f150cdb6b5453060bda71561f3883",
+      "necessary_evidence": [
+        {
+          "doc_id": "DEV02-1",
+          "section_id": "DEV02-1-S1"
+        },
+        {
+          "doc_id": "DEV02-2",
+          "section_id": "DEV02-2-S1"
+        }
+      ],
+      "simulate_failure": null,
+      "expected": "两项需求均按原文回答，无未给出的细则",
+      "development": true
+    },
+    {
+      "case_id": "DEV03",
+      "messages": [
+        {
+          "role": "user",
+          "content": "设备维修申请的时限和需要的资料是什么？"
+        }
+      ],
+      "corpus": "examples/evaluation/demand_rewrite/20261110_v020/DEV03.json",
+      "corpus_sha256": "ef157f13c65a59f90c6a5ca8466ceb31dd1e53e6d65ce275a8640c90ba17013a",
+      "necessary_evidence": [
+        {
+          "doc_id": "DEV03-1",
+          "section_id": "DEV03-1-S1"
+        },
+        {
+          "doc_id": "DEV03-2",
+          "section_id": "DEV03-2-S1"
+        }
+      ],
+      "simulate_failure": null,
+      "expected": "两项需求均按原文回答，无未给出的细则",
+      "development": true
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "DEV01_r1",
+      "case_id": "DEV01",
+      "repeat": 1,
+      "batch": "development"
+    },
+    {
+      "run_id": "DEV02_r1",
+      "case_id": "DEV02",
+      "repeat": 1,
+      "batch": "development"
+    },
+    {
+      "run_id": "DEV03_r1",
+      "case_id": "DEV03",
+      "repeat": 1,
+      "batch": "development"
+    }
+  ],
+  "criteria": {
+    "scope": "original real CLI, no manual rewrite, no evidence supplied to model beyond original tools",
+    "strict_business_pass": "Correct source-bounded main conclusion, supported citations, required gaps explicit, no unsupported policy assertion or execution advice; budget/framework failure tracked separately",
+    "recovery_axes": [
+      "raw_query_k5_vs_agent_visible_evidence",
+      "agent_first_search_vs_later_observations"
+    ],
+    "labels": [
+      "必要证据未召回，模型未恢复",
+      "首次未召回，但模型通过后续动作恢复",
+      "必要证据已可见，模型仍判断错误",
+      "主答案正确，但引用错误或附带无依据断言",
+      "工程异常、预算不足或路径未触发"
+    ],
+    "R07": "Check visible scope and publicly stated scope-based explanation; no order/ID counterfactual, so cannot causally prove independence from ranking",
+    "E03": "Do not choose natural/work days or recommend one as an execution rule without evidence",
+    "C13": "Assess visible30day+15day claims, count copies once; never treat hidden corpus sections or copied_from metadata absent from actual search as model-visible",
+    "M01": "Same original CLI interactive session, exact two design messages; check per-turn evidence and final context use",
+    "F01": "Use original search failure switch; if agent truly recovers using another working tool, report actual recovery rather than inventing failure",
+    "observer": "Passive wrappers of _tool_response and Agent.reply record ORIGINAL returned objects and metadata, then return them unchanged; no tool replacement/retrieval override",
+    "repeat_policy": "1 per case plus2 for C01/C11/C13; no success selection; max concurrency2 independent processes; CLI errors preserved; external900s watchdog separate from tool budget",
+    "B1_working_definition": "query/initial retrieval evidence acquisition improvements; not implemented in this run",
+    "B2_working_definition": "related/conflicting evidence supplementation, source diversity and evidence-aware decision/answer control; not implemented in this run"
+  }
+}

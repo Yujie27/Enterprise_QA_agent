@@ -1,0 +1,216 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-11T04:49:23.923098+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.556
+        },
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D02-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "score": 0.556,
+          "source_info": {
+            "grouping": "exact_content_scope_version_date",
+            "representative_policy": "verified_original_candidate",
+            "sources": [
+              {
+                "doc_id": "D02",
+                "section_id": "D02-S1",
+                "declared_copied_from": null,
+                "verified_original": null,
+                "relationship": "content_duplicate_only"
+              },
+              {
+                "doc_id": "COPY0",
+                "section_id": "COPY0-S1",
+                "declared_copied_from": "D02",
+                "verified_original": {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "COPY1",
+                "section_id": "COPY1-S1",
+                "declared_copied_from": "D02",
+                "verified_original": {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "COPY2",
+                "section_id": "COPY2-S1",
+                "declared_copied_from": "D02",
+                "verified_original": {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "COPY3",
+                "section_id": "COPY3-S1",
+                "declared_copied_from": "D02",
+                "verified_original": {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "COPY4",
+                "section_id": "COPY4-S1",
+                "declared_copied_from": "D02",
+                "verified_original": {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "COPY5",
+                "section_id": "COPY5-S1",
+                "declared_copied_from": "D02",
+                "verified_original": {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "COPY6",
+                "section_id": "COPY6-S1",
+                "declared_copied_from": "D02",
+                "verified_original": {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1"
+                },
+                "relationship": "verified_copy"
+              },
+              {
+                "doc_id": "COPY7",
+                "section_id": "COPY7-S1",
+                "declared_copied_from": "D02",
+                "verified_original": {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1"
+                },
+                "relationship": "verified_copy"
+              }
+            ]
+          }
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.556}, {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D02-S1\", \"text\": \"费用报销应在费用发生后15日内提交申请。\", \"score\": 0.556, \"source_info\": {\"grouping\": \"exact_content_scope_version_date\", \"representative_policy\": \"verified_original_candidate\", \"sources\": [{\"doc_id\": \"D02\", \"section_id\": \"D02-S1\", \"declared_copied_from\": null, \"verified_original\": null, \"relationship\": \"content_duplicate_only\"}, {\"doc_id\": \"COPY0\", \"section_id\": \"COPY0-S1\", \"declared_copied_from\": \"D02\", \"verified_original\": {\"doc_id\": \"D02\", \"section_id\": \"D02-S1\"}, \"relationship\": \"verified_copy\"}, {\"doc_id\": \"COPY1\", \"section_id\": \"COPY1-S1\", \"declared_copied_from\": \"D02\", \"verified_original\": {\"doc_id\": \"D02\", \"section_id\": \"D02-S1\"}, \"relationship\": \"verified_copy\"}, {\"doc_id\": \"COPY2\", \"section_id\": \"COPY2-S1\", \"declared_copied_from\": \"D02\", \"verified_original\": {\"doc_id\": \"D02\", \"section_id\": \"D02-S1\"}, \"relationship\": \"verified_copy\"}, {\"doc_id\": \"COPY3\", \"section_id\": \"COPY3-S1\", \"declared_copied_from\": \"D02\", \"verified_original\": {\"doc_id\": \"D02\", \"section_id\": \"D02-S1\"}, \"relationship\": \"verified_copy\"}, {\"doc_id\": \"COPY4\", \"section_id\": \"COPY4-S1\", \"declared_copied_from\": \"D02\", \"verified_original\": {\"doc_id\": \"D02\", \"section_id\": \"D02-S1\"}, \"relationship\": \"verified_copy\"}, {\"doc_id\": \"COPY5\", \"section_id\": \"COPY5-S1\", \"declared_copied_from\": \"D02\", \"verified_original\": {\"doc_id\": \"D02\", \"section_id\": \"D02-S1\"}, \"relationship\": \"verified_copy\"}, {\"doc_id\": \"COPY6\", \"section_id\": \"COPY6-S1\", \"declared_copied_from\": \"D02\", \"verified_original\": {\"doc_id\": \"D02\", \"section_id\": \"D02-S1\"}, \"relationship\": \"verified_copy\"}, {\"doc_id\": \"COPY7\", \"section_id\": \"COPY7-S1\", \"declared_copied_from\": \"D02\", \"verified_original\": {\"doc_id\": \"D02\", \"section_id\": \"D02-S1\"}, \"relationship\": \"verified_copy\"}]}}], \"summary\": \"返回 2 条资料\"}",
+          "id": "458ddf85701e4a559f47fe4f7c60a4c2",
+          "created_at": "2026-11-11T12:49:23.923098",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "955ff9c13fc74225b89edfba8e6d483d"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-11T04:49:25.190984+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "59c37cd82c3248b08cf6490576c6f8c4",
+          "created_at": "2026-11-11T12:49:25.190984",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "29e169f20e264973b262d8bb7f212d30"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-11T04:49:25.192064+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D02",
+        "title": "制度文件D02",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D02-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D02-S1\", \"text\": \"费用报销应在费用发生后15日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "af04d49fd58245d7874db8fdeb68b197",
+          "created_at": "2026-11-11T12:49:25.192064",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "62ced2200fb74155b6e9245da9f46bb3"
+    }
+  }
+]

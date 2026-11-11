@@ -1,0 +1,7 @@
+{
+  "collector_sha256": "27c6268968f0bea4368b80f48dec57d59bb9a472d8599d1b7967329220627183",
+  "observations_sha256": "c4c84de49cf8fef0c9d2824480b0ddfb6a7ed5df4cc6e42e51372a8bdfb2520f",
+  "session_count": 18,
+  "all_protected_files_unchanged": true,
+  "note": "All visible evidence comes solely from actual tool-return payloads; corpus gold never supplied to model"
+}

@@ -1,0 +1,40 @@
+{
+  "dedup": true,
+  "demand_rewrite": false,
+  "match_threshold": "one_overlap",
+  "prompt_modes": [
+    "control",
+    "dg_targeted"
+  ],
+  "budget": 4,
+  "default_k": 5,
+  "execution": "sequential control then treatment within each case/repeat",
+  "model": {
+    "model": "deepseek-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "endpoint_path": "/v1",
+    "api_key_configured": true,
+    "stream": false,
+    "parameters": {
+      "max_tokens": null,
+      "thinking_enable": false,
+      "reasoning_effort": null,
+      "temperature": null,
+      "top_p": null,
+      "parallel_tool_calls": false,
+      "voice": null
+    },
+    "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+    "tool_budget_per_turn": 4,
+    "configured_budget_before_runner": "4",
+    "react_max_iters": 5,
+    "model_max_retries_default": 3,
+    "model_retry_delay_default": 1.0,
+    "versions": {
+      "agentscope": "2.0.11",
+      "openai": "3.46.0",
+      "python-dotenv": "1.2.4",
+      "enterprise-qa-agent-minimal": "0.2.0"
+    }
+  }
+}

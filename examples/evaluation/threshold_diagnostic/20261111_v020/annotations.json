@@ -1,0 +1,805 @@
+{
+  "cases": [
+    {
+      "group": "frozen",
+      "id": "R01",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "R02",
+      "query": "研发同事出差回来多久要完成费用申请？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "required": [
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "R03",
+      "query": "研发差旅报消期现是多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "required": [
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "R04",
+      "query": "RD同事出差返程后，expense reimbursement deadline是多少？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "required": [
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "R05",
+      "query": "报销？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "required": [],
+      "excluded": true
+    },
+    {
+      "group": "frozen",
+      "id": "R06",
+      "query": "公司育儿补贴怎么申请？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/negative.json",
+      "required": [],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "R07",
+      "query": "研发部门差旅报销期限？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scope_metadata.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "R08",
+      "query": "星舟3.2个人版能导出Excel吗？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/product.json",
+      "required": [
+        [
+          "P01",
+          "P01-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "R09",
+      "query": "部门A差旅报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/crossdoc.json",
+      "required": [
+        [
+          "D10",
+          "D10-S1"
+        ],
+        [
+          "D11",
+          "D11-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "R10",
+      "query": "不要查年假，我只问研发部门差旅报销期限。",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "required": [
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C01",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/conflict.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C02",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C03",
+      "query": "我是研发部门，问差旅报销期限。",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "required": [
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C04",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C05",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/newer.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C09",
+      "query": "研发差旅期限是15日，对吗？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/units.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C10",
+      "query": "研发差旅报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/anchors.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C11",
+      "query": "报销期限和需要的材料分别是什么？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C12",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/internal.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D01",
+          "D01-S2"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C13",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/majority.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "C14",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/misleading_title.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "X01",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/noise9.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "X02",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/noise49.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "X03",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/noise99.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "X04",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/order.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D02",
+          "D02-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "X05",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/rename.json",
+      "required": [
+        [
+          "Z99",
+          "Z99-S1"
+        ],
+        [
+          "A01",
+          "A01-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "frozen",
+      "id": "X06",
+      "query": "报销期限多久？",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/modified.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "C11_trace",
+      "id": "pilot_C11/C11_r1/step1",
+      "query": "报销期限 报销申请时限",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r1/traces/20261110_210616_004417.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "pilot_C11/C11_r1/step2",
+      "query": "报销所需材料 提交凭证 发票",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r1/traces/20261110_210616_004417.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "pilot_C11/C11_r2/step1",
+      "query": "报销期限",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r2/traces/20261110_210620_462154.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "pilot_C11/C11_r2/step2",
+      "query": "报销需要提交的材料 发票 单据",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r2/traces/20261110_210620_462154.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "pilot_C11/C11_r2/step4",
+      "query": "费用报销附件凭证清单要求",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r2/traces/20261110_210620_462154.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "pilot_C11/C11_r3/step1",
+      "query": "报销期限 时限",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r3/traces/20261110_210628_427064.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "pilot_C11/C11_r3/step2",
+      "query": "报销 需要提交的材料 单据",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r3/traces/20261110_210628_427064.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "pilot_C11/C11_r3/step4",
+      "query": "报销 发票 凭证 报销单 附件",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/pilot_C11/sessions/C11_r3/traces/20261110_210628_427064.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "B/C11_r1/step1",
+      "query": "报销期限 规定",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r1/traces/20261110_210827_090682.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "B/C11_r1/step2",
+      "query": "报销所需材料 清单",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r1/traces/20261110_210827_090682.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "B/C11_r1/step4",
+      "query": "报销 发票 凭证 附件 单据要求",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r1/traces/20261110_210827_090682.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "B/C11_r2/step1",
+      "query": "报销期限 报销材料 要求",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r2/traces/20261110_211632_714407.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "B/C11_r2/step2",
+      "query": "费用报销 提交材料 发票 凭证 清单",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r2/traces/20261110_211632_714407.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "B/C11_r3/step1",
+      "query": "报销期限 报销材料 要求",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r3/traces/20261110_211629_675803.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "B/C11_r3/step3",
+      "query": "报销 提交材料 发票 单据 清单",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/B/sessions/C11_r3/traces/20261110_211629_675803.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "dedup_rewrite/C11_r1/step1",
+      "query": "报销期限 提交时限 报销材料要求",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r1/traces/20261110_211726_495633.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "dedup_rewrite/C11_r1/step3",
+      "query": "报销 附送 发票 单据 证明材料 清单",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r1/traces/20261110_211726_495633.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "dedup_rewrite/C11_r1/step4",
+      "query": "报销所需凭证和附件材料",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r1/traces/20261110_211726_495633.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "dedup_rewrite/C11_r2/step1",
+      "query": "报销期限",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r2/traces/20261110_211813_536821.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "dedup_rewrite/C11_r2/step2",
+      "query": "报销所需材料",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r2/traces/20261110_211813_536821.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "dedup_rewrite/C11_r2/step4",
+      "query": "报销 发票 单据 凭证 提交",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r2/traces/20261110_211813_536821.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "dedup_rewrite/C11_r3/step1",
+      "query": "报销期限 报销所需材料",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D01",
+          "D01-S1"
+        ],
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r3/traces/20261110_211817_500247.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "C11_trace",
+      "id": "dedup_rewrite/C11_r3/step2",
+      "query": "费用报销 提交材料 发票 清单",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "required": [
+        [
+          "D04",
+          "D04-S1"
+        ]
+      ],
+      "excluded": false,
+      "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C11_r3/traces/20261110_211817_500247.json",
+      "target_basis": "聚焦材料仅D04；期限仅D01；同时询问两项则D01+D04；按实际查询文字事前固定"
+    },
+    {
+      "group": "development",
+      "id": "DEV02",
+      "query": "图书借阅需要满足什么条件，如何办理？",
+      "corpus": "examples\\evaluation\\demand_rewrite\\20261110_v020\\DEV02.json",
+      "required": [
+        [
+          "DEV02-1",
+          "DEV02-1-S1"
+        ],
+        [
+          "DEV02-2",
+          "DEV02-2-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "development",
+      "id": "DEV03",
+      "query": "设备维修申请的时限和需要的资料是什么？",
+      "corpus": "examples\\evaluation\\demand_rewrite\\20261110_v020\\DEV03.json",
+      "required": [
+        [
+          "DEV03-1",
+          "DEV03-1-S1"
+        ],
+        [
+          "DEV03-2",
+          "DEV03-2-S1"
+        ]
+      ],
+      "excluded": false
+    },
+    {
+      "group": "development",
+      "id": "UNRELATED1",
+      "query": "火星天气预报",
+      "corpus": "examples\\evaluation\\demand_rewrite\\20261110_v020\\DEV03.json",
+      "required": [],
+      "excluded": false
+    },
+    {
+      "group": "development",
+      "id": "UNRELATED2",
+      "query": "报销主题的火星天气预报",
+      "corpus": "examples\\evaluation\\demand_rewrite\\20261110_v020\\DEV03.json",
+      "required": [],
+      "excluded": false
+    }
+  ],
+  "relevance_policy": "必要键为直接支持；经copied_from且文本/范围/版本/日期完全一致为等价支持；R06命中排除性说明为相关边界、不支持申请办法；范围对照条款为相关但不足；其他未标条款保守记待复核，不武断当无关。开发无关题全部候选无关。DEV01排除。"
+}

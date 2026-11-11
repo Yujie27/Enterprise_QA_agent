@@ -1,0 +1,140 @@
+{
+  "config": "dev_combo",
+  "run_id": "DEV03_r1",
+  "case_id": "DEV03",
+  "messages": [
+    {
+      "role": "user",
+      "content": "设备维修申请的时限和需要的资料是什么？"
+    }
+  ],
+  "corpus": "examples/evaluation/demand_rewrite/20261110_v020/DEV03.json",
+  "corpus_sha256": "ef157f13c65a59f90c6a5ca8466ceb31dd1e53e6d65ce275a8640c90ba17013a",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_combo/sessions/DEV03_r1/traces/20261110_211918_452242.json",
+  "status": "completed",
+  "answer": "根据检索到的《内部服务说明》：\n\n- **申请时限**：设备发现故障后，应在 **7 日内**申报。  \n  依据：DEV03-1《内部服务说明》第1版，2026-01-01生效，适用范围“全体员工”，DEV03-1-S1：“设备维修应在发现故障后7日内申报。”\n\n- **所需资料**：设备维修工单须**填写设备序列号，并附上故障截图**。  \n  依据：DEV03-2《内部服务说明》第1版，2026-01-01生效，适用范围“全体员工”，DEV03-2-S1：“设备维修工单须填写序列号并附故障截图。”\n\n**证据覆盖说明**：问题中的“申请时限”和“所需资料”两项需求，均有制度原文支持，即分别由 DEV03-1 和 DEV03-2 对应支持；未发现两者之间的冲突。上述资料范围仅以检索到的条款为限。",
+  "conversation": null,
+  "tool_calls": 1,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "设备维修申请 时限 所需资料",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位设备维修申请的制度条款，分别核实申请时限和提交资料。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "DEV03-1",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV03-1-S1",
+            "text": "设备维修应在发现故障后7日内申报。",
+            "score": 0.333
+          },
+          {
+            "doc_id": "DEV03-2",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV03-2-S1",
+            "text": "设备维修工单须填写序列号并附故障截图。",
+            "score": 0.333
+          }
+        ],
+        "summary": "返回 2 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 2,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "DEV03-1/DEV03-1-S1",
+        "DEV03-2/DEV03-2-S1"
+      ],
+      "new_keys": [
+        "DEV03-1/DEV03-1-S1",
+        "DEV03-2/DEV03-2-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "设备维修申请的时限",
+          "设备维修申请需要的资料"
+        ],
+        "covered": [],
+        "missing": [
+          "设备维修申请的时限",
+          "设备维修申请需要的资料"
+        ]
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {
+    "DEV03-1/DEV03-1-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    },
+    "DEV03-2/DEV03-2-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    }
+  },
+  "required": [
+    "DEV03-1/DEV03-1-S1",
+    "DEV03-2/DEV03-2-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "recovered_after_first": false,
+  "first_query": "设备维修申请 时限 所需资料",
+  "queries": [
+    "设备维修申请 时限 所需资料"
+  ],
+  "no_new_repeat_searches": 0,
+  "search_tool_attempts": 1,
+  "underlying_queries": 1,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "dev_combo",
+    "run_id": "DEV03_r1",
+    "strict_business_pass": true,
+    "completed_and_business_pass": true,
+    "safe_terminal_and_business_pass": true,
+    "reason": "首次两片段足够，仅一次search后直接结束，正确回答7日及序列号截图；这是简单问题不机械read的实际路径。",
+    "labels": [],
+    "unsupported_assertions": [],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": null,
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_combo/sessions/DEV03_r1/traces/20261110_211918_452242.json",
+    "gap_keys": []
+  },
+  "no_new_successful_searches": 0,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 0,
+  "post_coverage_reads": 0
+}

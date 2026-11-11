@@ -1,0 +1,20 @@
+{
+  "command": ".venv/Scripts/python.exe -B -m unittest discover -s tests -v",
+  "execution_date_local": "2026-11-11",
+  "returncode": 0,
+  "tests_run": 23,
+  "failures": 0,
+  "errors": 0,
+  "runner_reported_seconds": 0.212,
+  "actual_output_tail": "Ran 23 tests in 0.212s\n\nOK",
+  "scope": "已有17项与覆盖改写6项工程测试；不会调用真实模型",
+  "new_checks": [
+    "程序新颖度统计与语义覆盖分开，跨轮重置",
+    "模型公开coverage来源标识且未语义验证",
+    "original开关与冻结108条检索结果完全一致",
+    "dedup开关与封存实现实际结果一致",
+    "关闭时原提示词及工具描述/schema与封存版一致",
+    "开启工具的4次请求恰好执行4次KB.search，第5次拒绝且不执行底层查询"
+  ],
+  "note": "先测前既有21项通过；最终补充两项工具边界/兼容性测试后23项通过。未修改业务代码后重跑模型。"
+}

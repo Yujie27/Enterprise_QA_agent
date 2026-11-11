@@ -1,0 +1,257 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": false,
+    "match_threshold": "one_overlap"
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "complement.json",
+    "sha256": "484efa2062c4e47183b2a02017f819d67b5a91a43c5c78a0d2bed7744ea289b6"
+  },
+  "timestamp_utc": "2026-11-11T03:55:18.262277+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限和需要的材料分别是什么？",
+  "status": "incomplete",
+  "tool_call_limit": 4,
+  "tool_calls": 4,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限和需要的材料分别是什么？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 报销材料",
+        "limit": 5
+      },
+      "public_decision_reason": "需要先定位报销期限和报销材料的相关制度条款。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.4
+          },
+          {
+            "doc_id": "D04",
+            "title": "制度文件D04",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D04-S1",
+            "text": "费用报销申请须附合规票据。",
+            "score": 0.2
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "费用报销 提交凭证 时限",
+          "limit": 5
+        },
+        "executed": true,
+        "public_decision_reason": "补充检索报销提交时限与所需凭证的规定。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "费用报销 提交凭证 时限",
+        "limit": 5
+      },
+      "public_decision_reason": "补充检索报销提交时限与所需凭证的规定。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.571
+          },
+          {
+            "doc_id": "D04",
+            "title": "制度文件D04",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D04-S1",
+            "text": "费用报销申请须附合规票据。",
+            "score": 0.429
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D01"
+        },
+        "executed": true,
+        "public_decision_reason": "需核实报销期限条款的适用范围与完整原文。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "需核实报销期限条款的适用范围与完整原文。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D04"
+        },
+        "executed": true,
+        "public_decision_reason": "需核实报销材料条款的适用范围与完整原文。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 4,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D04"
+      },
+      "public_decision_reason": "需核实报销材料条款的适用范围与完整原文。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 4,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D04",
+          "title": "制度文件D04",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "票据",
+            "申请"
+          ],
+          "sections": [
+            {
+              "section_id": "D04-S1",
+              "text": "费用报销申请须附合规票据。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "报销附件 发票 审批单 费用明细 材料清单",
+          "limit": 5
+        },
+        "executed": false,
+        "public_decision_reason": "现有材料条款较概括，需确认是否存在更具体的报销材料清单。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "limit",
+      "turn": 1,
+      "step": 5,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销附件 发票 审批单 费用明细 材料清单",
+        "limit": 5
+      },
+      "summary": "工具调用上限 4 已达到，拒绝继续执行",
+      "public_decision_reason": "现有材料条款较概括，需确认是否存在更具体的报销材料清单。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "## 报销期限\n\n**费用应在发生后 30 日内提交报销申请。**\n\n- 文档：D01《制度文件D01》\n- 版本：2026-01；生效日期：2026-01-01\n- 条款：D01-S1\n- 原文：“费用报销应在费用发生后30日内提交申请。”\n- 适用范围：文档未提供\n\n## 需要的材料\n\n**报销申请须附合规票据。**\n\n- 文档：D04《制度文件D04》\n- 版本：2026-01；生效日期：2026-01-01\n- 条款：D04-S1\n- 原文：“费用报销申请须附合规票据。”\n- 适用范围：文档未提供\n\n## 说明\n\n- 两份制度分别规定报销期限和报销材料，内容并不冲突；但均未提供适用范围。\n- 现有资料只要求“合规票据”，**未列明具体材料清单**（如发票类型、审批单、费用明细等），无法进一步确认。\n- 后续检索更具体材料清单时工具调用次数已达上限，因此以上仅为已核实的原文范围。\n\n依据：D01、D04 的原文；因工具调用上限停止检索。"
+    }
+  ],
+  "answer": "未完成：达到工具调用上限（4）。\n## 报销期限\n\n**费用应在发生后 30 日内提交报销申请。**\n\n- 文档：D01《制度文件D01》\n- 版本：2026-01；生效日期：2026-01-01\n- 条款：D01-S1\n- 原文：“费用报销应在费用发生后30日内提交申请。”\n- 适用范围：文档未提供\n\n## 需要的材料\n\n**报销申请须附合规票据。**\n\n- 文档：D04《制度文件D04》\n- 版本：2026-01；生效日期：2026-01-01\n- 条款：D04-S1\n- 原文：“费用报销申请须附合规票据。”\n- 适用范围：文档未提供\n\n## 说明\n\n- 两份制度分别规定报销期限和报销材料，内容并不冲突；但均未提供适用范围。\n- 现有资料只要求“合规票据”，**未列明具体材料清单**（如发票类型、审批单、费用明细等），无法进一步确认。\n- 后续检索更具体材料清单时工具调用次数已达上限，因此以上仅为已核实的原文范围。\n\n依据：D01、D04 的原文；因工具调用上限停止检索。"
+}

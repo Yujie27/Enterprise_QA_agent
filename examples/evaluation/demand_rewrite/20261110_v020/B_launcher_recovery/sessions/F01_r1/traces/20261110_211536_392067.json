@@ -1,0 +1,123 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "original",
+    "demand_rewrite": true
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "single.json",
+    "sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a"
+  },
+  "timestamp_utc": "2026-11-10T13:15:36.391562+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限多久？",
+  "status": "tool_error",
+  "tool_call_limit": 4,
+  "tool_calls": 2,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限多久？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要检索制度中关于报销申请期限的规定",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [],
+        "missing": [
+          "报销期限"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+      "observation": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation"
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "费用报销 提交 时限 规定",
+          "limit": 5
+        },
+        "executed": true,
+        "public_decision_reason": "首次检索工具报错，换一种表达重试一次以确认是否有相关制度",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "费用报销 提交 时限 规定",
+        "limit": 5
+      },
+      "public_decision_reason": "首次检索工具报错，换一种表达重试一次以确认是否有相关制度",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销期限"
+        ],
+        "covered": [],
+        "missing": [
+          "报销期限"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "summary": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+      "observation": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation"
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "无法确认报销期限。\n\n检索工具连续两次报错，错误信息为：“检索工具失败：RuntimeError: simulated search failure for evaluation”。因此，我既没有取得任何制度片段或文档 ID，也无法核验版本、生效日期和原文。\n\n请您稍后重试，或直接提供相关制度文档的编号或正文；在取得可核验的原文前，我不能对报销期限给出结论。\n\n本次覆盖情况：需求“报销期限”仍缺依据，没有可引用文档。"
+    }
+  ],
+  "answer": "无法确认报销期限。\n\n检索工具连续两次报错，错误信息为：“检索工具失败：RuntimeError: simulated search failure for evaluation”。因此，我既没有取得任何制度片段或文档 ID，也无法核验版本、生效日期和原文。\n\n请您稍后重试，或直接提供相关制度文档的编号或正文；在取得可核验的原文前，我不能对报销期限给出结论。\n\n本次覆盖情况：需求“报销期限”仍缺依据，没有可引用文档。",
+  "simulated_failure": "search_docs"
+}

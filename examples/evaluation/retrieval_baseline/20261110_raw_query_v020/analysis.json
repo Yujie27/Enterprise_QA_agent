@@ -1,0 +1,476 @@
+{
+  "analysis_script_sha256": "b8bb03acf7d36ac72136dfd60c59a6f45c3a5b90196a597ae5d89716e6fcc7b2",
+  "gold_sha256": "b9a951d8744804d9c9b5427ae753ccd8b143d8ab6865c90944e6e080de672c0a",
+  "results_sha256": "ca39aa64c55aa59cd1aea6f2a6e9af252f8da899f4c5576ef60f8f1ea0cb1fda",
+  "source_sha256": "64f74f0c4ae395aace3ddd043c27228ef446d208e44ab4679e6e9d8ff98d1cd8",
+  "independent_metric_recount": {
+    "1": {
+      "positive_count": 25,
+      "necessary": 37,
+      "matched": 24,
+      "macro_recall": 0.74,
+      "micro_recall": 0.6486486486486487,
+      "hit": 24,
+      "full_positive": 13,
+      "conflict_complete": 0,
+      "conflict_n": 9
+    },
+    "3": {
+      "positive_count": 25,
+      "necessary": 37,
+      "matched": 34,
+      "macro_recall": 0.94,
+      "micro_recall": 0.918918918918919,
+      "hit": 24,
+      "full_positive": 23,
+      "conflict_complete": 8,
+      "conflict_n": 9
+    },
+    "5": {
+      "positive_count": 25,
+      "necessary": 37,
+      "matched": 34,
+      "macro_recall": 0.94,
+      "micro_recall": 0.918918918918919,
+      "hit": 24,
+      "full_positive": 23,
+      "conflict_complete": 8,
+      "conflict_n": 9
+    },
+    "10": {
+      "positive_count": 25,
+      "necessary": 37,
+      "matched": 36,
+      "macro_recall": 0.98,
+      "micro_recall": 0.972972972972973,
+      "hit": 25,
+      "full_positive": 24,
+      "conflict_complete": 9,
+      "conflict_n": 9
+    }
+  },
+  "transformations": {
+    "1": {
+      "C01_input_order": [
+        "D01",
+        "D02"
+      ],
+      "X04_input_order": [
+        "D02",
+        "D01"
+      ],
+      "C01_actual_sequence": [
+        [
+          "D01",
+          "D01-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ]
+      ],
+      "X04_actual_sequence": [
+        [
+          "D01",
+          "D01-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ]
+      ],
+      "file_order_changed": true,
+      "returned_order_changed": false,
+      "order_verdict": "变换未触发：文件顺序变化被现有排序抵消",
+      "X05_actual_sequence": [
+        [
+          "A01",
+          "A01-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ]
+      ],
+      "X05_sequence_mapped_to_original_ids": [
+        "D02"
+      ],
+      "rename_changed_original_evidence_order": true,
+      "R01_text": "费用报销应在费用发生后30日内提交申请。",
+      "X06_text": "费用报销应在费用发生后45日内提交申请。",
+      "content_replacement_visible_in_search": true
+    },
+    "3": {
+      "C01_input_order": [
+        "D01",
+        "D02"
+      ],
+      "X04_input_order": [
+        "D02",
+        "D01"
+      ],
+      "C01_actual_sequence": [
+        [
+          "D01",
+          "D01-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ],
+        [
+          "D02",
+          "D02-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ]
+      ],
+      "X04_actual_sequence": [
+        [
+          "D01",
+          "D01-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ],
+        [
+          "D02",
+          "D02-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ]
+      ],
+      "file_order_changed": true,
+      "returned_order_changed": false,
+      "order_verdict": "变换未触发：文件顺序变化被现有排序抵消",
+      "X05_actual_sequence": [
+        [
+          "A01",
+          "A01-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ],
+        [
+          "Z99",
+          "Z99-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ]
+      ],
+      "X05_sequence_mapped_to_original_ids": [
+        "D02",
+        "D01"
+      ],
+      "rename_changed_original_evidence_order": true,
+      "R01_text": "费用报销应在费用发生后30日内提交申请。",
+      "X06_text": "费用报销应在费用发生后45日内提交申请。",
+      "content_replacement_visible_in_search": true
+    },
+    "5": {
+      "C01_input_order": [
+        "D01",
+        "D02"
+      ],
+      "X04_input_order": [
+        "D02",
+        "D01"
+      ],
+      "C01_actual_sequence": [
+        [
+          "D01",
+          "D01-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ],
+        [
+          "D02",
+          "D02-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ]
+      ],
+      "X04_actual_sequence": [
+        [
+          "D01",
+          "D01-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ],
+        [
+          "D02",
+          "D02-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ]
+      ],
+      "file_order_changed": true,
+      "returned_order_changed": false,
+      "order_verdict": "变换未触发：文件顺序变化被现有排序抵消",
+      "X05_actual_sequence": [
+        [
+          "A01",
+          "A01-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ],
+        [
+          "Z99",
+          "Z99-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ]
+      ],
+      "X05_sequence_mapped_to_original_ids": [
+        "D02",
+        "D01"
+      ],
+      "rename_changed_original_evidence_order": true,
+      "R01_text": "费用报销应在费用发生后30日内提交申请。",
+      "X06_text": "费用报销应在费用发生后45日内提交申请。",
+      "content_replacement_visible_in_search": true
+    },
+    "10": {
+      "C01_input_order": [
+        "D01",
+        "D02"
+      ],
+      "X04_input_order": [
+        "D02",
+        "D01"
+      ],
+      "C01_actual_sequence": [
+        [
+          "D01",
+          "D01-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ],
+        [
+          "D02",
+          "D02-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ]
+      ],
+      "X04_actual_sequence": [
+        [
+          "D01",
+          "D01-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ],
+        [
+          "D02",
+          "D02-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ]
+      ],
+      "file_order_changed": true,
+      "returned_order_changed": false,
+      "order_verdict": "变换未触发：文件顺序变化被现有排序抵消",
+      "X05_actual_sequence": [
+        [
+          "A01",
+          "A01-S1",
+          0.4,
+          "费用报销应在费用发生后15日内提交申请。"
+        ],
+        [
+          "Z99",
+          "Z99-S1",
+          0.4,
+          "费用报销应在费用发生后30日内提交申请。"
+        ]
+      ],
+      "X05_sequence_mapped_to_original_ids": [
+        "D02",
+        "D01"
+      ],
+      "rename_changed_original_evidence_order": true,
+      "R01_text": "费用报销应在费用发生后30日内提交申请。",
+      "X06_text": "费用报销应在费用发生后45日内提交申请。",
+      "content_replacement_visible_in_search": true
+    }
+  },
+  "observed_latency_ms": {
+    "all_search_mean": 0.17969722222222223,
+    "all_search_median": 0.05675,
+    "all_search_min": 0.0323,
+    "all_search_max": 2.0711,
+    "note": "Single measurement, no warmup; not a performance benchmark."
+  },
+  "candidate_counts_at_k5": {
+    "R01": 1,
+    "R02": 2,
+    "R03": 2,
+    "R04": 1,
+    "R05": 2,
+    "R06": 1,
+    "R07": 2,
+    "R08": 1,
+    "R09": 2,
+    "R10": 2,
+    "C01": 2,
+    "C02": 1,
+    "C03": 2,
+    "C04": 2,
+    "C05": 2,
+    "C09": 2,
+    "C10": 2,
+    "C11": 1,
+    "C12": 2,
+    "C13": 5,
+    "C14": 2,
+    "X01": 5,
+    "X02": 5,
+    "X03": 5,
+    "X04": 2,
+    "X05": 2,
+    "X06": 1
+  },
+  "error_count": 0,
+  "scope_metadata_tie": [
+    [
+      "D01",
+      "D01-S1",
+      0.333,
+      "差旅费用报销应在返程后15日内提交申请。"
+    ],
+    [
+      "D02",
+      "D02-S1",
+      0.333,
+      "差旅费用报销应在返程后20日内提交申请。"
+    ]
+  ],
+  "no_answer_R06": {
+    "1": {
+      "necessary_count": 0,
+      "matched": [],
+      "missing": [],
+      "recall": null,
+      "hit": null,
+      "all_necessary_recalled": null,
+      "conflict_complete": null,
+      "canonical_recall": null,
+      "canonical_conflict_complete": null,
+      "crossdoc_entry_hit": null,
+      "crossdoc_all_evidence": null,
+      "no_answer_any_candidate": true,
+      "no_answer_unrelated_candidates": [],
+      "no_answer_context_candidates": [
+        "D01/D01-S1"
+      ],
+      "returned_count": 1,
+      "copy_candidate_count": 0,
+      "strict_pass": true
+    },
+    "3": {
+      "necessary_count": 0,
+      "matched": [],
+      "missing": [],
+      "recall": null,
+      "hit": null,
+      "all_necessary_recalled": null,
+      "conflict_complete": null,
+      "canonical_recall": null,
+      "canonical_conflict_complete": null,
+      "crossdoc_entry_hit": null,
+      "crossdoc_all_evidence": null,
+      "no_answer_any_candidate": true,
+      "no_answer_unrelated_candidates": [],
+      "no_answer_context_candidates": [
+        "D01/D01-S1"
+      ],
+      "returned_count": 1,
+      "copy_candidate_count": 0,
+      "strict_pass": true
+    },
+    "5": {
+      "necessary_count": 0,
+      "matched": [],
+      "missing": [],
+      "recall": null,
+      "hit": null,
+      "all_necessary_recalled": null,
+      "conflict_complete": null,
+      "canonical_recall": null,
+      "canonical_conflict_complete": null,
+      "crossdoc_entry_hit": null,
+      "crossdoc_all_evidence": null,
+      "no_answer_any_candidate": true,
+      "no_answer_unrelated_candidates": [],
+      "no_answer_context_candidates": [
+        "D01/D01-S1"
+      ],
+      "returned_count": 1,
+      "copy_candidate_count": 0,
+      "strict_pass": true
+    },
+    "10": {
+      "necessary_count": 0,
+      "matched": [],
+      "missing": [],
+      "recall": null,
+      "hit": null,
+      "all_necessary_recalled": null,
+      "conflict_complete": null,
+      "canonical_recall": null,
+      "canonical_conflict_complete": null,
+      "crossdoc_entry_hit": null,
+      "crossdoc_all_evidence": null,
+      "no_answer_any_candidate": true,
+      "no_answer_unrelated_candidates": [],
+      "no_answer_context_candidates": [
+        "D01/D01-S1"
+      ],
+      "returned_count": 1,
+      "copy_candidate_count": 0,
+      "strict_pass": true
+    }
+  },
+  "annotation_exploration_R05": {
+    "1": [
+      [
+        "D01",
+        "D01-S1",
+        1.0,
+        "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。"
+      ]
+    ],
+    "3": [
+      [
+        "D01",
+        "D01-S1",
+        1.0,
+        "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。"
+      ],
+      [
+        "D02",
+        "D02-S1",
+        1.0,
+        "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。"
+      ]
+    ],
+    "5": [
+      [
+        "D01",
+        "D01-S1",
+        1.0,
+        "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。"
+      ],
+      [
+        "D02",
+        "D02-S1",
+        1.0,
+        "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。"
+      ]
+    ],
+    "10": [
+      [
+        "D01",
+        "D01-S1",
+        1.0,
+        "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。"
+      ],
+      [
+        "D02",
+        "D02-S1",
+        1.0,
+        "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。"
+      ]
+    ]
+  }
+}

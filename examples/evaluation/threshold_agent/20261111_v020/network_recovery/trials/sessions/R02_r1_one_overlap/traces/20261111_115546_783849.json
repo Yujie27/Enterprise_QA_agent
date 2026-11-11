@@ -1,0 +1,89 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": false,
+    "match_threshold": "one_overlap"
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "scoped.json",
+    "sha256": "b20613e6e68529f6b9439b499589073e66ceaa541a84fdd754e70788e8a1de11"
+  },
+  "timestamp_utc": "2026-11-11T03:55:46.783849+00:00",
+  "mode": "agentscope_react",
+  "question": "研发同事出差回来多久要完成费用申请？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 1,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "研发同事出差回来多久要完成费用申请？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "研发人员 出差 回来 费用申请 时限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位出差费用申请的时限条款。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 3 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "section_id": "D02-S1",
+            "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。",
+            "score": 0.538
+          },
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工；非差旅普通费用",
+            "section_id": "D01-S1",
+            "text": "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。",
+            "score": 0.308
+          },
+          {
+            "doc_id": "D03",
+            "title": "制度文件D03",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工；年假",
+            "section_id": "D03-S1",
+            "text": "年假申请通过内部系统提交，经直属主管审批后生效。",
+            "score": 0.077
+          }
+        ],
+        "summary": "返回 3 条资料"
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "研发同事出差产生的差旅费用，应在**返程后15日内提交报销申请**。\n\n依据：\n- 文档：D02《制度文件D02》\n- 版本：2026-01\n- 生效日期：2026-01-01\n- 适用范围：研发部门；差旅费用\n- 原文：“研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。”\n\n回答依据为 D02 中针对研发部门差旅费用的直接规定。"
+    }
+  ],
+  "answer": "研发同事出差产生的差旅费用，应在**返程后15日内提交报销申请**。\n\n依据：\n- 文档：D02《制度文件D02》\n- 版本：2026-01\n- 生效日期：2026-01-01\n- 适用范围：研发部门；差旅费用\n- 原文：“研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。”\n\n回答依据为 D02 中针对研发部门差旅费用的直接规定。"
+}

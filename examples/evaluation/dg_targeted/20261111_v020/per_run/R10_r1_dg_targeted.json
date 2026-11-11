@@ -1,0 +1,89 @@
+{
+  "run_id": "R10_r1_dg_targeted",
+  "case_id": "R10",
+  "repeat": 1,
+  "batch": "alternating",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "不要查年假，我只问研发部门差旅报销期限。"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+  "corpus_sha256": "b20613e6e68529f6b9439b499589073e66ceaa541a84fdd754e70788e8a1de11",
+  "trace": "examples/evaluation/dg_targeted/20261111_v020/trials/sessions/R10_r1_dg_targeted/traces/20261111_124940_277572.json",
+  "status": "completed",
+  "answer": "**结论：研发部门差旅费用应在返程后 15 日内提交报销申请。**\n\n**依据：**\n- 文档：D02《制度文件D02》\n- 版本：2026-01\n- 生效日期：2026-01-01\n- 适用范围：研发部门；差旅费用\n- 原文：“研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。”\n\n**说明：** 检索到 D01 规定“全体员工普通费用报销应在费用发生后30日内提交申请”，但其适用范围明确为非差旅普通费用，与本次研发部门差旅费用的问题范围不同，因此不作为本问题的期限依据。\n\n以上仅回答研发部门差旅报销期限，未涉及年假。依据来自与问题范围直接匹配的 D02 原文。",
+  "tool_calls": 1,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "研发部门 差旅报销 期限",
+        "limit": 10
+      },
+      "public_decision_reason": "按用户限定的研发部门差旅报销期限查找相关制度条款。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "section_id": "D02-S1",
+            "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。",
+            "score": 0.857
+          },
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工；非差旅普通费用",
+            "section_id": "D01-S1",
+            "text": "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。",
+            "score": 0.429
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ]
+    }
+  ],
+  "required": [
+    "D02/D02-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "D02/D02-S1": 1,
+    "D01/D01-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "question_response_complete": true,
+    "citations_support_conclusions": true,
+    "unsupported_meaning": [],
+    "process_errors": [],
+    "wording_risks": [],
+    "business_verdict": "pass",
+    "reason": "一次search按片段回答研发差旅15日；未命中D03年假。过程说明未与记录冲突，但本次噪声路径未触发。"
+  },
+  "prompt_mode": "dg_targeted",
+  "coverage_complete_at_step": 1,
+  "post_coverage_authorized_tools": 0,
+  "no_new_searches": 0,
+  "c11_post_sufficient_searches": null,
+  "correct_terminal": true
+}

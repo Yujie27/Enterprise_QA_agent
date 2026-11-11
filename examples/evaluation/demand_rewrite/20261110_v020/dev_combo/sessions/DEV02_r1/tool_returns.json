@@ -1,0 +1,87 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T13:19:01.889638+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "DEV02-2",
+          "title": "内部服务说明",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工",
+          "section_id": "DEV02-2-S1",
+          "text": "图书借阅须登录资产门户登记书号，再到前台领取。",
+          "score": 0.375
+        }
+      ],
+      "summary": "返回 1 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 1,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"DEV02-2\", \"title\": \"内部服务说明\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工\", \"section_id\": \"DEV02-2-S1\", \"text\": \"图书借阅须登录资产门户登记书号，再到前台领取。\", \"score\": 0.375}], \"summary\": \"返回 1 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 1, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "e15b11c1fab448e688b5468e44f8e0f2",
+          "created_at": "2026-11-10T21:19:01.889638",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "c32f2dbd6d5d4319904b173afb2ccb40"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T13:19:03.667154+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "DEV02-2",
+        "title": "内部服务说明",
+        "scope": "全体员工",
+        "version": "1",
+        "effective_from": "2026-01-01",
+        "tags": [
+          "图书",
+          "借阅"
+        ],
+        "sections": [
+          {
+            "section_id": "DEV02-2-S1",
+            "text": "图书借阅须登录资产门户登记书号，再到前台领取。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 1,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 0
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"DEV02-2\", \"title\": \"内部服务说明\", \"scope\": \"全体员工\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"tags\": [\"图书\", \"借阅\"], \"sections\": [{\"section_id\": \"DEV02-2-S1\", \"text\": \"图书借阅须登录资产门户登记书号，再到前台领取。\"}]}, \"summary\": \"已读取文档原文\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 1, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 0}}",
+          "id": "bf4ca70d20174b54b3feaef53e4e2488",
+          "created_at": "2026-11-10T21:19:03.667154",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "59b0c7632c7a4aab9db8de7952396ff5"
+    }
+  }
+]

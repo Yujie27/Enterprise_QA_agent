@@ -1,0 +1,52 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T13:19:14.146045+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "DEV03-1",
+          "title": "内部服务说明",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工",
+          "section_id": "DEV03-1-S1",
+          "text": "设备维修应在发现故障后7日内申报。",
+          "score": 0.333
+        },
+        {
+          "doc_id": "DEV03-2",
+          "title": "内部服务说明",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工",
+          "section_id": "DEV03-2-S1",
+          "text": "设备维修工单须填写序列号并附故障截图。",
+          "score": 0.333
+        }
+      ],
+      "summary": "返回 2 条资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 2,
+        "seen_evidence_count": 2,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"DEV03-1\", \"title\": \"内部服务说明\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工\", \"section_id\": \"DEV03-1-S1\", \"text\": \"设备维修应在发现故障后7日内申报。\", \"score\": 0.333}, {\"doc_id\": \"DEV03-2\", \"title\": \"内部服务说明\", \"version\": \"1\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工\", \"section_id\": \"DEV03-2-S1\", \"text\": \"设备维修工单须填写序列号并附故障截图。\", \"score\": 0.333}], \"summary\": \"返回 2 条资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 2, \"seen_evidence_count\": 2, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "e7591f4809f44dc3bf9f1ca4367a9d49",
+          "created_at": "2026-11-10T21:19:14.146045",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "170a929574224831bae898ae91d22023"
+    }
+  }
+]

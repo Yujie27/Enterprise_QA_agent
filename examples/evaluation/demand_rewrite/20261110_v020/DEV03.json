@@ -1,0 +1,36 @@
+[
+  {
+    "doc_id": "DEV03-1",
+    "title": "内部服务说明",
+    "scope": "全体员工",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "设备",
+      "维修"
+    ],
+    "sections": [
+      {
+        "section_id": "DEV03-1-S1",
+        "text": "设备维修应在发现故障后7日内申报。"
+      }
+    ]
+  },
+  {
+    "doc_id": "DEV03-2",
+    "title": "内部服务说明",
+    "scope": "全体员工",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "设备",
+      "工单"
+    ],
+    "sections": [
+      {
+        "section_id": "DEV03-2-S1",
+        "text": "设备维修工单须填写序列号并附故障截图。"
+      }
+    ]
+  }
+]

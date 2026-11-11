@@ -1,0 +1,341 @@
+{
+  "config": "dev_B",
+  "run_id": "DEV01_r1",
+  "case_id": "DEV01",
+  "messages": [
+    {
+      "role": "user",
+      "content": "员工培训报名截止时间和所需资料分别是什么？"
+    }
+  ],
+  "corpus": "examples/evaluation/demand_rewrite/20261110_v020/DEV01.json",
+  "corpus_sha256": "973c6168df4b00242039862dab3399b696eecc6228e3c97fc2ad99c047183d7c",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_B/sessions/DEV01_r1/traces/20261110_211845_612432.json",
+  "status": "completed",
+  "answer": "依据公司《内部服务说明》（版本 1，生效日期：2026-01-01，适用范围：全体员工）：\n\n1. **报名截止时间**：须在**开课前 10 日**完成报名。  \n   - 原文：“培训报名须在开课前10日完成。”  \n   - 依据：`DEV01-1`，`DEV01-1-S1`\n\n2. **所需资料**：制度列明**主管确认函及结业测验记录**。  \n   - 原文：“培训申请须上传主管确认函及结业测验记录。”  \n   - 依据：`DEV01-2`，`DEV01-2-S1`\n\n**说明**：截止时间条款直接使用“培训报名”；资料条款使用的是“培训申请”，并未明确写明“报名资料”。因此上述材料可确认为培训申请所需上传材料；但“培训申请”与“报名”是否为同一环节，现有原文不足以进一步确认。\n\n覆盖说明：报名截止时间、报名／申请所需资料均已有制度原文支持；材料条款的名称差异已说明。",
+  "conversation": null,
+  "tool_calls": 4,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "员工培训 报名截止时间 所需资料",
+        "limit": 5
+      },
+      "public_decision_reason": "需分别确认员工培训报名的截止时间和材料要求，先检索相关制度条款。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "DEV01-1",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV01-1-S1",
+            "text": "培训报名须在开课前10日完成。",
+            "score": 0.182
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 1,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "DEV01-1/DEV01-1-S1"
+      ],
+      "new_keys": [
+        "DEV01-1/DEV01-1-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "DEV01-1"
+      },
+      "public_decision_reason": "已找到报名截止条款，但资料要求尚未出现，需要读取该制度原文核实完整内容及适用范围。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "DEV01-1",
+          "title": "内部服务说明",
+          "scope": "全体员工",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "tags": [
+            "培训",
+            "报名"
+          ],
+          "sections": [
+            {
+              "section_id": "DEV01-1-S1",
+              "text": "培训报名须在开课前10日完成。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "DEV01-1/DEV01-1-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "培训报名 提交材料 申请表 证件 资料",
+        "limit": 5
+      },
+      "public_decision_reason": "原文仅明确截止时间，报名所需资料仍缺依据，需针对材料要求继续检索。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "DEV01-1",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV01-1-S1",
+            "text": "培训报名须在开课前10日完成。",
+            "score": 0.3
+          },
+          {
+            "doc_id": "DEV01-2",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV01-2-S1",
+            "text": "培训申请须上传主管确认函及结业测验记录。",
+            "score": 0.2
+          }
+        ],
+        "summary": "返回 2 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 1,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "DEV01-1/DEV01-1-S1",
+        "DEV01-2/DEV01-2-S1"
+      ],
+      "new_keys": [
+        "DEV01-2/DEV01-2-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 4,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "DEV01-2"
+      },
+      "public_decision_reason": "检索到可能对应报名材料的条款，需读取原文确认其是否适用于培训报名及具体材料范围。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "DEV01-2",
+          "title": "内部服务说明",
+          "scope": "全体员工",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "tags": [
+            "培训",
+            "申请"
+          ],
+          "sections": [
+            {
+              "section_id": "DEV01-2-S1",
+              "text": "培训申请须上传主管确认函及结业测验记录。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "DEV01-2/DEV01-2-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": true
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "员工培训报名截止时间",
+          "员工培训报名所需资料"
+        ],
+        "covered": [],
+        "missing": [
+          "员工培训报名截止时间",
+          "员工培训报名所需资料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "员工培训报名截止时间",
+          "员工培训报名所需资料"
+        ],
+        "covered": [
+          {
+            "need": "员工培训报名截止时间",
+            "doc_id": "DEV01-1",
+            "section_id": "DEV01-1-S1",
+            "evidence": "培训报名须在开课前10日完成。"
+          }
+        ],
+        "missing": [
+          "员工培训报名所需资料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 3,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "员工培训报名截止时间",
+          "员工培训报名所需资料"
+        ],
+        "covered": [
+          {
+            "need": "员工培训报名截止时间",
+            "doc_id": "DEV01-1",
+            "section_id": "DEV01-1-S1",
+            "evidence": "培训报名须在开课前10日完成。"
+          }
+        ],
+        "missing": [
+          "员工培训报名所需资料"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 4,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "员工培训报名截止时间",
+          "员工培训报名所需资料"
+        ],
+        "covered": [
+          {
+            "need": "员工培训报名截止时间",
+            "doc_id": "DEV01-1",
+            "section_id": "DEV01-1-S1",
+            "evidence": "培训报名须在开课前10日完成。"
+          }
+        ],
+        "missing": [
+          "员工培训报名所需资料"
+        ]
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {
+    "DEV01-1/DEV01-1-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    },
+    "DEV01-2/DEV01-2-S1": {
+      "turn": 1,
+      "step": 3,
+      "tool": "search_docs"
+    }
+  },
+  "required": [
+    "DEV01-1/DEV01-1-S1",
+    "DEV01-2/DEV01-2-S1"
+  ],
+  "missing": [],
+  "first_recall": 0.5,
+  "cumulative_recall": 1.0,
+  "recovered_after_first": true,
+  "first_query": "员工培训 报名截止时间 所需资料",
+  "queries": [
+    "员工培训 报名截止时间 所需资料",
+    "培训报名 提交材料 申请表 证件 资料"
+  ],
+  "no_new_repeat_searches": 0,
+  "search_tool_attempts": 2,
+  "underlying_queries": 2,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "dev_B",
+    "run_id": "DEV01_r1",
+    "strict_business_pass": true,
+    "completed_and_business_pass": true,
+    "safe_terminal_and_business_pass": true,
+    "reason": "第三步改写取得培训申请资料，最终答10日前、主管确认函及结业测验记录，并明确培训报名与申请是否同环节未知；来源边界正确，但该开发题存在环节等价标注歧义。",
+    "labels": [
+      "首次未召回，但模型通过后续动作恢复"
+    ],
+    "unsupported_assertions": [],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": "培训报名与培训申请是否同一环节未明确；从开发业务总指标中排除，仍报告其原始证据覆盖和实际输出",
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_B/sessions/DEV01_r1/traces/20261110_211845_612432.json",
+    "gap_keys": []
+  },
+  "no_new_successful_searches": 0,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 0,
+  "post_coverage_reads": 1
+}

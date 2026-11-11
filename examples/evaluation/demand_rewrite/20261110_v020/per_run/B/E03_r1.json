@@ -1,0 +1,148 @@
+{
+  "config": "B",
+  "run_id": "E03_r1",
+  "case_id": "E03",
+  "messages": [
+    {
+      "role": "user",
+      "content": "30日是工作日还是自然日？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/B_launcher_recovery/sessions/E03_r1/traces/20261110_211533_827101.json",
+  "status": "insufficient_evidence",
+  "answer": "无法确认。\n\n我进行了两次检索（“30日 工作日 自然日 计算”和“期限 工作日 自然日 如何计算”），均未在现有制度资料中找到相关条款，因此无法判断“30日”是指工作日还是自然日。\n\n另外，您的问题未说明该“30日”出现在哪项事项中（例如年假、付款、审批、申诉、合同履行等），不同制度的期限口径可能不同。请补充具体制度名称、事项或条款原文，我可以据此再核对制度依据。\n\n**覆盖说明**：需求“30日的计算口径（工作日/自然日）”仍无证据支持；本轮无可用文档 ID、版本或生效日期可引用。因连续两次检索无结果，按规则停止检索并说明资料不足。",
+  "conversation": null,
+  "tool_calls": 2,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "30日 工作日 自然日 计算",
+        "limit": 8
+      },
+      "public_decision_reason": "用户询问“30日”的口径但未说明适用事项，先检索制度中关于30日期间的表述。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [],
+        "summary": "没有检索到匹配资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 0,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [],
+      "new_keys": [],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "期限 工作日 自然日 如何计算",
+        "limit": 8
+      },
+      "public_decision_reason": "上次检索无结果，换用期限计算口径的常见表述再试一次。",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [],
+        "summary": "没有检索到匹配资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 0,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [],
+      "new_keys": [],
+      "required_evidence_complete_before_call": false
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "30日的计算口径（工作日或自然日）"
+        ],
+        "covered": [],
+        "missing": [
+          "30日的计算口径（工作日或自然日）"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "30日的计算口径（工作日或自然日）"
+        ],
+        "covered": [],
+        "missing": [
+          "30日的计算口径（工作日或自然日）"
+        ]
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {},
+  "required": [
+    "D01/D01-S1"
+  ],
+  "missing": [
+    "D01/D01-S1"
+  ],
+  "first_recall": 0.0,
+  "cumulative_recall": 0.0,
+  "recovered_after_first": false,
+  "first_query": "30日 工作日 自然日 计算",
+  "queries": [
+    "30日 工作日 自然日 计算",
+    "期限 工作日 自然日 如何计算"
+  ],
+  "no_new_repeat_searches": 1,
+  "search_tool_attempts": 2,
+  "underlying_queries": 2,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "B",
+    "run_id": "E03_r1",
+    "strict_business_pass": true,
+    "completed_and_business_pass": false,
+    "safe_terminal_and_business_pass": true,
+    "reason": "两次实际返回为空，没有看到D01；正确保留日历口径未知、请求业务语境，不建议自然日或工作日。安全业务通过，但必要入口证据覆盖退化。",
+    "labels": [
+      "必要证据未召回，模型未恢复"
+    ],
+    "unsupported_assertions": [],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": null,
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/B_launcher_recovery/sessions/E03_r1/traces/20261110_211533_827101.json",
+    "gap_keys": [
+      "D01/D01-S1"
+    ]
+  },
+  "no_new_successful_searches": 1,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 0,
+  "post_coverage_reads": 0
+}

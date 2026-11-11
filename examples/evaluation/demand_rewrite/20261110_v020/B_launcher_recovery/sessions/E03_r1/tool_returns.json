@@ -1,0 +1,60 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-10T13:15:30.013609+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [],
+      "summary": "没有检索到匹配资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 0,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [], \"summary\": \"没有检索到匹配资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 0, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "01a1c65f12744a519c7da06d5b8e0dc5",
+          "created_at": "2026-11-10T21:15:30.013609",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "95b051dce6d9427abfe325359bf2cea6"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-10T13:15:31.560531+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [],
+      "summary": "没有检索到匹配资料",
+      "retrieval_statistics": {
+        "source": "program_observed_evidence",
+        "new_evidence_count": 0,
+        "seen_evidence_count": 0,
+        "exact_query_repeated": false,
+        "underlying_queries_this_call": 1
+      }
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [], \"summary\": \"没有检索到匹配资料\", \"retrieval_statistics\": {\"source\": \"program_observed_evidence\", \"new_evidence_count\": 0, \"seen_evidence_count\": 0, \"exact_query_repeated\": false, \"underlying_queries_this_call\": 1}}",
+          "id": "c927e78b83a5431782e6bc41729dfe09",
+          "created_at": "2026-11-10T21:15:31.560531",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "fb2c752d52bc4b2abf4018108a831403"
+    }
+  }
+]

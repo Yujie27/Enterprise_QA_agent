@@ -1,0 +1,36 @@
+[
+  {
+    "doc_id": "DEV02-1",
+    "title": "内部服务说明",
+    "scope": "全体员工",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "图书馆",
+      "资格"
+    ],
+    "sections": [
+      {
+        "section_id": "DEV02-1-S1",
+        "text": "企业图书馆仅向转正员工开放外借。"
+      }
+    ]
+  },
+  {
+    "doc_id": "DEV02-2",
+    "title": "内部服务说明",
+    "scope": "全体员工",
+    "version": "1",
+    "effective_from": "2026-01-01",
+    "tags": [
+      "图书",
+      "借阅"
+    ],
+    "sections": [
+      {
+        "section_id": "DEV02-2-S1",
+        "text": "图书借阅须登录资产门户登记书号，再到前台领取。"
+      }
+    ]
+  }
+]

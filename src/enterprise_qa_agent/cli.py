@@ -83,10 +83,12 @@ async def _run_real(
     corpus: KnowledgeBase,
     recorder: RunRecorder,
     simulate_failure: str | None = None,
+    demand_rewrite: bool = False,
 ) -> tuple[str, str]:
     from agentscope.message import UserMsg
 
     event_start = recorder.start_turn(question)
+    recorder.demand_rewrite = demand_rewrite
     agent = build_agent(corpus, recorder, simulate_failure=simulate_failure)
     response = await agent.reply(UserMsg(name="user", content=question))
     text = response.get_text_content() or _content_to_text(response.content)
@@ -102,9 +104,11 @@ async def _run_interactive(
     corpus: KnowledgeBase,
     recorder: RunRecorder,
     simulate_failure: str | None,
+    demand_rewrite: bool = False,
 ) -> tuple[str, str, list[dict[str, str]]]:
     from agentscope.message import UserMsg
 
+    recorder.demand_rewrite = demand_rewrite
     agent = build_agent(corpus, recorder, simulate_failure=simulate_failure)
     conversation: list[dict[str, str]] = []
     pending = initial_question
@@ -149,6 +153,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="企业制度问答 Agent")
     parser.add_argument("question", nargs="*", help="要查询的制度问题")
     parser.add_argument("--mock", action="store_true", help="离线流程演示，不代表模型决策")
+    parser.add_argument("--retrieval-mode", choices=["original", "dedup"], default="dedup")
+    parser.add_argument("--demand-rewrite", action="store_true", help="按证据覆盖缺口进行模型自主改写")
+    parser.add_argument("--dg-targeted", action="store_true", help="定向实验：未知范围表达、有据回答及结束策略")
+    parser.add_argument("--match-threshold", choices=["original", "one_overlap"], default="original", help="实验：检索匹配门槛，默认保留原行为")
     parser.add_argument("--interactive", action="store_true", help="多轮交互模式；输入 /exit 结束")
     parser.add_argument(
         "--follow-up",
@@ -177,8 +185,9 @@ def main() -> None:
     max_calls = int(os.getenv("MAX_TOOL_CALLS", "4"))
     if max_calls < 1:
         parser.error("MAX_TOOL_CALLS 必须大于 0")
-    corpus = KnowledgeBase(args.corpus)
+    corpus = KnowledgeBase(args.corpus, deduplicate=args.retrieval_mode == "dedup", match_threshold=args.match_threshold)
     recorder = RunRecorder(max_calls)
+    recorder.dg_targeted = args.dg_targeted
     conversation: list[dict[str, str]] | None = None
 
     try:
@@ -188,16 +197,17 @@ def main() -> None:
             recorder.finish_turn(1, answer)
         elif args.interactive:
             status, answer, conversation = asyncio.run(
-                _run_interactive(question, args.follow_up, corpus, recorder, args.simulate_failure)
+                _run_interactive(question, args.follow_up, corpus, recorder, args.simulate_failure, args.demand_rewrite)
             )
         else:
             status, answer = asyncio.run(
-                _run_real(question, corpus, recorder, args.simulate_failure)
+                _run_real(question, corpus, recorder, args.simulate_failure, args.demand_rewrite)
             )
     except Exception as exc:
         status, answer = "failed", f"运行失败：{type(exc).__name__}: {exc}"
 
     trace = {
+        "experiment_config": {"retrieval_mode": args.retrieval_mode, "demand_rewrite": args.demand_rewrite, "match_threshold": args.match_threshold, "dg_targeted": args.dg_targeted},
         "trace_schema_version": 2,
         "app_version": __version__,
         "corpus": {

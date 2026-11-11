@@ -1,0 +1,12 @@
+{
+  "experiment": "A＋去重",
+  "command": ".\\.venv\\Scripts\\python.exe -B -m unittest discover -s tests -v",
+  "result": "OK",
+  "tests_run": 17,
+  "errors": 0,
+  "failures": 0,
+  "reported_seconds": 0.185,
+  "execution_note": "首轮沙箱中6个新增测试因临时目录写权限失败；同一代码在获准的沙箱外重跑，17项全部通过。无业务代码修补用于掩盖权限失败。",
+  "new_test_file": "tests/test_dedup.py",
+  "development_variant": "17份archive-*副本，来源zeta，另一冲突方omega；不使用COPY前缀，与冻结测试分母分开。"
+}

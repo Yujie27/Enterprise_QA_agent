@@ -1,0 +1,77 @@
+{
+  "run_id": "F01_r1_dg_targeted",
+  "case_id": "F01",
+  "repeat": 1,
+  "batch": "alternating",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace": "examples/evaluation/dg_targeted/20261111_v020/trials/sessions/F01_r1_dg_targeted/traces/20261111_125031_352835.json",
+  "status": "tool_error",
+  "answer": "检索工具连续两次出现同类故障，未能取得可用的制度资料，因此目前**无法确认报销期限**，也不能据此给出具体天数。\n\n请稍后重试，或提供适用制度的名称、文档 ID 及适用主体/地区，以便核对后回答。",
+  "tool_calls": 2,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 报销申请 时限",
+        "limit": 5
+      },
+      "public_decision_reason": "需检索报销期限相关制度条款作为依据。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+        "results": []
+      },
+      "visible_keys": []
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "费用报销 提交时间要求",
+        "limit": 5
+      },
+      "public_decision_reason": "首次检索工具报错，换用相关关键词再尝试一次。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+        "results": []
+      },
+      "visible_keys": []
+    }
+  ],
+  "required": [],
+  "missing": [],
+  "first_recall": null,
+  "cumulative_recall": null,
+  "acquired_at": {},
+  "budget_rejections": 0,
+  "review": {
+    "question_response_complete": true,
+    "citations_support_conclusions": null,
+    "unsupported_meaning": [],
+    "process_errors": [],
+    "wording_risks": [],
+    "business_verdict": "pass",
+    "reason": "两次真实故障路径后停止，没有声称制度不存在或虚构错误时间。"
+  },
+  "prompt_mode": "dg_targeted",
+  "coverage_complete_at_step": null,
+  "post_coverage_authorized_tools": 0,
+  "no_new_searches": 0,
+  "c11_post_sufficient_searches": null,
+  "correct_terminal": true
+}

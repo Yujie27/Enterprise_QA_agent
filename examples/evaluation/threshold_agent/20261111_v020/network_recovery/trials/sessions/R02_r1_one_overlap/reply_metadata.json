@@ -1,0 +1,14 @@
+[
+  {
+    "turn": 1,
+    "finished_reason": "completed",
+    "usage": {
+      "input_tokens": 2296,
+      "output_tokens": 415,
+      "cache_input_tokens": 1536,
+      "cache_creation_input_tokens": 0
+    },
+    "error": null,
+    "text": "研发同事出差产生的差旅费用，应在**返程后15日内提交报销申请**。\n\n依据：\n- 文档：D02《制度文件D02》\n- 版本：2026-01\n- 生效日期：2026-01-01\n- 适用范围：研发部门；差旅费用\n- 原文：“研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。”\n\n回答依据为 D02 中针对研发部门差旅费用的直接规定。"
+  }
+]

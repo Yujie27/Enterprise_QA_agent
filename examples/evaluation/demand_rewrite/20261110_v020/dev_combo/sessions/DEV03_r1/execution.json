@@ -1,0 +1,51 @@
+{
+  "run_id": "DEV03_r1",
+  "case_id": "DEV03",
+  "repeat": 1,
+  "execution": "attempted",
+  "started_at_utc": "2026-11-10T13:19:12.175356+00:00",
+  "finished_at_utc": "2026-11-10T13:19:18.454355+00:00",
+  "elapsed_seconds": 6.097697999997763,
+  "uncaught_error": null,
+  "cli_args": [
+    "enterprise-qa",
+    "--corpus",
+    "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\demand_rewrite\\20261110_v020\\DEV03.json",
+    "--trace-dir",
+    "examples\\evaluation\\demand_rewrite\\20261110_v020\\dev_combo\\sessions\\DEV03_r1\\traces",
+    "设备维修申请的时限和需要的资料是什么？",
+    "--retrieval-mode",
+    "dedup",
+    "--demand-rewrite"
+  ],
+  "model_config": {
+    "model": "deepseek-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "endpoint_path": "/v1",
+    "api_key_configured": true,
+    "stream": false,
+    "parameters": {
+      "max_tokens": null,
+      "thinking_enable": false,
+      "reasoning_effort": null,
+      "temperature": null,
+      "top_p": null,
+      "parallel_tool_calls": false,
+      "voice": null
+    },
+    "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+    "tool_budget_per_turn": 4,
+    "configured_budget_before_runner": "4",
+    "react_max_iters": 5,
+    "model_max_retries_default": 3,
+    "model_retry_delay_default": 1.0,
+    "versions": {
+      "agentscope": "2.0.11",
+      "openai": "3.46.0",
+      "python-dotenv": "1.2.4",
+      "enterprise-qa-agent-minimal": "0.2.0"
+    }
+  },
+  "corpus_sha256": "ef157f13c65a59f90c6a5ca8466ceb31dd1e53e6d65ce275a8640c90ba17013a",
+  "tool_return_count": 1
+}

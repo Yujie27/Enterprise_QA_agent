@@ -1,0 +1,195 @@
+{
+  "prepared_at_utc": "2026-11-10T13:09:34.134421+00:00",
+  "cases": [
+    {
+      "case_id": "C13",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/majority.json",
+      "corpus_sha256": "62339fffd0de2d67a0eae3c355e2b3979e932afbc0db7da8af70c063176e99a6",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "metadata": {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "baseline_raw_query_k5": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/results.jsonl",
+      "expected": {
+        "behavior": "重复转载不形成优先级，仍列30/15日冲突。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "用多数票或重复数量裁决为15日。"
+      },
+      "setup": "D02有8份标记copied_from的副本。",
+      "simulate_failure": null
+    },
+    {
+      "case_id": "M01",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        },
+        {
+          "role": "user",
+          "content": "研发部门，差旅报销。"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "corpus_sha256": "b20613e6e68529f6b9439b499589073e66ceaa541a84fdd754e70788e8a1de11",
+      "necessary_evidence": [
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1"
+        }
+      ],
+      "baseline_raw_query_k5": null,
+      "expected": {
+        "behavior": "第二轮结合首轮问题回答D02返程后15日。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把第二轮当无关词；重复询问已明确的部门类型。"
+      },
+      "setup": "同一Agent会话；检查最终轮及各轮Trace。",
+      "simulate_failure": null
+    },
+    {
+      "case_id": "E03",
+      "messages": [
+        {
+          "role": "user",
+          "content": "30日是工作日还是自然日？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+      "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1"
+        }
+      ],
+      "baseline_raw_query_k5": null,
+      "expected": {
+        "behavior": "原文未区分，说明不能确认并请求制度说明。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "自行规定自然日、工作日或建议按某一项执行。"
+      },
+      "setup": "",
+      "simulate_failure": null
+    },
+    {
+      "case_id": "F01",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+      "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+      "necessary_evidence": [],
+      "baseline_raw_query_k5": null,
+      "expected": {
+        "behavior": "连续检索工具异常后说明工具失败、未能核实期限。",
+        "evidence_ids": [],
+        "action_constraints": "观察错误后调整或停止；不持续无意义重试。",
+        "must_not": "把工具错误当制度不存在；凭常识给天数。"
+      },
+      "setup": "--simulate-failure search_docs",
+      "simulate_failure": "search_docs"
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "C13_r1",
+      "case_id": "C13",
+      "repeat": 1,
+      "batch": "recovery"
+    },
+    {
+      "run_id": "M01_r1",
+      "case_id": "M01",
+      "repeat": 1,
+      "batch": "recovery"
+    },
+    {
+      "run_id": "E03_r1",
+      "case_id": "E03",
+      "repeat": 1,
+      "batch": "recovery"
+    },
+    {
+      "run_id": "F01_r1",
+      "case_id": "F01",
+      "repeat": 1,
+      "batch": "recovery"
+    }
+  ],
+  "criteria": {
+    "scope": "original real CLI, no manual rewrite, no evidence supplied to model beyond original tools",
+    "strict_business_pass": "Correct source-bounded main conclusion, supported citations, required gaps explicit, no unsupported policy assertion or execution advice; budget/framework failure tracked separately",
+    "recovery_axes": [
+      "raw_query_k5_vs_agent_visible_evidence",
+      "agent_first_search_vs_later_observations"
+    ],
+    "labels": [
+      "必要证据未召回，模型未恢复",
+      "首次未召回，但模型通过后续动作恢复",
+      "必要证据已可见，模型仍判断错误",
+      "主答案正确，但引用错误或附带无依据断言",
+      "工程异常、预算不足或路径未触发"
+    ],
+    "R07": "Check visible scope and publicly stated scope-based explanation; no order/ID counterfactual, so cannot causally prove independence from ranking",
+    "E03": "Do not choose natural/work days or recommend one as an execution rule without evidence",
+    "C13": "Assess visible30day+15day claims, count copies once; never treat hidden corpus sections or copied_from metadata absent from actual search as model-visible",
+    "M01": "Same original CLI interactive session, exact two design messages; check per-turn evidence and final context use",
+    "F01": "Use original search failure switch; if agent truly recovers using another working tool, report actual recovery rather than inventing failure",
+    "observer": "Passive wrappers of _tool_response and Agent.reply record ORIGINAL returned objects and metadata, then return them unchanged; no tool replacement/retrieval override",
+    "repeat_policy": "1 per case plus2 for C01/C11/C13; no success selection; max concurrency2 independent processes; CLI errors preserved; external900s watchdog separate from tool budget",
+    "B1_working_definition": "query/initial retrieval evidence acquisition improvements; not implemented in this run",
+    "B2_working_definition": "related/conflicting evidence supplementation, source diversity and evidence-aware decision/answer control; not implemented in this run"
+  }
+}

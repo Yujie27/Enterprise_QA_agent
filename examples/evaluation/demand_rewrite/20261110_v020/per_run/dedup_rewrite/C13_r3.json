@@ -1,0 +1,378 @@
+{
+  "config": "dedup_rewrite",
+  "run_id": "C13_r3",
+  "case_id": "C13",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/majority.json",
+  "corpus_sha256": "62339fffd0de2d67a0eae3c355e2b3979e932afbc0db7da8af70c063176e99a6",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C13_r3/traces/20261110_211827_574994.json",
+  "status": "completed",
+  "answer": "**无法确定统一期限：两份现行制度的通用范围存在冲突。**\n\n| 文档 | 版本 | 生效日期 | 条款 | 规定 |\n|---|---|---|---|---|\n| D01 | 2026-01 | 2026-01-01 | D01-S1 | 费用报销应在费用发生后**30日内**提交申请 |\n| D02 | 2026-01 | 2026-01-01 | D02-S1 | 费用报销应在费用发生后**15日内**提交申请 |\n\n原文片段：\n- D01-S1：“费用报销应在费用发生后30日内提交申请。”\n- D02-S1：“费用报销应在费用发生后15日内提交申请。”\n\n核对结果：已读取两份文档的原文，它们的版本和生效日期相同，均为 2026-01 版、2026-01-01 生效；适用范围都写为“未提供”，且均未说明哪份制度替代哪份、哪份优先，也未说明各自适用的部门或费用类型。由于适用范围相同、规则互相矛盾且无优先级依据，**不能仅凭日期、标题或编号选择其中一个答案**。\n\n请确认适用制度（例如，是否按部门或费用类型区分），或提供优先级依据，例如指定 D01 或 D02，或说明替代关系。收到后，我可以给出唯一适用期限。\n\n（说明：已确认“存在报销提交期限规定”这一需求，但“唯一适用期限”因制度冲突无法确认，因此在上述范围内的证据已用尽后停止检索。）",
+  "conversation": null,
+  "tool_calls": 3,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 费用报销 提交时限",
+        "limit": 8
+      },
+      "public_decision_reason": "需要定位报销期限相关制度条款",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.625
+          },
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D02-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.625,
+            "source_info": {
+              "grouping": "exact_content_scope_version_date",
+              "representative_policy": "verified_original_candidate",
+              "sources": [
+                {
+                  "doc_id": "D02",
+                  "section_id": "D02-S1",
+                  "declared_copied_from": null,
+                  "verified_original": null,
+                  "relationship": "content_duplicate_only"
+                },
+                {
+                  "doc_id": "COPY0",
+                  "section_id": "COPY0-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY1",
+                  "section_id": "COPY1-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY2",
+                  "section_id": "COPY2-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY3",
+                  "section_id": "COPY3-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY4",
+                  "section_id": "COPY4-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY5",
+                  "section_id": "COPY5-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY6",
+                  "section_id": "COPY6-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                },
+                {
+                  "doc_id": "COPY7",
+                  "section_id": "COPY7-S1",
+                  "declared_copied_from": "D02",
+                  "verified_original": {
+                    "doc_id": "D02",
+                    "section_id": "D02-S1"
+                  },
+                  "relationship": "verified_copy"
+                }
+              ]
+            }
+          }
+        ],
+        "summary": "返回 2 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 2,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ],
+      "new_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "两份候选制度期限不一致，需要读取原文核对适用范围和优先级",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": true
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      },
+      "public_decision_reason": "核对D02原文的适用范围与替代关系",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D02-S1",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "D02/D02-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": true
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销提交期限"
+        ],
+        "covered": [],
+        "missing": [
+          "报销提交期限"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销提交期限"
+        ],
+        "covered": [
+          {
+            "doc_id": "D01",
+            "section_id": "D01-S1",
+            "note": "30日内"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "D02-S1",
+            "note": "15日内"
+          }
+        ],
+        "missing": [
+          "适用范围与优先级依据"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 3,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "报销提交期限"
+        ],
+        "covered": [
+          {
+            "doc_id": "D01",
+            "section_id": "D01-S1",
+            "note": "30日内"
+          },
+          {
+            "doc_id": "D02",
+            "section_id": "D02-S1",
+            "note": "15日内"
+          }
+        ],
+        "missing": [
+          "适用范围与优先级依据"
+        ]
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {
+    "D02/D02-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    },
+    "D01/D01-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    }
+  },
+  "required": [
+    "D01/D01-S1",
+    "D02/D02-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "recovered_after_first": false,
+  "first_query": "报销期限 费用报销 提交时限",
+  "queries": [
+    "报销期限 费用报销 提交时限"
+  ],
+  "no_new_repeat_searches": 0,
+  "search_tool_attempts": 1,
+  "underlying_queries": 1,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "dedup_rewrite",
+    "run_id": "C13_r3",
+    "strict_business_pass": false,
+    "completed_and_business_pass": false,
+    "safe_terminal_and_business_pass": false,
+    "reason": "双方原文可见、主结论正确且请求确认，但开头断言通用范围、后文称适用范围相同。实际scope均未提供，不能证明通用适用；严格依据约束不通过，召回完整不等于回答通过。",
+    "labels": [
+      "主答案正确，但附带无依据断言"
+    ],
+    "unsupported_assertions": [
+      "两份现行制度的通用范围存在冲突",
+      "由于适用范围相同"
+    ],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": null,
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/dedup_rewrite/sessions/C13_r3/traces/20261110_211827_574994.json",
+    "gap_keys": []
+  },
+  "no_new_successful_searches": 0,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 0,
+  "post_coverage_reads": 2
+}

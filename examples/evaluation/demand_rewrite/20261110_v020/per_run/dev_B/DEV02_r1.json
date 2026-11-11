@@ -1,0 +1,349 @@
+{
+  "config": "dev_B",
+  "run_id": "DEV02_r1",
+  "case_id": "DEV02",
+  "messages": [
+    {
+      "role": "user",
+      "content": "图书借阅需要满足什么条件，如何办理？"
+    }
+  ],
+  "corpus": "examples/evaluation/demand_rewrite/20261110_v020/DEV02.json",
+  "corpus_sha256": "ce16c3eb45fea0cf4a386df4f9ed78cf3f6f150cdb6b5453060bda71561f3883",
+  "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_B/sessions/DEV02_r1/traces/20261110_211843_296653.json",
+  "status": "completed",
+  "answer": "**结论：**\n\n**一、借阅条件**\n企业图书馆仅向**转正员工**开放外借；尚未转正的员工不符合外借条件。\n> 依据：DEV02-1《内部服务说明》第1版，生效日期 2026-01-01，条款 DEV02-1-S1：  \n> “企业图书馆仅向转正员工开放外借。”\n\n需说明：该文档的“适用范围”字段登记为“全体员工”，但正文明确将外借资格限定为转正员工，因此实际按正文限定执行。\n\n**二、办理方式**\n1. 登录**资产门户**，登记所借图书的书号；\n2. 再到**前台领取**图书。\n> 依据：DEV02-2《内部服务说明》第1版，生效日期 2026-01-01，条款 DEV02-2-S1：  \n> “图书借阅须登录资产门户登记书号，再到前台领取。”\n\n**三、未覆盖的信息**\n现有资料未规定借阅期限、可借册数、续借方式、逾期处理或所需证件等细则，无法确认；如需了解，建议向图书馆或前台确认。\n\n以上两份说明均适用于同一范围，内容分别规定“资格条件”和“办理流程”，二者可同时适用且并不矛盾。本次回答依据 DEV02-1、DEV02-2 的原文；已支持“借阅条件”和“办理流程”两项需求，其余借阅细则资料不足。",
+  "conversation": null,
+  "tool_calls": 4,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "图书借阅 条件 办理流程",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位图书借阅的条件与办理流程条款",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "DEV02-2",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV02-2-S1",
+            "text": "图书借阅须登录资产门户登记书号，再到前台领取。",
+            "score": 0.429
+          }
+        ],
+        "summary": "返回 1 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 1,
+          "seen_evidence_count": 1,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "DEV02-2/DEV02-2-S1"
+      ],
+      "new_keys": [
+        "DEV02-2/DEV02-2-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "图书借阅 资格 借阅证 借阅期限 册数 限制",
+        "limit": 5
+      },
+      "public_decision_reason": "现有片段只覆盖办理步骤，需补查借阅资格与限制条件",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "results": [
+          {
+            "doc_id": "DEV02-2",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV02-2-S1",
+            "text": "图书借阅须登录资产门户登记书号，再到前台领取。",
+            "score": 0.333
+          },
+          {
+            "doc_id": "DEV02-1",
+            "title": "内部服务说明",
+            "version": "1",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工",
+            "section_id": "DEV02-1-S1",
+            "text": "企业图书馆仅向转正员工开放外借。",
+            "score": 0.222
+          }
+        ],
+        "summary": "返回 2 条资料",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 1,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 1
+        }
+      },
+      "visible_keys": [
+        "DEV02-1/DEV02-1-S1",
+        "DEV02-2/DEV02-2-S1"
+      ],
+      "new_keys": [
+        "DEV02-1/DEV02-1-S1"
+      ],
+      "required_evidence_complete_before_call": false
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "DEV02-1"
+      },
+      "public_decision_reason": "核实借阅资格条款的完整原文与适用范围",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "DEV02-1",
+          "title": "内部服务说明",
+          "scope": "全体员工",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "tags": [
+            "图书馆",
+            "资格"
+          ],
+          "sections": [
+            {
+              "section_id": "DEV02-1-S1",
+              "text": "企业图书馆仅向转正员工开放外借。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "DEV02-1/DEV02-1-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": true
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 4,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "DEV02-2"
+      },
+      "public_decision_reason": "核实办理步骤原文，并检查是否载明适用条件或与其他说明的关系",
+      "reason_source": "model_tool_argument",
+      "complete_return": {
+        "document": {
+          "doc_id": "DEV02-2",
+          "title": "内部服务说明",
+          "scope": "全体员工",
+          "version": "1",
+          "effective_from": "2026-01-01",
+          "tags": [
+            "图书",
+            "借阅"
+          ],
+          "sections": [
+            {
+              "section_id": "DEV02-2-S1",
+              "text": "图书借阅须登录资产门户登记书号，再到前台领取。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文",
+        "retrieval_statistics": {
+          "source": "program_observed_evidence",
+          "new_evidence_count": 0,
+          "seen_evidence_count": 2,
+          "exact_query_repeated": false,
+          "underlying_queries_this_call": 0
+        }
+      },
+      "visible_keys": [
+        "DEV02-2/DEV02-2-S1"
+      ],
+      "new_keys": [],
+      "required_evidence_complete_before_call": true
+    }
+  ],
+  "coverage_reports": [
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 1,
+      "source": "model_tool_argument",
+      "report": {
+        "needs": [
+          "借阅条件",
+          "办理流程"
+        ],
+        "covered": [],
+        "missing": [
+          "借阅条件",
+          "办理流程"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 2,
+      "source": "model_tool_argument",
+      "report": {
+        "covered": [
+          {
+            "need": "办理流程",
+            "doc_id": "DEV02-2",
+            "section_id": "DEV02-2-S1",
+            "note": "登录资产门户登记书号，到前台领取"
+          }
+        ],
+        "missing": [
+          "借阅条件"
+        ],
+        "needs": [
+          "借阅条件",
+          "办理流程"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 3,
+      "source": "model_tool_argument",
+      "report": {
+        "covered": [
+          {
+            "need": "办理流程",
+            "doc_id": "DEV02-2",
+            "section_id": "DEV02-2-S1",
+            "note": "登记书号后前台领取"
+          },
+          {
+            "need": "借阅条件",
+            "doc_id": "DEV02-1",
+            "section_id": "DEV02-1-S1",
+            "note": "仅转正员工可外借"
+          }
+        ],
+        "missing": [],
+        "needs": [
+          "借阅条件",
+          "办理流程"
+        ]
+      },
+      "validated_semantically": false
+    },
+    {
+      "type": "coverage_report",
+      "turn": 1,
+      "step": 4,
+      "source": "model_tool_argument",
+      "report": {
+        "covered": [
+          {
+            "need": "办理流程",
+            "doc_id": "DEV02-2",
+            "section_id": "DEV02-2-S1",
+            "note": "登记书号后前台领取"
+          },
+          {
+            "need": "借阅条件",
+            "doc_id": "DEV02-1",
+            "section_id": "DEV02-1-S1",
+            "note": "仅转正员工可外借"
+          }
+        ],
+        "missing": [],
+        "needs": [
+          "借阅条件",
+          "办理流程"
+        ]
+      },
+      "validated_semantically": false
+    }
+  ],
+  "acquired_at": {
+    "DEV02-2/DEV02-2-S1": {
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs"
+    },
+    "DEV02-1/DEV02-1-S1": {
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs"
+    }
+  },
+  "required": [
+    "DEV02-1/DEV02-1-S1",
+    "DEV02-2/DEV02-2-S1"
+  ],
+  "missing": [],
+  "first_recall": 0.5,
+  "cumulative_recall": 1.0,
+  "recovered_after_first": true,
+  "first_query": "图书借阅 条件 办理流程",
+  "queries": [
+    "图书借阅 条件 办理流程",
+    "图书借阅 资格 借阅证 借阅期限 册数 限制"
+  ],
+  "no_new_repeat_searches": 0,
+  "search_tool_attempts": 2,
+  "underlying_queries": 2,
+  "budget_rejections": 0,
+  "fifth_after_evidence_complete": 0,
+  "review": {
+    "config": "dev_B",
+    "run_id": "DEV02_r1",
+    "strict_business_pass": true,
+    "completed_and_business_pass": true,
+    "safe_terminal_and_business_pass": true,
+    "reason": "第二步资格改写取得转正员工条款，完整回答资格及资产门户登记后前台领取；扩展查借阅期限册数并无必要，但未编造细则。",
+    "labels": [
+      "首次未召回，但模型通过后续动作恢复"
+    ],
+    "unsupported_assertions": [],
+    "citation_and_wording_findings": [],
+    "annotation_uncertainty": null,
+    "trace": "examples/evaluation/demand_rewrite/20261110_v020/dev_B/sessions/DEV02_r1/traces/20261110_211843_296653.json",
+    "gap_keys": []
+  },
+  "no_new_successful_searches": 0,
+  "exact_repeated_queries": 0,
+  "search_error_attempts": 0,
+  "post_coverage_reads": 2
+}

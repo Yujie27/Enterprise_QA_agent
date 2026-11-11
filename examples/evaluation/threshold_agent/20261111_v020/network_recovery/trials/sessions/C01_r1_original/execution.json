@@ -1,0 +1,52 @@
+{
+  "run_id": "C01_r1_original",
+  "case_id": "C01",
+  "repeat": 1,
+  "execution": "attempted",
+  "started_at_utc": "2026-11-11T03:56:05.236884+00:00",
+  "finished_at_utc": "2026-11-11T03:56:10.516999+00:00",
+  "elapsed_seconds": 5.1114722000020265,
+  "uncaught_error": null,
+  "cli_args": [
+    "enterprise-qa",
+    "--corpus",
+    "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\retrieval_baseline\\20261110_raw_query_v020\\input\\qa_boundary_test_design\\corpora\\conflict.json",
+    "--trace-dir",
+    "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\threshold_agent\\20261111_v020\\network_recovery\\trials\\sessions\\C01_r1_original\\traces",
+    "报销期限多久？",
+    "--retrieval-mode",
+    "dedup",
+    "--match-threshold",
+    "original"
+  ],
+  "model_config": {
+    "model": "deepseek-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "endpoint_path": "/v1",
+    "api_key_configured": true,
+    "stream": false,
+    "parameters": {
+      "max_tokens": null,
+      "thinking_enable": false,
+      "reasoning_effort": null,
+      "temperature": null,
+      "top_p": null,
+      "parallel_tool_calls": false,
+      "voice": null
+    },
+    "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+    "tool_budget_per_turn": 4,
+    "configured_budget_before_runner": "4",
+    "react_max_iters": 5,
+    "model_max_retries_default": 3,
+    "model_retry_delay_default": 1.0,
+    "versions": {
+      "agentscope": "2.0.11",
+      "openai": "3.46.0",
+      "python-dotenv": "1.2.4",
+      "enterprise-qa-agent-minimal": "0.2.0"
+    }
+  },
+  "corpus_sha256": "26d2059e88b8a3b446c6d25ab96df3a0e1d80e0e526e0dc327883c40c4d22bcf",
+  "tool_return_count": 3
+}
