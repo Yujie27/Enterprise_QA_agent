@@ -1,0 +1,14 @@
+[
+  {
+    "turn": 1,
+    "finished_reason": "completed",
+    "usage": {
+      "input_tokens": 4102,
+      "output_tokens": 434,
+      "cache_input_tokens": 3456,
+      "cache_creation_input_tokens": 0
+    },
+    "error": null,
+    "text": "目前无法确认报销期限。制度检索工具连续两次报错，未能获取可引用的制度原文，因此不能据此给出具体期限。\n\n请提供适用制度的名称或文档 ID，或稍后重试检索。"
+  }
+]

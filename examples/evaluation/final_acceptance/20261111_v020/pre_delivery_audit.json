@@ -1,0 +1,33 @@
+{
+  "candidate_hashes_verified": true,
+  "historical_files_verified": 1078,
+  "metrics": {
+    "new_real_runs": 19,
+    "native_runs": 18,
+    "controlled_runs": 1,
+    "native_business_pass": 17,
+    "native_correct_terminal_business_pass": 17,
+    "all_business_pass": 17,
+    "statuses": {
+      "completed": 17,
+      "tool_error": 2
+    },
+    "native_statuses": {
+      "completed": 16,
+      "tool_error": 2
+    },
+    "tool_calls": 55,
+    "budget_rejected_new": 0,
+    "supplemental_budget_rejected": 1,
+    "reading_failure_triggered": true
+  },
+  "source_hashes": {
+    "src/enterprise_qa_agent/agent.py": "8439b143f1cea90a9f0e3372dceeba2681b550fa1e64cdc5f8e8f277b489e99b",
+    "src/enterprise_qa_agent/cli.py": "c090416a4c5bb011174852026151bc66e6b54f4cc61e1c55aac627048e5353a7",
+    "src/enterprise_qa_agent/knowledge.py": "05c4cae45ad14c3002049f22d9576d383e77b317a25518142116239f5362f993",
+    "src/enterprise_qa_agent/__init__.py": "ab5420f27d2d0df4961e838c0b6c39cea53163c06cbc3f67bc6547dc2e35b89c",
+    "pyproject.toml": "f828162750ce15535c9173a220e90db289f16f780d863fd867c113f2538e825a",
+    "uv.lock": "821f6f5758825e2d8666e40d41a9c054ca43a314e5ac0a9d421c21bca7ae5d2c",
+    ".env.example": "b86eea69783346acb8e5187d855c33547a1993bdf4485e69c44cc6dede97132f"
+  }
+}

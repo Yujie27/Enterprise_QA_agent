@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enterprise-qa-agent-minimal"
+version = "0.2.0"
+description = "A minimal single-agent enterprise policy QA demo using AgentScope"
+requires-python = ">=3.11"
+dependencies = [
+  "agentscope==2.0.11",
+  "python-dotenv>=1.0,<2.0",
+]
+
+[project.scripts]
+enterprise-qa = "enterprise_qa_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

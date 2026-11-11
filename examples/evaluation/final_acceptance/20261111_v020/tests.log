@@ -1,0 +1,31 @@
+test_installed_agentscope_api_builds_agent_and_local_tools (test_agent_api.AgentApiTests.test_installed_agentscope_api_builds_agent_and_local_tools) ... ok
+test_tool_call_limit_is_enforced_per_turn (test_agent_api.AgentApiTests.test_tool_call_limit_is_enforced_per_turn) ... ok
+test_trace_distinguishes_model_reason_from_program_summary (test_agent_api.AgentApiTests.test_trace_distinguishes_model_reason_from_program_summary) ... ok
+test_trace_records_blocked_call_instead_of_claiming_finish (test_agent_api.AgentApiTests.test_trace_records_blocked_call_instead_of_claiming_finish) ... ok
+test_dedup_mode_matches_sealed_implementation (test_coverage_rewrite.CoverageTests.test_dedup_mode_matches_sealed_implementation) ... ok
+test_disabled_agent_keeps_sealed_prompt_and_tool_schemas (test_coverage_rewrite.CoverageTests.test_disabled_agent_keeps_sealed_prompt_and_tool_schemas) ... ok
+test_enabled_tools_count_real_searches_and_reject_fifth (test_coverage_rewrite.CoverageTests.test_enabled_tools_count_real_searches_and_reject_fifth) ... ok
+test_model_coverage_is_not_program_verified_truth (test_coverage_rewrite.CoverageTests.test_model_coverage_is_not_program_verified_truth) ... ok
+test_original_mode_matches_all_frozen_raw_results (test_coverage_rewrite.CoverageTests.test_original_mode_matches_all_frozen_raw_results) ... ok
+test_statistics_separate_novelty_from_semantic_coverage (test_coverage_rewrite.CoverageTests.test_statistics_separate_novelty_from_semantic_coverage) ... ok
+test_different_numbers_and_units_and_anchors_remain (test_dedup.DedupTests.test_different_numbers_and_units_and_anchors_remain) ... ok
+test_equal_content_without_relationship_is_not_called_copy (test_dedup.DedupTests.test_equal_content_without_relationship_is_not_called_copy) ... ok
+test_internal_conflict_remains (test_dedup.DedupTests.test_internal_conflict_remains) ... ok
+test_invalid_origins_not_merged_or_fabricated (test_dedup.DedupTests.test_invalid_origins_not_merged_or_fabricated) ... ok
+test_metadata_differences_remain (test_dedup.DedupTests.test_metadata_differences_remain) ... ok
+test_non_copy_prefix_and_changed_count_development_variant (test_dedup.DedupTests.test_non_copy_prefix_and_changed_count_development_variant) ... ok
+test_only_prompt_changes_when_strategy_enabled (test_dg_prompt.DgPromptTests.test_only_prompt_changes_when_strategy_enabled) ... ok
+test_conflicting_corpus_keeps_both_rules_without_arbitration (test_knowledge.KnowledgeBaseTests.test_conflicting_corpus_keeps_both_rules_without_arbitration) ... ok
+test_read_returns_original_document (test_knowledge.KnowledgeBaseTests.test_read_returns_original_document) ... ok
+test_rewritten_question_retrieves_research_travel_policy (test_knowledge.KnowledgeBaseTests.test_rewritten_question_retrieves_research_travel_policy) ... ok
+test_search_returns_ids_and_source_metadata (test_knowledge.KnowledgeBaseTests.test_search_returns_ids_and_source_metadata) ... ok
+test_single_rule_corpus_removes_only_the_conflicting_document (test_knowledge.KnowledgeBaseTests.test_single_rule_corpus_removes_only_the_conflicting_document) ... ok
+test_unknown_document_returns_none (test_knowledge.KnowledgeBaseTests.test_unknown_document_returns_none) ... ok
+test_unrelated_application_question_does_not_match_on_one_common_word (test_knowledge.KnowledgeBaseTests.test_unrelated_application_question_does_not_match_on_one_common_word) ... ok
+test_empty_and_zero_overlap_stay_empty (test_threshold.ThresholdTests.test_empty_and_zero_overlap_stay_empty) ... ok
+test_matches_all_offline_diagnostic_outputs (test_threshold.ThresholdTests.test_matches_all_offline_diagnostic_outputs) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.478s
+
+OK

@@ -1,0 +1,158 @@
+{
+  "run_id": "X04_native",
+  "case_id": "X04",
+  "repeat": 1,
+  "batch": "acceptance",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/order.json",
+  "corpus_sha256": "63c23fa1356ea002eddb994d4bffd88f7d1d2d2ce7e38db4e5b15965f968e930",
+  "trace": "examples/evaluation/final_acceptance/20261111_v020/trials/sessions/X04_native/traces/20261111_131611_478475.json",
+  "status": "completed",
+  "answer": "无法确定统一报销期限，现有两份制度规定不一致：\n\n- **D01**（版本 2026-01，生效日期 2026-01-01）规定：  \n  > “费用报销应在费用发生后30日内提交申请。”\n- **D02**（版本 2026-01，生效日期 2026-01-01）规定：  \n  > “费用报销应在费用发生后15日内提交申请。”\n\n两份文档均**未提供适用范围**，生效日期和版本相同，也未说明替代关系或优先级。因此不能据此认定应适用 30 日还是 15 日。\n\n请确认你所属单位/业务适用 D01 还是 D02，或提供制度优先级依据；在确认前，无法给出唯一期限。",
+  "tool_calls": 3,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 报销时限 费用报销 提交期限",
+        "limit": 10
+      },
+      "public_decision_reason": "需要先定位与报销期限相关的制度条款。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.556
+          },
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D02-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.556
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "候选报销期限存在30日与15日差异，需要读取原文核对适用范围及效力关系。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      },
+      "public_decision_reason": "候选报销期限存在30日与15日差异，需要读取原文核对适用范围及效力关系。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D02-S1",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "D02/D02-S1"
+      ]
+    }
+  ],
+  "required": [
+    "D01/D01-S1",
+    "D02/D02-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "D01/D01-S1": 1,
+    "D02/D02-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "business_pass": true,
+    "main_conclusion_correct": true,
+    "citations_supported": true,
+    "category": "合理冲突追问",
+    "reason": "文件顺序变换，但实际首搜顺序仍D01,D02，变换未触发；本次冲突结论正确，不宣称验证了返回位置鲁棒性。",
+    "unsupported_claims": [],
+    "wording_or_process_risks": [],
+    "review_method": "助手阅读本次完整返回/答案及M01 conversation，非自动裁判；候选人需复审"
+  },
+  "correct_terminal_and_business_pass": true,
+  "conversation": null,
+  "controlled_variant": false
+}

@@ -1,0 +1,88 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-11T05:15:40.703890+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.5
+        },
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S2",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "score": 0.5
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.5}, {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S2\", \"text\": \"费用报销应在费用发生后15日内提交申请。\", \"score\": 0.5}], \"summary\": \"返回 2 条资料\"}",
+          "id": "bb82d0d5f88941efbd9770bc9a52b22f",
+          "created_at": "2026-11-11T13:15:40.703890",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "6bf27f0d7d954a249d943ed6f5c25e95"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-11T05:15:41.730902+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。"
+          },
+          {
+            "section_id": "D01-S2",
+            "text": "费用报销应在费用发生后15日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}, {\"section_id\": \"D01-S2\", \"text\": \"费用报销应在费用发生后15日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "58b8e3ea9d35470b8ae42e7feee527cc",
+          "created_at": "2026-11-11T13:15:41.730902",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "746315745e724f5b89c9053685c93c8f"
+    }
+  }
+]

@@ -1,0 +1,123 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-11T05:16:15.725753+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "A01",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "A01-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "score": 0.714
+        },
+        {
+          "doc_id": "Z99",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "Z99-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.714
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"A01\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"A01-S1\", \"text\": \"费用报销应在费用发生后15日内提交申请。\", \"score\": 0.714}, {\"doc_id\": \"Z99\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"Z99-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.714}], \"summary\": \"返回 2 条资料\"}",
+          "id": "5c5a2305cef44da4a5f697dac7323cc0",
+          "created_at": "2026-11-11T13:16:15.725753",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "0690bd2edbb44af7a0f3686d9980e405"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-11T05:16:17.024639+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "A01",
+        "title": "制度文件D02",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "A01-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"A01\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"A01-S1\", \"text\": \"费用报销应在费用发生后15日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "87d0025601744315b2f026a1bd28aef9",
+          "created_at": "2026-11-11T13:16:17.023629",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "90bf6bdecd2843b0b5d356fffb5097a1"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-11T05:16:17.025677+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "Z99",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "Z99-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"Z99\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"Z99-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "184d034fc21a4dd3bb32c6fe5fa583f7",
+          "created_at": "2026-11-11T13:16:17.025677",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "a6b1360a727747ab83255a2d4d499975"
+    }
+  }
+]

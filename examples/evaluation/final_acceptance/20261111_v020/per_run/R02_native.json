@@ -1,0 +1,151 @@
+{
+  "run_id": "R02_native",
+  "case_id": "R02",
+  "repeat": 1,
+  "batch": "acceptance",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "研发同事出差回来多久要完成费用申请？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+  "corpus_sha256": "b20613e6e68529f6b9439b499589073e66ceaa541a84fdd754e70788e8a1de11",
+  "trace": "examples/evaluation/final_acceptance/20261111_v020/trials/sessions/R02_native/traces/20261111_131427_568599.json",
+  "status": "completed",
+  "answer": "研发部门同事的差旅费用，应在**返程后 15 日内提交报销申请**。\n\n- **依据文档**：D02《制度文件D02》\n- **版本**：2026-01\n- **生效日期**：2026-01-01\n- **适用范围**：研发部门；差旅费用\n- **原文片段**：“研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。”\n\n制度未明确该“15日”按自然日还是工作日计算。\n\n回答依据：已有直接适用于“研发部门差旅费用”的条款，且未发现适用范围内的冲突规定。",
+  "tool_calls": 2,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "研发人员 出差 回来 费用申请 期限 报销",
+        "limit": 8
+      },
+      "public_decision_reason": "需要定位差旅费用申请期限及研发人员适用范围。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "section_id": "D02-S1",
+            "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。",
+            "score": 0.615
+          },
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工；非差旅普通费用",
+            "section_id": "D01-S1",
+            "text": "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。",
+            "score": 0.385
+          },
+          {
+            "doc_id": "D03",
+            "title": "制度文件D03",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工；年假",
+            "section_id": "D03-S1",
+            "text": "年假申请通过内部系统提交，经直属主管审批后生效。",
+            "score": 0.077
+          }
+        ],
+        "summary": "返回 3 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1",
+        "D03/D03-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "出差结束后 完成 费用申请 报销 时限 天",
+        "limit": 8
+      },
+      "public_decision_reason": "需要核对出差结束后费用申请的具体期限。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "section_id": "D02-S1",
+            "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。",
+            "score": 0.385
+          },
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工；非差旅普通费用",
+            "section_id": "D01-S1",
+            "text": "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。",
+            "score": 0.308
+          },
+          {
+            "doc_id": "D03",
+            "title": "制度文件D03",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "全体员工；年假",
+            "section_id": "D03-S1",
+            "text": "年假申请通过内部系统提交，经直属主管审批后生效。",
+            "score": 0.077
+          }
+        ],
+        "summary": "返回 3 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1",
+        "D02/D02-S1",
+        "D03/D03-S1"
+      ]
+    }
+  ],
+  "required": [
+    "D02/D02-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "D01/D01-S1": 1,
+    "D03/D03-S1": 1,
+    "D02/D02-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "business_pass": true,
+    "main_conclusion_correct": true,
+    "citations_supported": true,
+    "category": "完整有据回答",
+    "reason": "模型自主处理出差/回来/费用申请改写，按研发差旅scope回答返程15日。",
+    "unsupported_claims": [],
+    "wording_or_process_risks": [],
+    "review_method": "助手阅读本次完整返回/答案及M01 conversation，非自动裁判；候选人需复审"
+  },
+  "correct_terminal_and_business_pass": true,
+  "conversation": null,
+  "controlled_variant": false
+}

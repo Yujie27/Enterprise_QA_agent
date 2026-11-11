@@ -1,0 +1,130 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-11T05:14:53.166845+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.625
+        },
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D02-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "score": 0.625
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.625}, {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D02-S1\", \"text\": \"费用报销应在费用发生后15日内提交申请。\", \"score\": 0.625}], \"summary\": \"返回 2 条资料\"}",
+          "id": "4183a45673514f6297ba5e47bc4240d9",
+          "created_at": "2026-11-11T13:14:53.166845",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "1fb20c8b459747789a3cbc695e617e8b"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-11T05:14:53.169424+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.125
+        },
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D02-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "score": 0.125
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.125}, {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D02-S1\", \"text\": \"费用报销应在费用发生后15日内提交申请。\", \"score\": 0.125}], \"summary\": \"返回 2 条资料\"}",
+          "id": "776b57f840cc427a83da09e355d3c022",
+          "created_at": "2026-11-11T13:14:53.168911",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "394b627cd7ab4439a3653d0f40f5530b"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-11T05:14:54.747820+00:00",
+    "payload_passed_to_original_tool_response": {
+      "error": "读取工具失败：RuntimeError: simulated document read failure for evaluation"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"error\": \"读取工具失败：RuntimeError: simulated document read failure for evaluation\"}",
+          "id": "6671a1a085f84fc096fe280956bdab24",
+          "created_at": "2026-11-11T13:14:54.747820",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "a814ef3b395f4ec6854eb6e97b8d0bdd"
+    }
+  },
+  {
+    "index": 4,
+    "timestamp_utc": "2026-11-11T05:14:54.748891+00:00",
+    "payload_passed_to_original_tool_response": {
+      "error": "读取工具失败：RuntimeError: simulated document read failure for evaluation"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"error\": \"读取工具失败：RuntimeError: simulated document read failure for evaluation\"}",
+          "id": "390018ae21e946a39689d888639ee5fb",
+          "created_at": "2026-11-11T13:14:54.748891",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "91cb804343d44e0cb9b9a113233c779b"
+    }
+  }
+]

@@ -1,0 +1,944 @@
+{
+  "prepared_at_utc": "2026-11-11T05:13:33.643090+00:00",
+  "cases": [
+    {
+      "case_id": "R01",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+      "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "基于D01回答费用发生后30日内，限定为当前检索到的规定。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "无依据声称全公司所有费用一律30日。"
+      }
+    },
+    {
+      "case_id": "C01",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/conflict.json",
+      "corpus_sha256": "26d2059e88b8a3b446c6d25ab96df3a0e1d80e0e526e0dc327883c40c4d22bcf",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "metadata": {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "并列D01的30日与D02的15日，说明范围/优先级未给，追问适用制度。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "发现不同期限后核验相关原文；允许充分片段作为证据，但必须核验适用范围与裁决依据。",
+        "must_not": "直接给15日、30日、取最短或取平均。"
+      }
+    },
+    {
+      "case_id": "C02",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+      "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "仅有D01时给30日并引用，不凭空假设另有15日。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "无证据宣称有冲突；永久拒答。"
+      }
+    },
+    {
+      "case_id": "R06",
+      "messages": [
+        {
+          "role": "user",
+          "content": "公司育儿补贴怎么申请？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/negative.json",
+      "corpus_sha256": "be30677b523f7f560e3eb8e8e803f957d3da1c4a7d5ff8a5dd9f2a8ae2179abb",
+      "necessary_evidence": [],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "识别命中内容不提供育儿补贴办法，说明资料不足。",
+        "evidence_ids": [],
+        "action_constraints": "即使命中条款，也必须判断其是否回答问题。",
+        "must_not": "因出现报销30日而把补贴期限编为30日。"
+      }
+    },
+    {
+      "case_id": "R02",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发同事出差回来多久要完成费用申请？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "corpus_sha256": "b20613e6e68529f6b9439b499589073e66ceaa541a84fdd754e70788e8a1de11",
+      "necessary_evidence": [
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1",
+          "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。",
+          "metadata": {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "定位D02，回答返程后15日内。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许模型改写查询或同义词扩展。",
+        "must_not": "丢失研发/差旅限制，回答30日。"
+      }
+    },
+    {
+      "case_id": "M01",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        },
+        {
+          "role": "user",
+          "content": "研发部门，差旅报销。"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/scoped.json",
+      "corpus_sha256": "b20613e6e68529f6b9439b499589073e66ceaa541a84fdd754e70788e8a1de11",
+      "necessary_evidence": [
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1"
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "第二轮结合首轮问题回答D02返程后15日。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把第二轮当无关词；重复询问已明确的部门类型。"
+      }
+    },
+    {
+      "case_id": "F01",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+      "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+      "necessary_evidence": [],
+      "simulate_failure": "search_docs",
+      "expected": {
+        "behavior": "连续检索工具异常后说明工具失败、未能核实期限。",
+        "evidence_ids": [],
+        "action_constraints": "观察错误后调整或停止；不持续无意义重试。",
+        "must_not": "把工具错误当制度不存在；凭常识给天数。"
+      }
+    },
+    {
+      "case_id": "F02",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/conflict.json",
+      "corpus_sha256": "26d2059e88b8a3b446c6d25ab96df3a0e1d80e0e526e0dc327883c40c4d22bcf",
+      "necessary_evidence": [],
+      "simulate_failure": "read_doc",
+      "expected": {
+        "behavior": "检索片段可见双方冲突但读取失败；列已见差异和核验缺口，不编造全文。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "假称已读取原文或随意裁决。"
+      }
+    },
+    {
+      "case_id": "C05",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/newer.json",
+      "corpus_sha256": "beca741e2d3602262cbf6dd795434b042d0a9439bff240fe3ee8413494c7f57d",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "metadata": {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-07",
+            "effective_from": "2026-07-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "日期不同但无替代/优先级依据，仍并列冲突并请求确认。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "仅凭D02日期较新选15日。"
+      }
+    },
+    {
+      "case_id": "C06",
+      "messages": [
+        {
+          "role": "user",
+          "content": "2026年7月2日发生的普通费用，报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/replaced.json",
+      "corpus_sha256": "4ec88a346d973f5f78c63aaf68df92383786e2729ee66a49bf7745215e094956",
+      "necessary_evidence": [],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "依据明确替代条款回答15日。",
+        "evidence_ids": [
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "忽略替代关系而持续拒答；直接靠日期猜优先级。"
+      }
+    },
+    {
+      "case_id": "C09",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发差旅期限是15日，对吗？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/units.json",
+      "corpus_sha256": "3166975dcc7d7b83552e8f0a1b82cf8a5a679bb564fb85ff8d2e81c7ce352ad0",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "研发部门差旅费用在返程后15个工作日内提交报销申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1",
+          "text": "研发部门差旅费用在返程后15个自然日内提交报销申请。",
+          "metadata": {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "指出15工作日与15自然日有实质差异，列冲突并请求确认。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "因为都是15而判定一致。"
+      }
+    },
+    {
+      "case_id": "C10",
+      "messages": [
+        {
+          "role": "user",
+          "content": "研发差旅报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/anchors.json",
+      "corpus_sha256": "65dd428aef1134433a7a48452ee3c46c065173179a5abae3254afa54db626897",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "研发部门差旅费用在费用发生后15日内提交报销申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1",
+          "text": "研发部门差旅费用在返程后15日内提交报销申请。",
+          "metadata": {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "研发部门；差旅费用",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "指出费用发生后与返程后起算点不同，说明尚无法统一判断。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "只看到都是15日就认定无冲突。"
+      }
+    },
+    {
+      "case_id": "C12",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/internal.json",
+      "corpus_sha256": "26210b3bcb27f4193396c8149a4079391b23b9e6e463535e536eaff961235c73",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S2",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "识别同一D01中两个条款30/15日矛盾，并引用两个section。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "须取得D01-S1与D01-S2，引用粒度到条款。",
+        "must_not": "只检查跨文档冲突或只引用一条。"
+      }
+    },
+    {
+      "case_id": "C13",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/majority.json",
+      "corpus_sha256": "62339fffd0de2d67a0eae3c355e2b3979e932afbc0db7da8af70c063176e99a6",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "metadata": {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "重复转载不形成优先级，仍列30/15日冲突。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "用多数票或重复数量裁决为15日。"
+      }
+    },
+    {
+      "case_id": "X06",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/modified.json",
+      "corpus_sha256": "d73f6f3b4bb7311c2198ad5b04a54c645a09af2c291a94573f2a2914deea5a9c",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后45日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "同ID文本由30日改45日，新运行答案必须随证据变为45日。",
+        "evidence_ids": [
+          "D01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "记住基线30日；只换引用不改答案。"
+      }
+    },
+    {
+      "case_id": "X04",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/order.json",
+      "corpus_sha256": "63c23fa1356ea002eddb994d4bffd88f7d1d2d2ce7e38db4e5b15965f968e930",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "D02",
+          "section_id": "D02-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "metadata": {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "交换文档顺序后仍识别30/15日冲突；引用随文档保持一致。",
+        "evidence_ids": [
+          "D01",
+          "D02"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "顺序改变就选第一份/最后一份。"
+      }
+    },
+    {
+      "case_id": "X05",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限多久？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/rename.json",
+      "corpus_sha256": "92c018653581e49cb2caaa5009372f2c76320a5c371a5aeeb06f9dcb747ef0f8",
+      "necessary_evidence": [
+        {
+          "doc_id": "Z99",
+          "section_id": "Z99-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "Z99",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "A01",
+          "section_id": "A01-S1",
+          "text": "费用报销应在费用发生后15日内提交申请。",
+          "metadata": {
+            "doc_id": "A01",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "文档重命名后仍列30/15日冲突，引用改为Z99/A01。",
+        "evidence_ids": [
+          "Z99",
+          "A01"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "按编号大小裁决或沿用旧D01/D02引用。"
+      }
+    },
+    {
+      "case_id": "C11",
+      "messages": [
+        {
+          "role": "user",
+          "content": "报销期限和需要的材料分别是什么？"
+        }
+      ],
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/complement.json",
+      "corpus_sha256": "484efa2062c4e47183b2a02017f819d67b5a91a43c5c78a0d2bed7744ea289b6",
+      "necessary_evidence": [
+        {
+          "doc_id": "D01",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "metadata": {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "期限",
+              "费用"
+            ]
+          }
+        },
+        {
+          "doc_id": "D04",
+          "section_id": "D04-S1",
+          "text": "费用报销申请须附合规票据。",
+          "metadata": {
+            "doc_id": "D04",
+            "title": "制度文件D04",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "tags": [
+              "报销",
+              "票据",
+              "申请"
+            ]
+          }
+        }
+      ],
+      "simulate_failure": null,
+      "expected": {
+        "behavior": "合并期限30日与须附合规票据，分别引用。",
+        "evidence_ids": [
+          "D01",
+          "D04"
+        ],
+        "action_constraints": "允许不同工具路径；按证据与最终行为评判，不要求固定查询或固定调用顺序。",
+        "must_not": "把互补资料判冲突；推导合规票据的未提供细则。"
+      }
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "R01_native",
+      "case_id": "R01",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C01_native",
+      "case_id": "C01",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C02_native",
+      "case_id": "C02",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "R06_native",
+      "case_id": "R06",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "R02_native",
+      "case_id": "R02",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "M01_native",
+      "case_id": "M01",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "F01_native",
+      "case_id": "F01",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "F02_native",
+      "case_id": "F02",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C05_native",
+      "case_id": "C05",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C06_native",
+      "case_id": "C06",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C09_native",
+      "case_id": "C09",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C10_native",
+      "case_id": "C10",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C12_native",
+      "case_id": "C12",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C13_native",
+      "case_id": "C13",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "X06_native",
+      "case_id": "X06",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "X04_native",
+      "case_id": "X04",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "X05_native",
+      "case_id": "X05",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C11_native",
+      "case_id": "C11",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted"
+    },
+    {
+      "run_id": "C01_reverse",
+      "case_id": "C01",
+      "repeat": 1,
+      "batch": "acceptance",
+      "threshold": "dg_targeted",
+      "controlled_reverse": true
+    }
+  ],
+  "criteria": {
+    "scope": "original real CLI, no manual rewrite, no evidence supplied to model beyond original tools",
+    "strict_business_pass": "Correct source-bounded main conclusion, supported citations, required gaps explicit, no unsupported policy assertion or execution advice; budget/framework failure tracked separately",
+    "recovery_axes": [
+      "raw_query_k5_vs_agent_visible_evidence",
+      "agent_first_search_vs_later_observations"
+    ],
+    "labels": [
+      "必要证据未召回，模型未恢复",
+      "首次未召回，但模型通过后续动作恢复",
+      "必要证据已可见，模型仍判断错误",
+      "主答案正确，但引用错误或附带无依据断言",
+      "工程异常、预算不足或路径未触发"
+    ],
+    "R07": "Check visible scope and publicly stated scope-based explanation; no order/ID counterfactual, so cannot causally prove independence from ranking",
+    "E03": "Do not choose natural/work days or recommend one as an execution rule without evidence",
+    "C13": "Assess visible30day+15day claims, count copies once; never treat hidden corpus sections or copied_from metadata absent from actual search as model-visible",
+    "M01": "Same original CLI interactive session, exact two design messages; check per-turn evidence and final context use",
+    "F01": "Use original search failure switch; if agent truly recovers using another working tool, report actual recovery rather than inventing failure",
+    "observer": "Passive wrappers of _tool_response and Agent.reply record ORIGINAL returned objects and metadata, then return them unchanged; no tool replacement/retrieval override",
+    "repeat_policy": "1 per case plus2 for C01/C11/C13; no success selection; max concurrency2 independent processes; CLI errors preserved; external900s watchdog separate from tool budget",
+    "B1_working_definition": "query/initial retrieval evidence acquisition improvements; not implemented in this run",
+    "B2_working_definition": "related/conflicting evidence supplementation, source diversity and evidence-aware decision/answer control; not implemented in this run"
+  }
+}

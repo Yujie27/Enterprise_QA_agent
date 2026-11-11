@@ -1,0 +1,20 @@
+{
+  "new_real_runs": 19,
+  "native_runs": 18,
+  "controlled_runs": 1,
+  "native_business_pass": 17,
+  "native_correct_terminal_business_pass": 17,
+  "all_business_pass": 17,
+  "statuses": {
+    "completed": 17,
+    "tool_error": 2
+  },
+  "native_statuses": {
+    "completed": 16,
+    "tool_error": 2
+  },
+  "tool_calls": 55,
+  "budget_rejected_new": 0,
+  "supplemental_budget_rejected": 1,
+  "reading_failure_triggered": true
+}

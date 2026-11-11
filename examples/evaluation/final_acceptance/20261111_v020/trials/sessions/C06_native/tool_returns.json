@@ -1,0 +1,166 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-11T05:15:10.848237+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-07",
+          "effective_from": "2026-07-01",
+          "scope": "全体员工；普通费用",
+          "section_id": "D02-S1",
+          "text": "自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。",
+          "score": 1.0
+        },
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.571
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-07\", \"effective_from\": \"2026-07-01\", \"scope\": \"全体员工；普通费用\", \"section_id\": \"D02-S1\", \"text\": \"自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。\", \"score\": 1.0}, {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.571}], \"summary\": \"返回 2 条资料\"}",
+          "id": "ae4e740dcaf642bdb055c9b5eb606358",
+          "created_at": "2026-11-11T13:15:10.848237",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "940069a2e15647e0bf049092b33abeb3"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-11T05:15:10.850316+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-07",
+          "effective_from": "2026-07-01",
+          "scope": "全体员工；普通费用",
+          "section_id": "D02-S1",
+          "text": "自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。",
+          "score": 0.5
+        },
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "section_id": "D01-S1",
+          "text": "费用报销应在费用发生后30日内提交申请。",
+          "score": 0.375
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-07\", \"effective_from\": \"2026-07-01\", \"scope\": \"全体员工；普通费用\", \"section_id\": \"D02-S1\", \"text\": \"自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。\", \"score\": 0.5}, {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\", \"score\": 0.375}], \"summary\": \"返回 2 条资料\"}",
+          "id": "e6b4b3bffed544a79191aa4ea03ed8de",
+          "created_at": "2026-11-11T13:15:10.850316",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "675a55856786425a826477104c767f01"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-11T05:15:12.833290+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D02",
+        "title": "制度文件D02",
+        "version": "2026-07",
+        "effective_from": "2026-07-01",
+        "scope": "全体员工；普通费用",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D02-S1",
+            "text": "自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-07\", \"effective_from\": \"2026-07-01\", \"scope\": \"全体员工；普通费用\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D02-S1\", \"text\": \"自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "feaa17f0e521460d9b186f665f9cd3ab",
+          "created_at": "2026-11-11T13:15:12.833290",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "57c15e946e9a4fdc9e17c6a8b0c4ef79"
+    }
+  },
+  {
+    "index": 4,
+    "timestamp_utc": "2026-11-11T05:15:12.834304+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"未提供\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"费用报销应在费用发生后30日内提交申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "b27c6d9878954d249d19b83d1d0cd5b3",
+          "created_at": "2026-11-11T13:15:12.834304",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "f72aa64561e347cbae68983cea868c21"
+    }
+  }
+]

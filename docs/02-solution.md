@@ -21,3 +21,10 @@ Trace v2 保存程序版本和资料哈希，记录原始工具观察、轮次�
 - `--simulate-failure` 仅作为验收入口，让工具异常作为观察返回模型；Trace 会明确标记故障注入。
 - 使用合成数据，避免真实制度和隐私内容。
 - Mock 模式用于无密钥时验证流程。评审真实决策效果应运行真实模型并提交运行 Trace。
+
+
+## 最终候选与默认行为
+
+CLI默认仍dedup＋original门槛，`--demand-rewrite`和`--dg-targeted`默认关闭；最终候选演示显式传`--match-threshold one_overlap --dg-targeted`，不传demand-rewrite。`scripts/submission_demo.py`只选择输入和配置，工具路径由模型自主决定。单Agent的search/read预算每轮4次，无新增模型裁判；D/G只追加分类/回答/结束提示。主动关联冲突来源补查尚未实现。
+
+框架职责为AgentScope 2.0.11提供ReAct循环、模型工具协议和会话维护；本项目提供检索/去重/门槛、故障观察、调用上限和公开Trace。原提示、可选改写、DG提示、原/放宽门槛均可明确选择。真实原文候选不等于自动语义验证。

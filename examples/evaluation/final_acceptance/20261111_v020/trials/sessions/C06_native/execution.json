@@ -1,0 +1,53 @@
+{
+  "run_id": "C06_native",
+  "case_id": "C06",
+  "repeat": 1,
+  "execution": "attempted",
+  "started_at_utc": "2026-11-11T05:15:09.248145+00:00",
+  "finished_at_utc": "2026-11-11T05:15:16.962476+00:00",
+  "elapsed_seconds": 7.545046100000036,
+  "uncaught_error": null,
+  "cli_args": [
+    "enterprise-qa",
+    "--corpus",
+    "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\retrieval_baseline\\20261110_raw_query_v020\\input\\qa_boundary_test_design\\corpora\\replaced.json",
+    "--trace-dir",
+    "C:\\Users\\ZONST\\Desktop\\Enterprise_QA_agent\\examples\\evaluation\\final_acceptance\\20261111_v020\\trials\\sessions\\C06_native\\traces",
+    "2026年7月2日发生的普通费用，报销期限多久？",
+    "--retrieval-mode",
+    "dedup",
+    "--match-threshold",
+    "one_overlap",
+    "--dg-targeted"
+  ],
+  "model_config": {
+    "model": "deepseek-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "endpoint_path": "/v1",
+    "api_key_configured": true,
+    "stream": false,
+    "parameters": {
+      "max_tokens": null,
+      "thinking_enable": false,
+      "reasoning_effort": null,
+      "temperature": null,
+      "top_p": null,
+      "parallel_tool_calls": false,
+      "voice": null
+    },
+    "sampling_note": "temperature/top_p/seed not explicitly set by original code; provider defaults apply",
+    "tool_budget_per_turn": 4,
+    "configured_budget_before_runner": "4",
+    "react_max_iters": 5,
+    "model_max_retries_default": 3,
+    "model_retry_delay_default": 1.0,
+    "versions": {
+      "agentscope": "2.0.11",
+      "openai": "3.46.0",
+      "python-dotenv": "1.2.4",
+      "enterprise-qa-agent-minimal": "0.2.0"
+    }
+  },
+  "corpus_sha256": "4ec88a346d973f5f78c63aaf68df92383786e2729ee66a49bf7745215e094956",
+  "tool_return_count": 4
+}

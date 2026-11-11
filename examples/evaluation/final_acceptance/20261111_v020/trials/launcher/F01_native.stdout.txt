@@ -1,0 +1,5 @@
+状态：tool_error
+目前无法确认报销期限。制度检索工具连续两次报错，未能获取可引用的制度原文，因此不能据此给出具体期限。
+
+请提供适用制度的名称或文档 ID，或稍后重试检索。
+Trace：C:\Users\ZONST\Desktop\Enterprise_QA_agent\examples\evaluation\final_acceptance\20261111_v020\trials\sessions\F01_native\traces\20261111_131448_915637.json

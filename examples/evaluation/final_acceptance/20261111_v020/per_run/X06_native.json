@@ -1,0 +1,75 @@
+{
+  "run_id": "X06_native",
+  "case_id": "X06",
+  "repeat": 1,
+  "batch": "acceptance",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/modified.json",
+  "corpus_sha256": "d73f6f3b4bb7311c2198ad5b04a54c645a09af2c291a94573f2a2914deea5a9c",
+  "trace": "examples/evaluation/final_acceptance/20261111_v020/trials/sessions/X06_native/traces/20261111_131601_791664.json",
+  "status": "completed",
+  "answer": "依据现有制度资料：\n\n- **文档：** D01《制度文件D01》\n- **版本：** 2026-01\n- **生效日期：** 2026-01-01\n- **原文：** “费用报销应在费用发生后45日内提交申请。”\n\n因此，该制度规定的报销期限是：**费用发生后45日内提交申请**。\n\n需要注意：该资料的“适用范围”未提供，因此无法确认上述期限是否适用于你所在单位或具体费用类型。如能补充适用主体或费用类型，可再核对相应制度。",
+  "tool_calls": 1,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限",
+        "limit": 10
+      },
+      "public_decision_reason": "需要检索报销期限相关制度条款",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后45日内提交申请。",
+            "score": 0.667
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    }
+  ],
+  "required": [
+    "D01/D01-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "D01/D01-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "business_pass": true,
+    "main_conclusion_correct": true,
+    "citations_supported": true,
+    "category": "完整有据回答",
+    "reason": "同ID D01原文45日可见，回答随当前资料变成45日，不沿用30日。",
+    "unsupported_claims": [],
+    "wording_or_process_risks": [],
+    "review_method": "助手阅读本次完整返回/答案及M01 conversation，非自动裁判；候选人需复审"
+  },
+  "correct_terminal_and_business_pass": true,
+  "conversation": null,
+  "controlled_variant": false
+}

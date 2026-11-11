@@ -1,0 +1,4 @@
+{
+  "command": "python -B -m unittest discover -s tests -v",
+  "returncode": 0
+}

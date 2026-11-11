@@ -1,0 +1,108 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-11T05:14:22.517068+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "研发部门；差旅费用",
+          "section_id": "D02-S1",
+          "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。",
+          "score": 0.615
+        },
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工；非差旅普通费用",
+          "section_id": "D01-S1",
+          "text": "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。",
+          "score": 0.385
+        },
+        {
+          "doc_id": "D03",
+          "title": "制度文件D03",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工；年假",
+          "section_id": "D03-S1",
+          "text": "年假申请通过内部系统提交，经直属主管审批后生效。",
+          "score": 0.077
+        }
+      ],
+      "summary": "返回 3 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"section_id\": \"D02-S1\", \"text\": \"研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。\", \"score\": 0.615}, {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工；非差旅普通费用\", \"section_id\": \"D01-S1\", \"text\": \"普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。\", \"score\": 0.385}, {\"doc_id\": \"D03\", \"title\": \"制度文件D03\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工；年假\", \"section_id\": \"D03-S1\", \"text\": \"年假申请通过内部系统提交，经直属主管审批后生效。\", \"score\": 0.077}], \"summary\": \"返回 3 条资料\"}",
+          "id": "3a31db28612644418b391db1c6a62d3d",
+          "created_at": "2026-11-11T13:14:22.517068",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "38defb693c0943b991efe4ad33a43921"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-11T05:14:22.519734+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "研发部门；差旅费用",
+          "section_id": "D02-S1",
+          "text": "研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。",
+          "score": 0.385
+        },
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工；非差旅普通费用",
+          "section_id": "D01-S1",
+          "text": "普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。",
+          "score": 0.308
+        },
+        {
+          "doc_id": "D03",
+          "title": "制度文件D03",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "全体员工；年假",
+          "section_id": "D03-S1",
+          "text": "年假申请通过内部系统提交，经直属主管审批后生效。",
+          "score": 0.077
+        }
+      ],
+      "summary": "返回 3 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"section_id\": \"D02-S1\", \"text\": \"研发部门差旅费用应在返程后15日内提交报销申请，仅适用于研发部门差旅费用。\", \"score\": 0.385}, {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工；非差旅普通费用\", \"section_id\": \"D01-S1\", \"text\": \"普通费用指非差旅费用。全体员工普通费用报销应在费用发生后30日内提交申请。\", \"score\": 0.308}, {\"doc_id\": \"D03\", \"title\": \"制度文件D03\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"全体员工；年假\", \"section_id\": \"D03-S1\", \"text\": \"年假申请通过内部系统提交，经直属主管审批后生效。\", \"score\": 0.077}], \"summary\": \"返回 3 条资料\"}",
+          "id": "4de81137f7ac461cac76eff9a1b1d936",
+          "created_at": "2026-11-11T13:14:22.519734",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "b20ad45da90b4e4e80043e149d7b1e94"
+    }
+  }
+]

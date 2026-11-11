@@ -1,0 +1,75 @@
+{
+  "run_id": "F01_native",
+  "case_id": "F01",
+  "repeat": 1,
+  "batch": "acceptance",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace": "examples/evaluation/final_acceptance/20261111_v020/trials/sessions/F01_native/traces/20261111_131448_915637.json",
+  "status": "tool_error",
+  "answer": "目前无法确认报销期限。制度检索工具连续两次报错，未能获取可引用的制度原文，因此不能据此给出具体期限。\n\n请提供适用制度的名称或文档 ID，或稍后重试检索。",
+  "tool_calls": 2,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限",
+        "limit": 10
+      },
+      "public_decision_reason": "需要查找制度中关于报销期限的规定。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+        "results": []
+      },
+      "visible_keys": []
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "费用报销 提交时限",
+        "limit": 10
+      },
+      "public_decision_reason": "首次检索工具报错，换查询词再尝试一次。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "error": "检索工具失败：RuntimeError: simulated search failure for evaluation",
+        "results": []
+      },
+      "visible_keys": []
+    }
+  ],
+  "required": [],
+  "missing": [],
+  "first_recall": null,
+  "cumulative_recall": null,
+  "acquired_at": {},
+  "budget_rejections": 0,
+  "review": {
+    "business_pass": true,
+    "main_conclusion_correct": true,
+    "citations_supported": null,
+    "category": "合理工具故障说明",
+    "reason": "两次实际search错误后停止，没有据失败推断制度不存在。",
+    "unsupported_claims": [],
+    "wording_or_process_risks": [],
+    "review_method": "助手阅读本次完整返回/答案及M01 conversation，非自动裁判；候选人需复审"
+  },
+  "correct_terminal_and_business_pass": true,
+  "conversation": null,
+  "controlled_variant": false
+}

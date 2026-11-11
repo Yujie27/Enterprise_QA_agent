@@ -1,0 +1,74 @@
+{
+  "actual_first_returns": {
+    "C01_native": [
+      [
+        "D01",
+        "费用报销应在费用发生后30日内提交申请。"
+      ],
+      [
+        "D02",
+        "费用报销应在费用发生后15日内提交申请。"
+      ]
+    ],
+    "X04_native": [
+      [
+        "D01",
+        "费用报销应在费用发生后30日内提交申请。"
+      ],
+      [
+        "D02",
+        "费用报销应在费用发生后15日内提交申请。"
+      ]
+    ],
+    "X05_native": [
+      [
+        "A01",
+        "费用报销应在费用发生后15日内提交申请。"
+      ],
+      [
+        "Z99",
+        "费用报销应在费用发生后30日内提交申请。"
+      ]
+    ],
+    "C01_reverse": [
+      [
+        "D02",
+        "费用报销应在费用发生后15日内提交申请。"
+      ],
+      [
+        "D01",
+        "费用报销应在费用发生后30日内提交申请。"
+      ]
+    ]
+  },
+  "file_order_transformation": "未触发：排序抵消",
+  "controlled_reverse_triggered": true,
+  "adapter_log": "trials/sessions/C01_reverse/order_adapter.json",
+  "rename_triggered": true,
+  "replacement": {
+    "original": [
+      {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "section_id": "D01-S1",
+        "text": "费用报销应在费用发生后30日内提交申请。",
+        "score": 0.667
+      }
+    ],
+    "modified": [
+      {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "未提供",
+        "section_id": "D01-S1",
+        "text": "费用报销应在费用发生后45日内提交申请。",
+        "score": 0.667
+      }
+    ]
+  }
+}

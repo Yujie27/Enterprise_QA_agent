@@ -1,0 +1,11 @@
+{
+  "source": "examples/evaluation/dg_targeted/20261111_v020/per_run/C11_r1_dg_targeted.json",
+  "trace": "examples/evaluation/dg_targeted/20261111_v020/trials/sessions/C11_r1_dg_targeted/traces/20261111_124817_283039.json",
+  "candidate_source_hashes_equal": true,
+  "tool_limit": 4,
+  "new_run": false,
+  "status": "incomplete",
+  "business_pass": true,
+  "execution_success": false,
+  "reason": "本轮C11未触顶，不增改预算或筛选重跑；复用同一源码候选已保存的实际第五次拒绝记录，作为补充工程验收路径，不混入本轮19次分母。"
+}

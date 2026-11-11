@@ -1,0 +1,140 @@
+{
+  "run_id": "C02_native",
+  "case_id": "C02",
+  "repeat": 1,
+  "batch": "acceptance",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+  "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+  "trace": "examples/evaluation/final_acceptance/20261111_v020/trials/sessions/C02_native/traces/20261111_131407_921209.json",
+  "status": "completed",
+  "answer": "**结论：**依据目前检索到的制度，费用报销应在**费用发生后 30 日内**提交申请。\n\n**依据：**\n- 文档：`D01`《制度文件D01》\n- 版本：`2026-01`\n- 生效日期：`2026-01-01`\n- 条款：`D01-S1`\n- 原文：“费用报销应在费用发生后30日内提交申请。”\n\n**适用说明：**该文档未提供适用范围（`scope`：未提供），因此无法确认它是否适用于你所述的具体报销类型或主体；同时，检索中未发现其他报销期限条款。若你所在单位或费用类型另有制度，需进一步确认适用关系。\n\n以上回答基于 `D01` 原文；因适用范围缺失，仅能确认该制度的期限规则。",
+  "tool_calls": 3,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 报销时效 费用报销 提交期限",
+        "limit": 5
+      },
+      "public_decision_reason": "用户询问报销期限，先检索相关制度条款。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.556
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "差旅费 费用报销 提交申请 期限 天数",
+        "limit": 5
+      },
+      "public_decision_reason": "报销问题未限定费用类型，需补充检索是否存在其他适用范围或期限规定。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.7
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "检索到的期限条款集中在D01，读取原文核对版本、适用范围和起算点。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "D01/D01-S1"
+      ]
+    }
+  ],
+  "required": [
+    "D01/D01-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "D01/D01-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "business_pass": true,
+    "main_conclusion_correct": true,
+    "citations_supported": true,
+    "category": "完整有据回答",
+    "reason": "与C01完全相同问题，仅保留D01后答30日，未过度拒答。",
+    "unsupported_claims": [],
+    "wording_or_process_risks": [],
+    "review_method": "助手阅读本次完整返回/答案及M01 conversation，非自动裁判；候选人需复审"
+  },
+  "correct_terminal_and_business_pass": true,
+  "conversation": null,
+  "controlled_variant": false
+}

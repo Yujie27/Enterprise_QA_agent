@@ -1,0 +1,134 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": false,
+    "match_threshold": "one_overlap",
+    "dg_targeted": true
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "internal.json",
+    "sha256": "26210b3bcb27f4193396c8149a4079391b23b9e6e463535e536eaff961235c73"
+  },
+  "timestamp_utc": "2026-11-11T05:15:44.811715+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限多久？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 2,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限多久？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 报销 截止时间 费用报销",
+        "limit": 10
+      },
+      "public_decision_reason": "需要定位报销期限的制度依据。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.5
+          },
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S2",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.5
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D01"
+        },
+        "executed": true,
+        "public_decision_reason": "候选条款期限分别为30日和15日，需要核对原文及替代关系。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "候选条款期限分别为30日和15日，需要核对原文及替代关系。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            },
+            {
+              "section_id": "D01-S2",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "根据现有资料，**无法确定唯一的报销期限**：同一制度内存在两条相互冲突的规定。\n\n**依据：D01《制度文件D01》**\n- 文档 ID：D01\n- 版本：2026-01\n- 生效日期：2026-01-01\n- 适用范围：未提供\n\n原文条款：\n1. 第 D01-S1 条：“费用报销应在费用发生后**30日内**提交申请。”\n2. 第 D01-S2 条：“费用报销应在费用发生后**15日内**提交申请。”\n\n上述条款的起算点均为“费用发生后”，但期限分别为30日和15日；原文未说明适用范围、优先级或哪一条替代另一条，因此不能仅凭版本、日期或条款顺序选择其中一个期限。\n\n请确认应适用哪一条，或提供该制度的适用范围／条款优先级依据。\n\n（因原文存在未解决的期限冲突，停止继续检索。）"
+    }
+  ],
+  "answer": "根据现有资料，**无法确定唯一的报销期限**：同一制度内存在两条相互冲突的规定。\n\n**依据：D01《制度文件D01》**\n- 文档 ID：D01\n- 版本：2026-01\n- 生效日期：2026-01-01\n- 适用范围：未提供\n\n原文条款：\n1. 第 D01-S1 条：“费用报销应在费用发生后**30日内**提交申请。”\n2. 第 D01-S2 条：“费用报销应在费用发生后**15日内**提交申请。”\n\n上述条款的起算点均为“费用发生后”，但期限分别为30日和15日；原文未说明适用范围、优先级或哪一条替代另一条，因此不能仅凭版本、日期或条款顺序选择其中一个期限。\n\n请确认应适用哪一条，或提供该制度的适用范围／条款优先级依据。\n\n（因原文存在未解决的期限冲突，停止继续检索。）"
+}

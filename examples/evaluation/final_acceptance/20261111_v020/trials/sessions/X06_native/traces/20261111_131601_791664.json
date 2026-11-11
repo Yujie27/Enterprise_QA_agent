@@ -1,0 +1,70 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": false,
+    "match_threshold": "one_overlap",
+    "dg_targeted": true
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "modified.json",
+    "sha256": "d73f6f3b4bb7311c2198ad5b04a54c645a09af2c291a94573f2a2914deea5a9c"
+  },
+  "timestamp_utc": "2026-11-11T05:16:01.791113+00:00",
+  "mode": "agentscope_react",
+  "question": "报销期限多久？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 1,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "报销期限多久？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限",
+        "limit": 10
+      },
+      "public_decision_reason": "需要检索报销期限相关制度条款",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 1 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后45日内提交申请。",
+            "score": 0.667
+          }
+        ],
+        "summary": "返回 1 条资料"
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "依据现有制度资料：\n\n- **文档：** D01《制度文件D01》\n- **版本：** 2026-01\n- **生效日期：** 2026-01-01\n- **原文：** “费用报销应在费用发生后45日内提交申请。”\n\n因此，该制度规定的报销期限是：**费用发生后45日内提交申请**。\n\n需要注意：该资料的“适用范围”未提供，因此无法确认上述期限是否适用于你所在单位或具体费用类型。如能补充适用主体或费用类型，可再核对相应制度。"
+    }
+  ],
+  "answer": "依据现有制度资料：\n\n- **文档：** D01《制度文件D01》\n- **版本：** 2026-01\n- **生效日期：** 2026-01-01\n- **原文：** “费用报销应在费用发生后45日内提交申请。”\n\n因此，该制度规定的报销期限是：**费用发生后45日内提交申请**。\n\n需要注意：该资料的“适用范围”未提供，因此无法确认上述期限是否适用于你所在单位或具体费用类型。如能补充适用主体或费用类型，可再核对相应制度。"
+}

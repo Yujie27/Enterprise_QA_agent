@@ -1,0 +1,68 @@
+{
+  "records": [
+    {
+      "trace": "examples/runs/20261111_134700_661883.json",
+      "trace_sha256": "5bd88188f3bf3af52330918060201e7205f4e462202b15b027d2ac5d0c53ee5f",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/conflict.json",
+      "corpus_sha256": "26d2059e88b8a3b446c6d25ab96df3a0e1d80e0e526e0dc327883c40c4d22bcf",
+      "question": "报销期限多久？",
+      "experiment_config": {
+        "retrieval_mode": "dedup",
+        "demand_rewrite": false,
+        "match_threshold": "one_overlap",
+        "dg_targeted": true
+      },
+      "status": "completed",
+      "tool_calls": 3,
+      "no_new_evidence_second_search": false,
+      "operator": "候选人亲自执行并提供输出（用户确认）",
+      "analysis": "AI据原始Trace核对和整理",
+      "personal_review": "待本人确认"
+    },
+    {
+      "trace": "examples/runs/20261111_134759_772822.json",
+      "trace_sha256": "0ec7635c46dbe541e7c98496d1ecb0ec35cf1e0674b6eb241afcec4e3bf16481",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/single.json",
+      "corpus_sha256": "db9e0ed5ecf4829ea2a159e1b884e9e73d955010d21a14a42b6dcd309e76345a",
+      "question": "报销期限多久？",
+      "experiment_config": {
+        "retrieval_mode": "dedup",
+        "demand_rewrite": false,
+        "match_threshold": "one_overlap",
+        "dg_targeted": true
+      },
+      "status": "completed",
+      "tool_calls": 2,
+      "no_new_evidence_second_search": false,
+      "operator": "候选人亲自执行并提供输出（用户确认）",
+      "analysis": "AI据原始Trace核对和整理",
+      "personal_review": "待本人确认"
+    },
+    {
+      "trace": "examples/runs/20261111_135104_474854.json",
+      "trace_sha256": "e25727fe283d06ec2b4200f9c75dc60fa187a4b0702d728890ee5dadf0147f71",
+      "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/modified.json",
+      "corpus_sha256": "d73f6f3b4bb7311c2198ad5b04a54c645a09af2c291a94573f2a2914deea5a9c",
+      "question": "报销期限多久？",
+      "experiment_config": {
+        "retrieval_mode": "dedup",
+        "demand_rewrite": false,
+        "match_threshold": "one_overlap",
+        "dg_targeted": true
+      },
+      "status": "completed",
+      "tool_calls": 3,
+      "no_new_evidence_second_search": true,
+      "operator": "候选人亲自执行并提供输出（用户确认）",
+      "analysis": "AI据原始Trace核对和整理",
+      "personal_review": "待本人确认"
+    }
+  ],
+  "raw_traces_modified": false,
+  "new_model_or_test_runs": false,
+  "test_count": 26,
+  "test_log": "examples/evaluation/final_acceptance/20261111_v020/tests.log",
+  "test_log_sha256": "e965821151db8860d987b683f5a77767bb33b932a28100fd4822c541c03027e6",
+  "test_count_check": "已保存日志26项，与当前test_方法数26一致；本次未重跑",
+  "personal_review": "待本人确认"
+}

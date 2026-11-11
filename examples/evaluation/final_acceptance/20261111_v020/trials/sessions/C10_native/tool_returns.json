@@ -1,0 +1,123 @@
+[
+  {
+    "index": 1,
+    "timestamp_utc": "2026-11-11T05:15:30.967791+00:00",
+    "payload_passed_to_original_tool_response": {
+      "results": [
+        {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "研发部门；差旅费用",
+          "section_id": "D01-S1",
+          "text": "研发部门差旅费用在费用发生后15日内提交报销申请。",
+          "score": 1.0
+        },
+        {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "研发部门；差旅费用",
+          "section_id": "D02-S1",
+          "text": "研发部门差旅费用在返程后15日内提交报销申请。",
+          "score": 1.0
+        }
+      ],
+      "summary": "返回 2 条资料"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"results\": [{\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"section_id\": \"D01-S1\", \"text\": \"研发部门差旅费用在费用发生后15日内提交报销申请。\", \"score\": 1.0}, {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"section_id\": \"D02-S1\", \"text\": \"研发部门差旅费用在返程后15日内提交报销申请。\", \"score\": 1.0}], \"summary\": \"返回 2 条资料\"}",
+          "id": "611ca932ac384da6962e4f3210239757",
+          "created_at": "2026-11-11T13:15:30.967237",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "90c3b087bcbd488294f84b55b7a70874"
+    }
+  },
+  {
+    "index": 2,
+    "timestamp_utc": "2026-11-11T05:15:32.276048+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D01",
+        "title": "制度文件D01",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "研发部门；差旅费用",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D01-S1",
+            "text": "研发部门差旅费用在费用发生后15日内提交报销申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D01\", \"title\": \"制度文件D01\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D01-S1\", \"text\": \"研发部门差旅费用在费用发生后15日内提交报销申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "dedd5919a5e84bcaa4b5b6e8d843280b",
+          "created_at": "2026-11-11T13:15:32.276048",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "8b1b66509a0a49e6bb87fc7dd6f91bdc"
+    }
+  },
+  {
+    "index": 3,
+    "timestamp_utc": "2026-11-11T05:15:32.277113+00:00",
+    "payload_passed_to_original_tool_response": {
+      "document": {
+        "doc_id": "D02",
+        "title": "制度文件D02",
+        "version": "2026-01",
+        "effective_from": "2026-01-01",
+        "scope": "研发部门；差旅费用",
+        "tags": [
+          "报销",
+          "期限",
+          "费用"
+        ],
+        "sections": [
+          {
+            "section_id": "D02-S1",
+            "text": "研发部门差旅费用在返程后15日内提交报销申请。"
+          }
+        ]
+      },
+      "summary": "已读取文档原文"
+    },
+    "returned_tool_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"document\": {\"doc_id\": \"D02\", \"title\": \"制度文件D02\", \"version\": \"2026-01\", \"effective_from\": \"2026-01-01\", \"scope\": \"研发部门；差旅费用\", \"tags\": [\"报销\", \"期限\", \"费用\"], \"sections\": [{\"section_id\": \"D02-S1\", \"text\": \"研发部门差旅费用在返程后15日内提交报销申请。\"}]}, \"summary\": \"已读取文档原文\"}",
+          "id": "52d1995473ad47eba7108ef7c5a59532",
+          "created_at": "2026-11-11T13:15:32.277113",
+          "finished_at": null
+        }
+      ],
+      "state": "success",
+      "metadata": {},
+      "id": "4cbedc1bb7744e91af66310384fa9c8f"
+    }
+  }
+]

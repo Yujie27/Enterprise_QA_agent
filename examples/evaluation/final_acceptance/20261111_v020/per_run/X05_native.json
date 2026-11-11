@@ -1,0 +1,158 @@
+{
+  "run_id": "X05_native",
+  "case_id": "X05",
+  "repeat": 1,
+  "batch": "acceptance",
+  "threshold": "dg_targeted",
+  "execution": "attempted",
+  "messages": [
+    {
+      "role": "user",
+      "content": "报销期限多久？"
+    }
+  ],
+  "corpus": "examples/evaluation/retrieval_baseline/20261110_raw_query_v020/input/qa_boundary_test_design/corpora/rename.json",
+  "corpus_sha256": "92c018653581e49cb2caaa5009372f2c76320a5c371a5aeeb06f9dcb747ef0f8",
+  "trace": "examples/evaluation/final_acceptance/20261111_v020/trials/sessions/X05_native/traces/20261111_131619_848196.json",
+  "status": "completed",
+  "answer": "无法确定唯一的报销期限，因为两份现行制度的适用范围均未提供，且规定相互冲突：\n\n- **A01《制度文件D02》**，版本 **2026-01**，生效日期 **2026-01-01**：  \n  > “费用报销应在费用发生后**15日内**提交申请。”\n\n- **Z99《制度文件D01》**，版本 **2026-01**，生效日期 **2026-01-01**：  \n  > “费用报销应在费用发生后**30日内**提交申请。”\n\n两份制度没有提供适用范围的区分、优先级或替代关系，因此不能直接按其中一份制度确定期限，也不建议先按较短期限执行。\n\n请确认适用哪份制度（例如按公司、费用类型或业务场景），或提供制度优先级依据，我再据此回答。\n\n本次已核对两份候选制度原文；因期限冲突且适用范围不明，只能停止并请求确认。",
+  "tool_calls": 3,
+  "steps": [
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "报销期限 费用报销 提交期限",
+        "limit": 10
+      },
+      "public_decision_reason": "需要查找报销期限的制度原文依据。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "results": [
+          {
+            "doc_id": "A01",
+            "title": "制度文件D02",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "A01-S1",
+            "text": "费用报销应在费用发生后15日内提交申请。",
+            "score": 0.714
+          },
+          {
+            "doc_id": "Z99",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "Z99-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.714
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "visible_keys": [
+        "A01/A01-S1",
+        "Z99/Z99-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "A01"
+      },
+      "public_decision_reason": "候选条款期限不同且范围未提供，需要读取原文核实适用范围及是否有替代关系。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "A01",
+          "title": "制度文件D02",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "A01-S1",
+              "text": "费用报销应在费用发生后15日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "A01/A01-S1"
+      ]
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "Z99"
+      },
+      "public_decision_reason": "候选条款期限不同且范围未提供，需要读取原文核实适用范围及是否有替代关系。",
+      "reason_source": "model_tool_argument",
+      "full_return": {
+        "document": {
+          "doc_id": "Z99",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "Z99-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "visible_keys": [
+        "Z99/Z99-S1"
+      ]
+    }
+  ],
+  "required": [
+    "A01/A01-S1",
+    "Z99/Z99-S1"
+  ],
+  "missing": [],
+  "first_recall": 1.0,
+  "cumulative_recall": 1.0,
+  "acquired_at": {
+    "Z99/Z99-S1": 1,
+    "A01/A01-S1": 1
+  },
+  "budget_rejections": 0,
+  "review": {
+    "business_pass": true,
+    "main_conclusion_correct": true,
+    "citations_supported": true,
+    "category": "合理冲突追问",
+    "reason": "实际候选A01/15日、Z99/30日，引用新编号并列冲突，无旧ID误引。",
+    "unsupported_claims": [],
+    "wording_or_process_risks": [],
+    "review_method": "助手阅读本次完整返回/答案及M01 conversation，非自动裁判；候选人需复审"
+  },
+  "correct_terminal_and_business_pass": true,
+  "conversation": null,
+  "controlled_variant": false
+}

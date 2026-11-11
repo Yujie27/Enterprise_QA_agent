@@ -1,0 +1,236 @@
+{
+  "experiment_config": {
+    "retrieval_mode": "dedup",
+    "demand_rewrite": false,
+    "match_threshold": "one_overlap",
+    "dg_targeted": true
+  },
+  "trace_schema_version": 2,
+  "app_version": "0.2.0",
+  "corpus": {
+    "name": "replaced.json",
+    "sha256": "4ec88a346d973f5f78c63aaf68df92383786e2729ee66a49bf7745215e094956"
+  },
+  "timestamp_utc": "2026-11-11T05:15:16.959802+00:00",
+  "mode": "agentscope_react",
+  "question": "2026年7月2日发生的普通费用，报销期限多久？",
+  "status": "completed",
+  "tool_call_limit": 4,
+  "tool_calls": 4,
+  "events": [
+    {
+      "type": "user_message",
+      "turn": 1,
+      "content": "2026年7月2日发生的普通费用，报销期限多久？"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "普通费用报销期限",
+        "limit": 5
+      },
+      "public_decision_reason": "需要定位与普通费用报销期限相关的制度条款。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 1,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-07",
+            "effective_from": "2026-07-01",
+            "scope": "全体员工；普通费用",
+            "section_id": "D02-S1",
+            "text": "自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。",
+            "score": 1.0
+          },
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.571
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "next_action": {
+        "tool": "search_docs",
+        "arguments": {
+          "query": "费用报销时限 起算日 规定",
+          "limit": 5
+        },
+        "executed": true,
+        "public_decision_reason": "需要检索报销时限及起算点的相关规则。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：search_docs",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "arguments": {
+        "query": "费用报销时限 起算日 规定",
+        "limit": 5
+      },
+      "public_decision_reason": "需要检索报销时限及起算点的相关规则。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 2,
+      "tool": "search_docs",
+      "summary": "返回 2 条资料",
+      "observation": {
+        "results": [
+          {
+            "doc_id": "D02",
+            "title": "制度文件D02",
+            "version": "2026-07",
+            "effective_from": "2026-07-01",
+            "scope": "全体员工；普通费用",
+            "section_id": "D02-S1",
+            "text": "自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。",
+            "score": 0.5
+          },
+          {
+            "doc_id": "D01",
+            "title": "制度文件D01",
+            "version": "2026-01",
+            "effective_from": "2026-01-01",
+            "scope": "未提供",
+            "section_id": "D01-S1",
+            "text": "费用报销应在费用发生后30日内提交申请。",
+            "score": 0.375
+          }
+        ],
+        "summary": "返回 2 条资料"
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D02"
+        },
+        "executed": true,
+        "public_decision_reason": "需核对D02的生效范围及对D01的替代衔接表述。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D02"
+      },
+      "public_decision_reason": "需核对D02的生效范围及对D01的替代衔接表述。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 3,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D02",
+          "title": "制度文件D02",
+          "version": "2026-07",
+          "effective_from": "2026-07-01",
+          "scope": "全体员工；普通费用",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D02-S1",
+              "text": "自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "next_action": {
+        "tool": "read_doc",
+        "arguments": {
+          "doc_id": "D01"
+        },
+        "executed": true,
+        "public_decision_reason": "需核对D01原条款的适用范围和期限规定。",
+        "reason_source": "model_tool_argument"
+      },
+      "action_summary": "下一请求：read_doc",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "tool_call",
+      "turn": 1,
+      "step": 4,
+      "tool": "read_doc",
+      "arguments": {
+        "doc_id": "D01"
+      },
+      "public_decision_reason": "需核对D01原条款的适用范围和期限规定。",
+      "reason_source": "model_tool_argument"
+    },
+    {
+      "type": "tool_result",
+      "turn": 1,
+      "step": 4,
+      "tool": "read_doc",
+      "summary": "已读取文档原文",
+      "observation": {
+        "document": {
+          "doc_id": "D01",
+          "title": "制度文件D01",
+          "version": "2026-01",
+          "effective_from": "2026-01-01",
+          "scope": "未提供",
+          "tags": [
+            "报销",
+            "期限",
+            "费用"
+          ],
+          "sections": [
+            {
+              "section_id": "D01-S1",
+              "text": "费用报销应在费用发生后30日内提交申请。"
+            }
+          ]
+        },
+        "summary": "已读取文档原文"
+      },
+      "next_action": "finish",
+      "action_summary": "本轮工具调用结束；公开说明见 assistant_message。",
+      "action_summary_source": "program_observed_sequence"
+    },
+    {
+      "type": "assistant_message",
+      "turn": 1,
+      "content": "**结论：适用 15 日期限。**\n\n费用发生于 2026年7月2日，晚于 D02 的生效日 2026年7月1日，因此适用调整后的 15 日期限；D01 的 30 日规定仅适用于 2026年7月1日之前发生的费用。\n\n**依据**\n\n| 文档 | 版本 | 生效日期 | 适用范围 | 原文片段 |\n|---|---|---|---|---|\n| D02（D02-S1） | 2026-07 | 2026-07-01 | 全体员工；普通费用 | “自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。” |\n| D01（D01-S1） | 2026-01 | 2026-01-01 | 未提供 | “费用报销应在费用发生后30日内提交申请。” |\n\n**说明**\n\n- D02-S1 明确声明替代 D01-S1，并给出了新旧费用的分界（2026年7月1日），因此两份规定不构成无法确定优先级的冲突：本笔费用应按 D02 的 **15日** 执行。\n- 起算点为“费用发生后”。制度原文未说明是否包含费用发生当日，因此不代算具体截止日期。\n- 截至 2026年11月11日，该笔费用距发生日已远超 15 日，如尚未提交，已超过上述报销期限。\n\n本回答仅依据上述两份原文条款，未涉及其他材料细则或例外。"
+    }
+  ],
+  "answer": "**结论：适用 15 日期限。**\n\n费用发生于 2026年7月2日，晚于 D02 的生效日 2026年7月1日，因此适用调整后的 15 日期限；D01 的 30 日规定仅适用于 2026年7月1日之前发生的费用。\n\n**依据**\n\n| 文档 | 版本 | 生效日期 | 适用范围 | 原文片段 |\n|---|---|---|---|---|\n| D02（D02-S1） | 2026-07 | 2026-07-01 | 全体员工；普通费用 | “自2026年7月1日起，本条款替代D01-S1。全体员工普通费用报销期限调整为费用发生后15日内；此前发生的费用仍按D01的30日规定。” |\n| D01（D01-S1） | 2026-01 | 2026-01-01 | 未提供 | “费用报销应在费用发生后30日内提交申请。” |\n\n**说明**\n\n- D02-S1 明确声明替代 D01-S1，并给出了新旧费用的分界（2026年7月1日），因此两份规定不构成无法确定优先级的冲突：本笔费用应按 D02 的 **15日** 执行。\n- 起算点为“费用发生后”。制度原文未说明是否包含费用发生当日，因此不代算具体截止日期。\n- 截至 2026年11月11日，该笔费用距发生日已远超 15 日，如尚未提交，已超过上述报销期限。\n\n本回答仅依据上述两份原文条款，未涉及其他材料细则或例外。"
+}
